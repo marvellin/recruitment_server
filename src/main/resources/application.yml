@@ -1,0 +1,31 @@
+server:
+  port: 18080
+
+
+spring:
+  application:
+    name: recruitment_server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/recruitmenttest?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: root
+  redis:
+    database: 0
+    host: 192.168.124.2
+    port: 6379
+    timeout: 5000
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+        #max-wait=1000
+        min-idle: 0
+  jpa:
+    show-sql: true
+
+mybatis:
+#  configuration: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.edu.scau.linyuanbin.recruitment.domain
