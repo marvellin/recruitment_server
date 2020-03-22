@@ -10,6 +10,7 @@ public class AttachMentResume {
     private String name;//文件原名
     private OSSFile ossFile;
 
+    
     public AttachMentResume(int attachMentId, int personId, int ossId, String name) {
         this.attachMentResumeId = attachMentId;
         this.personId = personId;
