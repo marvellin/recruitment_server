@@ -17,6 +17,7 @@ public class AttachMentResume {
         this.name = name;
     }
 
+
     public int getAttachMentResumeId() {
         return attachMentResumeId;
     }
