@@ -11,4 +11,11 @@
 
         <association property="ossFile" column="ossId" select=""></association>
     </resultMap>
+
+    <insert id="insertAttachMentResume" parameterType="AttachMentResume">
+        insert into attachmentresume
+        (personId, ossId, name)
+        values
+        (#{attachMentResume.personId},#{attachMentResume.ossId},#{attachMentResume.name})
+    </insert>
 </mapper>

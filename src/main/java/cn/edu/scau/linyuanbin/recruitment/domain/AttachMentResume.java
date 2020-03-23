@@ -11,7 +11,7 @@ public class AttachMentResume {
     private OSSFile ossFile;
 
 
-    public AttachMentResume(int attachMentId, int personId, int ossId, String name) {
+    public AttachMentResume(int attachMentId, int personId, int ossId, String name, OSSFile ossFile) {
         this.attachMentResumeId = attachMentId;
         this.personId = personId;
         this.ossId = ossId;

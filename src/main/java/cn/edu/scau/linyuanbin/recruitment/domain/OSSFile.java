@@ -20,6 +20,10 @@ public class OSSFile {
         this.filename = filename;
     }
 
+    public OSSFile() {
+
+    }
+
     public int getOssId() {
         return ossId;
     }

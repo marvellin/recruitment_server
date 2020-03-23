@@ -9,6 +9,7 @@ public class Company {
     private int companyId;
     private int userId;
     private String intro;//公司介绍
+
     private User user;
     private List<Position> positionList;
     private List<CompanyReport> reportList;
