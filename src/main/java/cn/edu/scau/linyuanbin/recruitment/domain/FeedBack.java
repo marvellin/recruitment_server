@@ -8,12 +8,29 @@ public class FeedBack {
     private int deliveryId;
     private String feedbacktime;
     private String feedback;
+    private FeedBackDetail feedBackDetail;
 
     public FeedBack(int feedBackId, int deliveryId, String feedBackTime, String feedback) {
         this.feedBackId = feedBackId;
         this.deliveryId = deliveryId;
         this.feedbacktime = feedBackTime;
         this.feedback = feedback;
+    }
+
+    public String getFeedbacktime() {
+        return feedbacktime;
+    }
+
+    public void setFeedbacktime(String feedbacktime) {
+        this.feedbacktime = feedbacktime;
+    }
+
+    public FeedBackDetail getFeedBackDetail() {
+        return feedBackDetail;
+    }
+
+    public void setFeedBackDetail(FeedBackDetail feedBackDetail) {
+        this.feedBackDetail = feedBackDetail;
     }
 
     public int getFeedBackId() {

@@ -3,6 +3,8 @@
  * */
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
+import java.util.List;
+
 public class CompanyDetail {
     private int companyDetailId;
     private int companyId;
@@ -13,6 +15,8 @@ public class CompanyDetail {
     private String field;
     private String scale;
     private String comurl;
+    private CompanyImg companyImg;
+    private List<CompanyLabel> labelList;
 
     @Override
     public String toString() {
@@ -27,6 +31,38 @@ public class CompanyDetail {
                 ", scale='" + scale + '\'' +
                 ", comurl='" + comurl + '\'' +
                 '}';
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getShortname() {
+        return shortname;
+    }
+
+    public void setShortname(String shortname) {
+        this.shortname = shortname;
+    }
+
+    public CompanyImg getCompanyImg() {
+        return companyImg;
+    }
+
+    public void setCompanyImg(CompanyImg companyImg) {
+        this.companyImg = companyImg;
+    }
+
+    public List<CompanyLabel> getLabelList() {
+        return labelList;
+    }
+
+    public void setLabelList(List<CompanyLabel> labelList) {
+        this.labelList = labelList;
     }
 
     public int getCompanyDetailId() {

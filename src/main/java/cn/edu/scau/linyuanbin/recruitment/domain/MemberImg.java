@@ -7,11 +7,20 @@ public class MemberImg {
     private int memberImgId;
     private int companyMemberId;
     private int ossId;
+    OSSFile ossFile;
 
     public MemberImg(int memberImgId, int companyMemberId, int ossId) {
         this.memberImgId = memberImgId;
         this.companyMemberId = companyMemberId;
         this.ossId = ossId;
+    }
+
+    public OSSFile getOssFile() {
+        return ossFile;
+    }
+
+    public void setOssFile(OSSFile ossFile) {
+        this.ossFile = ossFile;
     }
 
     public int getMemberImgId() {

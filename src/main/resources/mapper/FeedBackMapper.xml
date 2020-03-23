@@ -3,7 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.scau.linyuanbin.recruitment.mapper.FeedBackMapper">
-    <resultMap id="" type="">
+    <resultMap id="feedBackMap" type="FeedBack">
+        <id column="feedBackId" property="feedBackId"></id>
+        <result column="deliveryId" property="deliveryId"></result>
+        <result column="feedBackTime" property="feedbacktime"></result>
+<!--        保存‘邀请面试’或‘不合适’-->
+        <result column="feedback" property="feedback"></result>
 
+        <association property="feedBackDetail" column="feedBackId" select=""></association>
+<!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 </mapper>

@@ -8,12 +8,30 @@ public class DefaultResume {
     private int personId;
     private int resumeId;
     private int attachmentResumeId;
+    private Resume resume;
+    private AttachMentResume attachMentResume;
 
     public DefaultResume(int defaultResumeId, int personId, int resumeId, int attachmentResumeId) {
         this.defaultResumeId = defaultResumeId;
         this.personId = personId;
         this.resumeId = resumeId;
         this.attachmentResumeId = attachmentResumeId;
+    }
+
+    public Resume getResume() {
+        return resume;
+    }
+
+    public void setResume(Resume resume) {
+        this.resume = resume;
+    }
+
+    public AttachMentResume getAttachMentResume() {
+        return attachMentResume;
+    }
+
+    public void setAttachMentResume(AttachMentResume attachMentResume) {
+        this.attachMentResume = attachMentResume;
     }
 
     public int getDefaultResumeId() {

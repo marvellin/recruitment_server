@@ -3,7 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.scau.linyuanbin.recruitment.mapper.PositionMapper">
-    <resultMap id="" type="">
+    <resultMap id="positionMap" type="Position">
+        <id column="positionId" property="positionId"></id>
+        <result column="companyId" property="companyId"></result>
+        <result column="salaryMin" property="salarymin"></result>
+        <result column="salaryMax" property="salarymax"></result>
+        <result column="department" property="department"></result>
+        <result column="post" property="post"></result>
+        <result column="name" property="name"></result>
+        <result column="type" property="type"></result>
+        <result column="city" property="city"></result>
+        <result column="experience" property="experience"></result>
+        <result column="degree" property="degree"></result>
+        <result column="advantage" property="advantage"></result>
+        <result column="detail" property="detail"></result>
+        <result column="address" property="address"></result>
 
+<!--        <association property="" column="" select=""></association>-->
+<!--        <collection property="personList" column="" select=""></collection>-->
+<!--        <collection property="resumeList" column="" select=""></collection>-->
     </resultMap>
 </mapper>

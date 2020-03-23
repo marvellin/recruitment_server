@@ -3,7 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyProductMapper">
-    <resultMap id="" type="">
+    <resultMap id="companyProductMap" type="CompanyProduct">
+        <id column="companyProductId" property="companyProductId"></id>
+        <result column="companyId" property="companyId"></result>
+        <result column="name" property="name"></result>
+        <result column="info" property="info"></result>
 
+        <association property="productImg" column="companyProductId" select=""></association>
+<!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 </mapper>

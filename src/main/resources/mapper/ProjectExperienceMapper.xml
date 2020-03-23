@@ -3,7 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.scau.linyuanbin.recruitment.mapper.ProjectExperienceMapper">
-    <resultMap id="" type="">
+    <resultMap id="projectExperienceMap" type="ProjectExperience">
+        <id column="projectExperienceId" property="projectExperienceId"></id>
+        <result column="resumeId" property="resumeId"></result>
+        <result column="proName" property="proname"></result>
+        <result column="post" property="post"></result>
+        <result column="startYm" property="startym"></result>
+        <result column="endYm" property="endym"></result>
+        <result column="intro" property="intro"></result>
 
+        <!--<association property="" column="" select=""></association>
+        <collection property="" column="" select=""></collection>-->
     </resultMap>
 </mapper>

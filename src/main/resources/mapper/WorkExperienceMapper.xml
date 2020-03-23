@@ -3,7 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.scau.linyuanbin.recruitment.mapper.WorkExperienceMapper">
-    <resultMap id="" type="">
+    <resultMap id="workExperienceMap" type="WorkExperience">
+        <id column="workExperienceId" property="workExperienceId"></id>
+        <result column="resumeId" property="resumeId"></result>
+        <result column="comName" property="comname"></result>
+        <result column="post" property="post"></result>
+        <result column="startYm" property="startym"></result>
+        <result column="endYm" property="endym"></result>
 
+        <!--<association property="" column="" select=""></association>
+        <collection property="" column="" select=""></collection>-->
     </resultMap>
 </mapper>

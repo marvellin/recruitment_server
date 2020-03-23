@@ -3,7 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.scau.linyuanbin.recruitment.mapper.ExpectJobMapper">
-    <resultMap id="" type="">
+    <resultMap id="expectJobMap" type="ExpectJob">
+        <id column="expectJobId" property="expectJobId"></id>
+        <result column="resumeId" property="resumeId"></result>
+        <result column="city" property="city"></result>
+        <result column="type" property="type"></result>
+        <result column="post" property="post"></result>
+        <result column="salary" property="salary"></result>
 
+        <!--<association property="" column="" select=""></association>
+        <collection property="" column="" select=""></collection>-->
     </resultMap>
 </mapper>

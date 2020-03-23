@@ -8,12 +8,21 @@ public class CompanyProduct {
     private int companyId;
     private String name;
     private String info;
+    private ProductImg productImg;
 
     public CompanyProduct(int companyProductId, int companyId, String name, String info) {
         this.companyProductId = companyProductId;
         this.companyId = companyId;
         this.name = name;
         this.info = info;
+    }
+
+    public ProductImg getProductImg() {
+        return productImg;
+    }
+
+    public void setProductImg(ProductImg productImg) {
+        this.productImg = productImg;
     }
 
     public int getCompanyProductId() {

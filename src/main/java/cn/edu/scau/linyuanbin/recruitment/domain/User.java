@@ -5,7 +5,7 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class User {
     public static final String Person = "person";
-
+    public static final String Company = "company";
 
     private int userId;
     private String email;

@@ -3,6 +3,8 @@
  * */
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
+import java.util.List;
+
 public class Position {
     private int positionId;
     private int companyId;
@@ -18,6 +20,8 @@ public class Position {
     private String advantage;
     private String detail;
     private String address;
+//    private List<Person> personList;
+//    private List<Resume> resumeList;
 
     public Position(int positionId, int companyId, int salarymin, int salarymax, String department, String post, String name, String type, String city, String experience, String degree, String advantage, String detail, String address) {
         this.positionId = positionId;
@@ -35,6 +39,22 @@ public class Position {
         this.detail = detail;
         this.address = address;
     }
+
+    /*public List<Resume> getResumeList() {
+        return resumeList;
+    }
+
+    public void setResumeList(List<Resume> resumeList) {
+        this.resumeList = resumeList;
+    }
+
+    public List<Person> getPersonList() {
+        return personList;
+    }
+
+    public void setPersonList(List<Person> personList) {
+        this.personList = personList;
+    }*/
 
     public int getPositionId() {
         return positionId;

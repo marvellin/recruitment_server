@@ -6,16 +6,52 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 public class Delivery {
     private int deliveryId;
     private int positionId;
-    private int resumeId;
+    private int personId;
     private String deliverytime;
     private int status;
+    private Resume resume;
+    private Position position;
+    private Person person;
+    private FeedBack feedBack;
 
-    public Delivery(int deliveryId, int positionId, int resumeId, int status, String deliverytime) {
+    public Delivery(int deliveryId, int positionId, int personId, int status, String deliverytime) {
         this.deliveryId = deliveryId;
         this.positionId = positionId;
-        this.resumeId = resumeId;
+        this.personId = personId;
         this.deliverytime = deliverytime;
         this.status = status;
+    }
+
+    public Resume getResume() {
+        return resume;
+    }
+
+    public void setResume(Resume resume) {
+        this.resume = resume;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public FeedBack getFeedBack() {
+        return feedBack;
+    }
+
+    public void setFeedBack(FeedBack feedBack) {
+        this.feedBack = feedBack;
     }
 
     public int getDeliveryId() {
@@ -34,12 +70,12 @@ public class Delivery {
         this.positionId = positionId;
     }
 
-    public int getResumeId() {
-        return resumeId;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setResumeId(int resumeId) {
-        this.resumeId = resumeId;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getDeliverytime() {
@@ -63,7 +99,7 @@ public class Delivery {
         return "Delivery{" +
                 "deliveryId=" + deliveryId +
                 ", positionId=" + positionId +
-                ", resumeId=" + resumeId +
+                ", personId=" + personId +
                 ", deliverytime=" + deliverytime +
                 ", status='" + status + '\'' +
                 '}';

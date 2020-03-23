@@ -9,6 +9,7 @@ public class CompanyMember {
     private String name;
     private String post;
     private String intro;
+    private MemberImg memberImg;
 
     public CompanyMember(int companyMemberId, int companyId, String name, String post, String intro) {
         this.companyMemberId = companyMemberId;
@@ -16,6 +17,14 @@ public class CompanyMember {
         this.name = name;
         this.post = post;
         this.intro = intro;
+    }
+
+    public MemberImg getMemberImg() {
+        return memberImg;
+    }
+
+    public void setMemberImg(MemberImg memberImg) {
+        this.memberImg = memberImg;
     }
 
     public int getCompanyMemberId() {

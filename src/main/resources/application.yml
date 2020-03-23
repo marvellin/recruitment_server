@@ -29,3 +29,9 @@ mybatis:
 #  configuration: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: cn.edu.scau.linyuanbin.recruitment.domain
+#  配置深度延迟加载
+#  configuration:
+#    配置直接延迟加载，默认为false
+#    lazy-loading-enabled: true
+#    配置侵入式延迟加载，默认为true
+#    aggressive-lazy-loading: false

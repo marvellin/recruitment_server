@@ -7,11 +7,20 @@ public class CompanyImg {
     private int companyImgId;
     private int companyDetailId;
     private int ossId;
+    private OSSFile ossFile;
 
     public CompanyImg(int companyImgId, int companyDetailId, int ossId) {
         this.companyImgId = companyImgId;
         this.companyDetailId = companyDetailId;
         this.ossId = ossId;
+    }
+
+    public OSSFile getOssFile() {
+        return ossFile;
+    }
+
+    public void setOssFile(OSSFile ossFile) {
+        this.ossFile = ossFile;
     }
 
     public int getCompanyImgId() {

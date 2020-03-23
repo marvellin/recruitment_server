@@ -3,7 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.scau.linyuanbin.recruitment.mapper.PersonDetailMapper">
-    <resultMap id="" type="">
+    <resultMap id="personDetailMap" type="PersonDetail">
+        <id column="personDetailId" property="personDetailId"></id>
+        <result column="personId" property="personId"></result>
+        <result column="resumeId" property="resumeId"></result>
+        <result column="userName" property="username"></result>
+        <result column="tel" property="tel"></result>
+        <result column="email" property="email"></result>
+        <result column="gender" property="gender"></result>
+        <result column="degree" property="degree"></result>
+        <result column="workYear" property="workyear"></result>
+        <result column="currentState" property="currentstate"></result>
 
+        <association property="personImg" column="personDetailId" select=""></association>
+<!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 </mapper>

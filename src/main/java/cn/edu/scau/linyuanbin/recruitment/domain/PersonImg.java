@@ -7,11 +7,20 @@ public class PersonImg {
     private int personImgId;
     private int personDetailId;
     private int ossId;
+    private OSSFile ossFile;
 
     public PersonImg(int personImgId, int personDetailId, int ossId) {
         this.personImgId = personImgId;
         this.personDetailId = personDetailId;
         this.ossId = ossId;
+    }
+
+    public OSSFile getOssFile() {
+        return ossFile;
+    }
+
+    public void setOssFile(OSSFile ossFile) {
+        this.ossFile = ossFile;
     }
 
     public int getPersonImgId() {
