@@ -20,6 +20,9 @@ public class ExpectJob {
         this.salary = salary;
     }
 
+    public ExpectJob() {
+    }
+
     public int getExpectJobId() {
         return expectJobId;
     }

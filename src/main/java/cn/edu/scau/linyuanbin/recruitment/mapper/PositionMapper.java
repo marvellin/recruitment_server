@@ -22,12 +22,12 @@ public interface PositionMapper {
     /*
     * 根据positionId获得单个对象
     * */
-    public Position getPositionBy(@Param("positionId")Integer positionId);
+    public Position getPositionBypositionId(@Param("positionId")Integer positionId);
 
     /*
      *根据companyId获得多个对象
      * */
-    public List<Position> getPositionListBy(@Param("companyId")Integer companyId);
+    public List<Position> getPositionListBycompanyId(@Param("companyId")Integer companyId);
 
     /*
      *新增对象

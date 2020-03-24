@@ -16,9 +16,18 @@ public class Person {
     private PersonDetail basicinfo;
     private List<Delivery> deliveryList;
 
-    public Person(int personId, int userId) {
+    public Person(int personId, int userId, User user, Resume resume, List<AttachMentResume> attachMentResumeList, DefaultResume defaultResume, PersonDetail basicinfo, List<Delivery> deliveryList) {
         this.personId = personId;
         this.userId = userId;
+        this.user = user;
+        this.resume = resume;
+        this.attachMentResumeList = attachMentResumeList;
+        this.defaultResume = defaultResume;
+        this.basicinfo = basicinfo;
+        this.deliveryList = deliveryList;
+    }
+
+    public Person() {
     }
 
     public User getUser() {
@@ -90,6 +99,12 @@ public class Person {
         return "Person{" +
                 "personId=" + personId +
                 ", userId=" + userId +
+                ", user=" + user +
+                ", resume=" + resume +
+                ", attachMentResumeList=" + attachMentResumeList +
+                ", defaultResume=" + defaultResume +
+                ", basicinfo=" + basicinfo +
+                ", deliveryList=" + deliveryList +
                 '}';
     }
 }

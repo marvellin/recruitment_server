@@ -10,11 +10,15 @@ public class CompanyProduct {
     private String info;
     private ProductImg productImg;
 
-    public CompanyProduct(int companyProductId, int companyId, String name, String info) {
+    public CompanyProduct(int companyProductId, int companyId, String name, String info, ProductImg productImg) {
         this.companyProductId = companyProductId;
         this.companyId = companyId;
         this.name = name;
         this.info = info;
+        this.productImg = productImg;
+    }
+
+    public CompanyProduct() {
     }
 
     public ProductImg getProductImg() {
@@ -64,6 +68,7 @@ public class CompanyProduct {
                 ", companyId=" + companyId +
                 ", name='" + name + '\'' +
                 ", info='" + info + '\'' +
+                ", productImg=" + productImg +
                 '}';
     }
 }

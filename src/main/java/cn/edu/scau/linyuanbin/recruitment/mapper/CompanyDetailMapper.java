@@ -25,7 +25,7 @@ public interface CompanyDetailMapper {
     /*
     * 根据companyId获取单个对象
     * */
-    public CompanyDetail getCompantDetailByPersonId(@Param("psersonId")Integer personId);
+    public CompanyDetail getCompantDetailBycompanyId(@Param("companyId")Integer companyId);
 
     /*
     * 保存一个对象
@@ -33,7 +33,7 @@ public interface CompanyDetailMapper {
     public int insertCompanyDetail(@Param("companyDetail")CompanyDetail companyDetail);
 
     /*
-    * 根据companyDetailId更新一个对象
+    * 更新一个对象
     * */
     public void updateCompanyDetail(@Param("companyDetail")CompanyDetail companyDetail);
 }

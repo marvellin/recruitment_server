@@ -23,6 +23,9 @@ public class ProjectExperience {
         this.intro = intro;
     }
 
+    public ProjectExperience() {
+    }
+
     public int getProjectExperienceId() {
         return projectExperienceId;
     }

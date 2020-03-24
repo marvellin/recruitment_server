@@ -27,7 +27,7 @@ public interface CompanyLabelMapper {
     /*
      *根据companyLabelId获取单个对象
      * */
-    public CompanyLabel getLabelByCompanyDetailId(@Param("companyLabelId")Integer companyLabelId);
+    public CompanyLabel getLabelByCompanyLabelId(@Param("companyLabelId")Integer companyLabelId);
 
     /*
      *根据companyLabelId删除一个对象

@@ -11,12 +11,16 @@ public class CompanyMember {
     private String intro;
     private MemberImg memberImg;
 
-    public CompanyMember(int companyMemberId, int companyId, String name, String post, String intro) {
+    public CompanyMember(int companyMemberId, int companyId, String name, String post, String intro, MemberImg memberImg) {
         this.companyMemberId = companyMemberId;
         this.companyId = companyId;
         this.name = name;
         this.post = post;
         this.intro = intro;
+        this.memberImg = memberImg;
+    }
+
+    public CompanyMember() {
     }
 
     public MemberImg getMemberImg() {
@@ -75,6 +79,7 @@ public class CompanyMember {
                 ", name='" + name + '\'' +
                 ", post='" + post + '\'' +
                 ", intro='" + intro + '\'' +
+                ", memberImg=" + memberImg +
                 '}';
     }
 }

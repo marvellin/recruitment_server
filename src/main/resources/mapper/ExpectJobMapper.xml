@@ -16,22 +16,22 @@
     </resultMap>
 
     <!--根据expectJobId获得对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getExpectJobByexpectJobId" parameterType="java.lang.Integer" resultMap="expectJobMap">
 
     </select>
 
     <!--根据resumeId获得对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getExpectJobByresumeId" parameterType="java.lang.Integer" resultMap="expectJobMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertExpectJob" parameterType="ExpectJob" useGeneratedKeys="true" keyProperty="expectJobId" keyColumn="expectJobId">
 
     </insert>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateExpectJob" parameterType="ExpectJob">
 
     </update>
 </mapper>

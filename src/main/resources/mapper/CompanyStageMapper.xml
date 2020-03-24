@@ -14,22 +14,22 @@
     </resultMap>
 
     <!--根据companyStageId获取对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getCompanyStageBycompanyStageId" parameterType="java.lang.Integer" resultMap="companyStageMap">
 
     </select>
 
     <!--根据companyId获取对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getCompanyStageBycompanyId" parameterType="java.lang.Integer" resultMap="companyStageMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertCompanyStage" parameterType="CompanyStage" useGeneratedKeys="true" keyProperty="companyStageId" keyColumn="companyStageId">
 
     </insert>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateCompanyStage" parameterType="CompanyStage">
 
     </update>
 </mapper>

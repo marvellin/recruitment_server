@@ -16,17 +16,17 @@
     </resultMap>
 
     <!--根据personId查找对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getPersonBypersonId" parameterType="java.lang.Integer" resultMap="personMap">
 
     </select>
 
     <!--根据userId查找对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getPersonByuserId" parameterType="java.lang.Integer" resultMap="personMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertPerson" parameterType="Person" useGeneratedKeys="true" keyProperty="personId" keyColumn="personId">
 
     </insert>
 </mapper>

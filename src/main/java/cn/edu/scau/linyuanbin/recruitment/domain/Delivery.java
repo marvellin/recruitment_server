@@ -14,12 +14,19 @@ public class Delivery {
     private Person person;
     private FeedBack feedBack;
 
-    public Delivery(int deliveryId, int positionId, int personId, int status, String deliverytime) {
+    public Delivery(int deliveryId, int positionId, int personId, String deliverytime, int status, Resume resume, Position position, Person person, FeedBack feedBack) {
         this.deliveryId = deliveryId;
         this.positionId = positionId;
         this.personId = personId;
         this.deliverytime = deliverytime;
         this.status = status;
+        this.resume = resume;
+        this.position = position;
+        this.person = person;
+        this.feedBack = feedBack;
+    }
+
+    public Delivery() {
     }
 
     public Resume getResume() {
@@ -100,8 +107,12 @@ public class Delivery {
                 "deliveryId=" + deliveryId +
                 ", positionId=" + positionId +
                 ", personId=" + personId +
-                ", deliverytime=" + deliverytime +
-                ", status='" + status + '\'' +
+                ", deliverytime='" + deliverytime + '\'' +
+                ", status=" + status +
+                ", resume=" + resume +
+                ", position=" + position +
+                ", person=" + person +
+                ", feedBack=" + feedBack +
                 '}';
     }
 }

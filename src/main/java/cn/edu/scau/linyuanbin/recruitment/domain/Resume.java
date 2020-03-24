@@ -17,11 +17,19 @@ public class Resume {
     private ExpectJob expectJob;
     private PersonDetail basicinfo;
 
-    public Resume(int resumeId, int personId, String resumename, String selfdescription) {
+    public Resume(int resumeId, int personId, String resumename, String selfdescription, List<Education> educationList, List<ProjectExperience> projectExperienceList, List<WorkExperience> workExperienceList, ExpectJob expectJob, PersonDetail basicinfo) {
         this.resumeId = resumeId;
         this.personId = personId;
         this.resumename = resumename;
         this.selfdescription = selfdescription;
+        this.educationList = educationList;
+        this.projectExperienceList = projectExperienceList;
+        this.workExperienceList = workExperienceList;
+        this.expectJob = expectJob;
+        this.basicinfo = basicinfo;
+    }
+
+    public Resume() {
     }
 
     public List<Education> getEducationList() {
@@ -103,6 +111,11 @@ public class Resume {
                 ", personId=" + personId +
                 ", resumename='" + resumename + '\'' +
                 ", selfdescription='" + selfdescription + '\'' +
+                ", educationList=" + educationList +
+                ", projectExperienceList=" + projectExperienceList +
+                ", workExperienceList=" + workExperienceList +
+                ", expectJob=" + expectJob +
+                ", basicinfo=" + basicinfo +
                 '}';
     }
 }

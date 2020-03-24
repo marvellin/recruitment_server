@@ -23,13 +23,15 @@ public class CompanyDetail {
         return "CompanyDetail{" +
                 "companyDetailId=" + companyDetailId +
                 ", companyId=" + companyId +
-                ", fullName='" + fullname + '\'' +
-                ", shortName='" + shortname + '\'' +
+                ", fullname='" + fullname + '\'' +
+                ", shortname='" + shortname + '\'' +
                 ", feature='" + feature + '\'' +
                 ", city='" + city + '\'' +
                 ", field='" + field + '\'' +
                 ", scale='" + scale + '\'' +
                 ", comurl='" + comurl + '\'' +
+                ", companyImg=" + companyImg +
+                ", labelList=" + labelList +
                 '}';
     }
 
@@ -137,15 +139,20 @@ public class CompanyDetail {
         this.comurl = comurl;
     }
 
-    public CompanyDetail(int companyDetailId, int companyId, String fullName, String shortName, String feature, String city, String field, String scale, String comurl) {
+    public CompanyDetail(int companyDetailId, int companyId, String fullname, String shortname, String feature, String city, String field, String scale, String comurl, CompanyImg companyImg, List<CompanyLabel> labelList) {
         this.companyDetailId = companyDetailId;
         this.companyId = companyId;
-        this.fullname = fullName;
-        this.shortname = shortName;
+        this.fullname = fullname;
+        this.shortname = shortname;
         this.feature = feature;
         this.city = city;
         this.field = field;
         this.scale = scale;
         this.comurl = comurl;
+        this.companyImg = companyImg;
+        this.labelList = labelList;
+    }
+
+    public CompanyDetail() {
     }
 }

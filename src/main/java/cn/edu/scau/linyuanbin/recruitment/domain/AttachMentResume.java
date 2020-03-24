@@ -8,16 +8,19 @@ public class AttachMentResume {
     private int personId;
     private int ossId;
     private String name;//文件原名
+
     private OSSFile ossFile;
 
-
-    public AttachMentResume(int attachMentId, int personId, int ossId, String name, OSSFile ossFile) {
-        this.attachMentResumeId = attachMentId;
+    public AttachMentResume(int attachMentResumeId, int personId, int ossId, String name, OSSFile ossFile) {
+        this.attachMentResumeId = attachMentResumeId;
         this.personId = personId;
         this.ossId = ossId;
         this.name = name;
+        this.ossFile = ossFile;
     }
 
+    public AttachMentResume() {
+    }
 
     public int getAttachMentResumeId() {
         return attachMentResumeId;
@@ -70,10 +73,11 @@ public class AttachMentResume {
     @Override
     public String toString() {
         return "AttachMentResume{" +
-                "attachMentId=" + attachMentResumeId +
+                "attachMentResumeId=" + attachMentResumeId +
                 ", personId=" + personId +
                 ", ossId=" + ossId +
                 ", name='" + name + '\'' +
+                ", ossFile=" + ossFile +
                 '}';
     }
 }

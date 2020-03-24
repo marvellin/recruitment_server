@@ -18,52 +18,52 @@
     </resultMap>
 
     <!--根据deliveryId获得单个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getDeliveryBydeliveryId" parameterType="java.lang.Integer" resultMap="deliveryMap">
 
     </select>
 
     <!--根据positionId获得多个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getDeliveryListBypositionId" parameterType="java.lang.Integer" resultMap="deliveryMap">
 
     </select>
 
     <!--根据personId获得多个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getDeliveryListBypersonId" parameterType="java.lang.Integer" resultMap="deliveryMap">
 
-    </select>s
+    </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertDelivery" parameterType="Delivery" useGeneratedKeys="true" keyProperty="deliveryId" keyColumn="deliveryId">
 
     </insert>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateDelivary" parameterType="Delivery">
 
     </update>
 
     <!--个人用户根据deliveryId更新对象（实则是设置personId为-1，对自身不可见）-->
-    <update id="" parameterType="">
+    <update id="updatePersonIdBydeliveryId" parameterType="java.lang.Integer">
 
     </update>
 
     <!--公司用户根据deliveryId更新对象（实则是设置positionId为-1，对自身不可见）-->
-    <update id="" parameterType="">
+    <update id="updatePositionIdBydeliveryId" parameterType="java.lang.Integer">
 
     </update>
 
     <!--公司用户根据deliveryIdList更新对象（实则是设置positionId为-1，对自身不可见）-->
-    <update id="" parameterType="">
+    <update id="updatePositionIdBydeliveryIdList" parameterType="java.util.List">
 
     </update>
 
     <!--根据positionIdList查找多个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getDeliveryBypositionIdList" parameterType="java.lang.Integer" resultMap="deliveryMap">
 
     </select>
 
     <!--根据deliveryId删除对象-->
-    <delete id="" parameterType="java.lang.Integer">
+    <delete id="deleteBydeliveryId" parameterType="java.lang.Integer">
 
     </delete>
 </mapper>

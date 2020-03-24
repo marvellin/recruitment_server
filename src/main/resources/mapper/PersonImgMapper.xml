@@ -14,22 +14,22 @@
     </resultMap>
 
     <!--根据personImgId查找对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getPersonImgBypersonImgId" parameterType="java.lang.Integer" resultMap="personImgMap">
 
     </select>
 
     <!--根据personDetailId查找对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getPersonImgBypersonDetailId" parameterType="java.lang.Integer" resultMap="personImgMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertPersonImg" parameterType="PersonImg" useGeneratedKeys="true" keyProperty="personImgId" keyColumn="personImgId">
 
     </insert>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updatePersonImg" parameterType="PersonImg">
 
     </update>
 </mapper>

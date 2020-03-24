@@ -15,19 +15,21 @@
     </resultMap>
 
     <!--根据feedBackDetailId获得对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getFeedBackDetailByfeedBackDetailId" parameterType="java.lang.Integer" resultMap="feedBackDetailMap">
 
     </select>
 
     <!--根据feedBackId获得对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getFeedBackDetailByfeedBackId" parameterType="java.lang.Integer" resultMap="feedBackDetailMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertFeedBackDetail" parameterType="FeedBackDetail" useGeneratedKeys="true" keyProperty="feedBackDetailId" keyColumn="feedBackDetailId">
 
     </insert>
 
     <!--新增多个对象-->
+
+
 </mapper>

@@ -16,27 +16,27 @@
     </resultMap>
 
     <!--根据workExperienceId获得单个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getWorkExperienceByworkExperienceId" parameterType="java.lang.Integer" resultMap="workExperienceMap">
 
     </select>
 
     <!--根据resumeId获得多个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getWorkExperienceListByresumeId" parameterType="java.lang.Integer" resultMap="workExperienceMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertWorkExperience" parameterType="WorkExperience" useGeneratedKeys="true" keyProperty="workExperienceId" keyColumn="workExperienceId">
 
     </insert>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateWorkExperience" parameterType="WorkExperience">
 
     </update>
 
     <!--根据workExperienceId删除对象-->
-    <delete id="" parameterType="java.lang.Integer">
+    <delete id="deleteByworkExperienceId" parameterType="java.lang.Integer">
 
     </delete>
 </mapper>

@@ -17,6 +17,9 @@ public class ResponseObject {
         this.object = object;
     }
 
+    public ResponseObject() {
+    }
+
     public int getCode() {
         return code;
     }

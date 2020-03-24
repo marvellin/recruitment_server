@@ -16,6 +16,9 @@ public class CompanyReport {
         this.repolink = repolink;
     }
 
+    public CompanyReport() {
+    }
+
     public int getCompanyReportId() {
         return companyReportId;
     }

@@ -14,22 +14,22 @@
     </resultMap>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId" keyColumn="userId">
 
     </insert>
 
     <!--更新对象（主要为更新密码）-->
-    <update id="" parameterType="">
+    <update id="updateUser" parameterType="User">
 
     </update>
 
     <!--根据userId查找对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getUserByuserId" parameterType="java.lang.Integer" resultMap="userMap">
 
     </select>
 
     <!--根据email查找对象-->
-    <select id="" parameterType="java.lang.String" resultMap="">
+    <select id="getUserByemail" parameterType="java.lang.String" resultMap="userMap">
 
     </select>
 </mapper>

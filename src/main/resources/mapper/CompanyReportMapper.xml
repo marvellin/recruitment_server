@@ -14,27 +14,27 @@
     </resultMap>
 
     <!--根据companyReportId获取单个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getCompanyReportBycompanyReportId" parameterType="java.lang.Integer" resultMap="companyReportMap">
 
     </select>
 
     <!--根据companyId获取多个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getCompanyReportListBycompanyId" parameterType="java.lang.Integer" resultMap="companyReportMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertCompanyReport" parameterType="CompanyReport" useGeneratedKeys="true" keyProperty="companyReportId" keyColumn="companyReportId">
 
     </insert>
 
     <!--根据companyReportId删除对象-->
-    <delete id="" parameterType="java.lang.Integer">
+    <delete id="deleteBycompanyReportId" parameterType="java.lang.Integer">
 
     </delete>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateCompanyReport" parameterType="CompanyReport">
 
     </update>
 </mapper>

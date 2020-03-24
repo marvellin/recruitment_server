@@ -9,10 +9,14 @@ public class MemberImg {
     private int ossId;
     OSSFile ossFile;
 
-    public MemberImg(int memberImgId, int companyMemberId, int ossId) {
+    public MemberImg(int memberImgId, int companyMemberId, int ossId, OSSFile ossFile) {
         this.memberImgId = memberImgId;
         this.companyMemberId = companyMemberId;
         this.ossId = ossId;
+        this.ossFile = ossFile;
+    }
+
+    public MemberImg() {
     }
 
     public OSSFile getOssFile() {
@@ -53,6 +57,7 @@ public class MemberImg {
                 "memberImgId=" + memberImgId +
                 ", companyMemberId=" + companyMemberId +
                 ", ossId=" + ossId +
+                ", ossFile=" + ossFile +
                 '}';
     }
 }

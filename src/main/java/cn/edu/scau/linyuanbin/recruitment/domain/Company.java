@@ -24,6 +24,13 @@ public class Company {
                 "companyId=" + companyId +
                 ", userId=" + userId +
                 ", intro='" + intro + '\'' +
+                ", user=" + user +
+                ", positionList=" + positionList +
+                ", reportList=" + reportList +
+                ", productList=" + productList +
+                ", companyStage=" + companyStage +
+                ", companyMember=" + companyMember +
+                ", companyDetail=" + companyDetail +
                 '}';
     }
 
@@ -107,9 +114,19 @@ public class Company {
         this.intro = intro;
     }
 
-    public Company(int companyId, int userId, String intro) {
+    public Company(int companyId, int userId, String intro, User user, List<Position> positionList, List<CompanyReport> reportList, List<CompanyProduct> productList, CompanyStage companyStage, CompanyMember companyMember, CompanyDetail companyDetail) {
         this.companyId = companyId;
         this.userId = userId;
         this.intro = intro;
+        this.user = user;
+        this.positionList = positionList;
+        this.reportList = reportList;
+        this.productList = productList;
+        this.companyStage = companyStage;
+        this.companyMember = companyMember;
+        this.companyDetail = companyDetail;
+    }
+
+    public Company() {
     }
 }

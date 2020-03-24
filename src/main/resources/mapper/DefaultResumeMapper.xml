@@ -15,22 +15,22 @@
     </resultMap>
 
     <!--根据defaultResumeId查找对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getDefaultResumeBydefaultResumeId" parameterType="java.lang.Integer" resultMap="defaultResumeMap">
 
     </select>
 
     <!--根据personId查找对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getDefaultResumeBypersonId" parameterType="java.lang.Integer" resultMap="defaultResumeMap">
 
     </select>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateDefaultResume" parameterType="DefaultResume">
 
     </update>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertDefaultResume" parameterType="DefaultResume" useGeneratedKeys="true" keyProperty="defaultResumeId" keyColumn="defaultResumeId">
 
     </insert>
 </mapper>

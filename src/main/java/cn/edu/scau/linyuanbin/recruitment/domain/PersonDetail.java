@@ -16,7 +16,7 @@ public class PersonDetail {
     private String currentstate;
     private PersonImg personImg;
 
-    public PersonDetail(int personDetailId, int personId, int resumeId, String username, String tel, String email, String gender, String degree, String workyear, String currenttate) {
+    public PersonDetail(int personDetailId, int personId, int resumeId, String username, String tel, String email, String gender, String degree, String workyear, String currentstate, PersonImg personImg) {
         this.personDetailId = personDetailId;
         this.personId = personId;
         this.resumeId = resumeId;
@@ -26,7 +26,11 @@ public class PersonDetail {
         this.gender = gender;
         this.degree = degree;
         this.workyear = workyear;
-        this.currentstate = currenttate;
+        this.currentstate = currentstate;
+        this.personImg = personImg;
+    }
+
+    public PersonDetail() {
     }
 
     public String getCurrentstate() {
@@ -137,7 +141,8 @@ public class PersonDetail {
                 ", gender='" + gender + '\'' +
                 ", degree='" + degree + '\'' +
                 ", workyear='" + workyear + '\'' +
-                ", currenttate='" + currentstate + '\'' +
+                ", currentstate='" + currentstate + '\'' +
+                ", personImg=" + personImg +
                 '}';
     }
 }

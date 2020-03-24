@@ -15,29 +15,31 @@
     </resultMap>
 
     <!--根据feedBackId查找-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getFeedBackByfeedBackId" parameterType="java.lang.Integer" resultMap="feedBackMap">
 
     </select>
 
     <!--根据deliveryId查找-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getFeedBackBydeliveryId" parameterType="java.lang.Integer" resultMap="feedBackMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertFeedBack" parameterType="FeedBack" useGeneratedKeys="true" keyProperty="feedBackId" keyColumn="feedBackId">
 
     </insert>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateFeedBack" parameterType="FeedBack">
 
     </update>
 
-    <!--根据feedBackIdList更新多个对象-->
-    <update id="" parameterType="">
+    <!--根据feedBackIdList更新多个对象(或为‘邀请面试’或为‘不合适’),测试是否可以！！！-->
+    <update id="updateFeedBackList">
 
     </update>
 
     <!--新增多个对象-->
+
+
 </mapper>

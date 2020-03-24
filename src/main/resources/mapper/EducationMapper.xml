@@ -18,27 +18,27 @@
     </resultMap>
 
     <!--根据educationId获得单个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getEducationByeducationId" parameterType="java.lang.Integer" resultMap="educationMap">
 
     </select>
 
     <!--根据resumeId获得多个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getEducationListByresumeId" parameterType="java.lang.Integer" resultMap="educationMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertEducation" parameterType="Education" useGeneratedKeys="true" keyProperty="educationId" keyColumn="educationId">
 
     </insert>
 
     <!--根据educationId删除对象-->
-    <delete id="" parameterType="java.lang.Integer">
+    <delete id="deleteEducationByeducationId" parameterType="java.lang.Integer">
 
     </delete>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateEducation" parameterType="Education">
 
     </update>
 </mapper>

@@ -10,11 +10,15 @@ public class FeedBack {
     private String feedback;
     private FeedBackDetail feedBackDetail;
 
-    public FeedBack(int feedBackId, int deliveryId, String feedBackTime, String feedback) {
+    public FeedBack(int feedBackId, int deliveryId, String feedbacktime, String feedback, FeedBackDetail feedBackDetail) {
         this.feedBackId = feedBackId;
         this.deliveryId = deliveryId;
-        this.feedbacktime = feedBackTime;
+        this.feedbacktime = feedbacktime;
         this.feedback = feedback;
+        this.feedBackDetail = feedBackDetail;
+    }
+
+    public FeedBack() {
     }
 
     public String getFeedbacktime() {
@@ -70,8 +74,9 @@ public class FeedBack {
         return "FeedBack{" +
                 "feedBackId=" + feedBackId +
                 ", deliveryId=" + deliveryId +
-                ", feedBackTime='" + feedbacktime + '\'' +
+                ", feedbacktime='" + feedbacktime + '\'' +
                 ", feedback='" + feedback + '\'' +
+                ", feedBackDetail=" + feedBackDetail +
                 '}';
     }
 }

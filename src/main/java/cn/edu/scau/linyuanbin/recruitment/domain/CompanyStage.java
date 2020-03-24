@@ -16,6 +16,9 @@ public class CompanyStage {
         this.org = org;
     }
 
+    public CompanyStage() {
+    }
+
     public int getCompanyStageId() {
         return companyStageId;
     }

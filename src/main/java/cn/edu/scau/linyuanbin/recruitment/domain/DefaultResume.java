@@ -11,11 +11,16 @@ public class DefaultResume {
     private Resume resume;
     private AttachMentResume attachMentResume;
 
-    public DefaultResume(int defaultResumeId, int personId, int resumeId, int attachmentResumeId) {
+    public DefaultResume(int defaultResumeId, int personId, int resumeId, int attachmentResumeId, Resume resume, AttachMentResume attachMentResume) {
         this.defaultResumeId = defaultResumeId;
         this.personId = personId;
         this.resumeId = resumeId;
         this.attachmentResumeId = attachmentResumeId;
+        this.resume = resume;
+        this.attachMentResume = attachMentResume;
+    }
+
+    public DefaultResume() {
     }
 
     public Resume getResume() {
@@ -73,6 +78,8 @@ public class DefaultResume {
                 ", personId=" + personId +
                 ", resumeId=" + resumeId +
                 ", attachmentResumeId=" + attachmentResumeId +
+                ", resume=" + resume +
+                ", attachMentResume=" + attachMentResume +
                 '}';
     }
 }

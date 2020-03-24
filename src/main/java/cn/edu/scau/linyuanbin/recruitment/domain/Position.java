@@ -41,6 +41,9 @@ public class Position {
         this.address = address;
     }
 
+    public Position() {
+    }
+
     /*public List<Resume> getResumeList() {
         return resumeList;
     }

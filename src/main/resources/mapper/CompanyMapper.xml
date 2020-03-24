@@ -19,22 +19,22 @@
     </resultMap>
 
     <!--根据companyId获得单个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getCompanyByCompanyId" parameterType="java.lang.Integer" resultMap="companyMap">
 
     </select>
 
     <!--根据userId获得单个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getCompanyByUserId" parameterType="java.lang.Integer" resultMap="companyMap">
 
     </select>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateCompany" parameterType="Company">
 
     </update>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertCompany" parameterType="Company" useGeneratedKeys="true" keyProperty="companyId" keyColumn="companyId">
 
     </insert>
 </mapper>

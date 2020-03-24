@@ -14,27 +14,27 @@
     </resultMap>
 
     <!--根据companyProductId获得单个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getCompanyProductBycompanyProductId" parameterType="java.lang.Integer" resultMap="companyProductMap">
 
     </select>
 
     <!--根据companyId获得对个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getCompanyProductListBycompanyId" parameterType="java.lang.Integer" resultMap="companyProductMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertCompanyProduct" parameterType="CompanyProduct" useGeneratedKeys="true" keyProperty="companyProductId" keyColumn="companyProductId">
 
     </insert>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateCompanyProduct" parameterType="CompanyProduct">
 
     </update>
 
     <!--根据companyProductId删除对象-->
-    <delete id="" parameterType="java.lang.Integer">
+    <delete id="deleteBycompanyProductId" parameterType="java.lang.Integer">
 
     </delete>
 </mapper>

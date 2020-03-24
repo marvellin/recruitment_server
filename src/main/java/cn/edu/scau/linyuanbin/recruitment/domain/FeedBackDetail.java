@@ -18,6 +18,9 @@ public class FeedBackDetail {
         this.tel = tel;
     }
 
+    public FeedBackDetail() {
+    }
+
     public int getFeedBackDetailId() {
         return feedBackDetailId;
     }

@@ -17,22 +17,22 @@
     </resultMap>
 
     <!--根据resumeId获得对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getResumeByresumeId" parameterType="java.lang.Integer" resultMap="resumeMap">
 
     </select>
 
     <!--根据personId获得对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getResumeBypersonId" parameterType="java.lang.Integer" resultMap="resumeMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertResume" parameterType="Resume" useGeneratedKeys="true" keyProperty="resumeId" keyColumn="resumeId">
 
     </insert>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateResume" parameterType="Resume">
 
     </update>
 </mapper>

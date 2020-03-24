@@ -16,17 +16,20 @@
     </resultMap>
 
     <!--根据ossId获得对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
-
+    <select id="getOSSFileByossId" parameterType="java.lang.Integer" resultMap="OSSFileMap">
+        select * from ossfile
+        <where>
+            ossId = #{ossId}
+        </where>
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertOSSFile" parameterType="OSSFile" useGeneratedKeys="true" keyProperty="ossId" keyColumn="ossId">
 
     </insert>
 
     <!--根据ossId删除对象-->
-    <delete id="" parameterType="java.lang.Integer">
+    <delete id="deleteByossId" parameterType="java.lang.Integer">
 
     </delete>
 </mapper>

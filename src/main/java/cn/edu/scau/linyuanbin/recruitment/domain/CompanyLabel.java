@@ -8,10 +8,13 @@ public class CompanyLabel {
     private int companyLabelId;
     private String label;
 
-    public CompanyLabel(int companyLabelId, int companyDetailId, String label) {
+    public CompanyLabel(int companyDetailId, int companyLabelId, String label) {
         this.companyDetailId = companyDetailId;
         this.companyLabelId = companyLabelId;
         this.label = label;
+    }
+
+    public CompanyLabel() {
     }
 
     public int getCompanyDetailId() {

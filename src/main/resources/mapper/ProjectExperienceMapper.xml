@@ -17,27 +17,27 @@
     </resultMap>
 
     <!--根据projectExperienceId获得单个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getProjectExperienceByprojectExperienceId" parameterType="java.lang.Integer" resultMap="projectExperienceMap">
 
     </select>
 
     <!--根据resumeId获得多个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getProjectExperienceListByresumeId" parameterType="java.lang.Integer" resultMap="projectExperienceMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertProjectExperience" parameterType="ProjectExperience" useGeneratedKeys="true" keyProperty="projectExperienceId" keyColumn="projectExperienceId">
 
     </insert>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updateProjectExperience" parameterType="ProjectExperience">
 
     </update>
 
     <!--根据projectExperienceId删除对象-->
-    <delete id="" parameterType="java.lang.Integer">
+    <delete id="deleteByprojectExperienceId" parameterType="java.lang.Integer">
 
     </delete>
 </mapper>

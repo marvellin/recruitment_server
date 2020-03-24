@@ -9,10 +9,14 @@ public class ProductImg {
     private int ossId;
     private OSSFile ossFile;
 
-    public ProductImg(int productImgId, int companyProductId, int ossId) {
+    public ProductImg(int productImgId, int companyProductId, int ossId, OSSFile ossFile) {
         this.productImgId = productImgId;
         this.companyProductId = companyProductId;
         this.ossId = ossId;
+        this.ossFile = ossFile;
+    }
+
+    public ProductImg() {
     }
 
     public OSSFile getOssFile() {
@@ -53,6 +57,7 @@ public class ProductImg {
                 "productImgId=" + productImgId +
                 ", companyProductId=" + companyProductId +
                 ", ossId=" + ossId +
+                ", ossFile=" + ossFile +
                 '}';
     }
 }

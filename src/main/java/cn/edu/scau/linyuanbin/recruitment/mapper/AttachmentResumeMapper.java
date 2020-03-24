@@ -23,7 +23,7 @@ public interface AttachmentResumeMapper {
     /*
     * 通过attachmentResumeId获取attachmentResume
     * */
-    public AttachMentResume getAttachMentResumeByAttachmentResumeId(@Param("attachmentResumeId") Integer attachmentResumeId);
+    public AttachMentResume getAttachMentResumeByAttachmentResumeId(int attachMentResumeId);
 
     /*
     * 通过personId获取attachmentResumeList

@@ -25,27 +25,27 @@
     </resultMap>
 
     <!--根据positionId获得单个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getPositionBypositionId" parameterType="java.lang.Integer" resultMap="positionMap">
 
     </select>
 
     <!--根据companyId获得多个对象-->
-    <select id="" parameterType="java.lang.Integer" resultMap="">
+    <select id="getPositionListBycompanyId" parameterType="java.lang.Integer" resultMap="positionMap">
 
     </select>
 
     <!--新增对象-->
-    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+    <insert id="insertPosition" parameterType="Position" useGeneratedKeys="true" keyProperty="positionId" keyColumn="positionId">
 
     </insert>
 
     <!--根据positionId删除对象-->
-    <delete id="" parameterType="java.lang.Integer">
+    <delete id="deleteBypositionId" parameterType="java.lang.Integer">
 
     </delete>
 
     <!--更新对象-->
-    <update id="" parameterType="">
+    <update id="updatePosition" parameterType="Position">
 
     </update>
 </mapper>

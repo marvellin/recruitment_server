@@ -24,6 +24,9 @@ public class Education {
         this.rank = rank;
     }
 
+    public Education() {
+    }
+
     public int getEducationId() {
         return educationId;
     }
