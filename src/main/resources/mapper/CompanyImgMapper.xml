@@ -15,21 +15,48 @@
 
     <!--根据companyImgId查找对象-->
     <select id="getCompanyImgByCompanyImgId" parameterType="java.lang.Integer" resultMap="companyImgMap">
-
+        select * from companyimg
+        <where>
+            <if test="companyImgId != null">
+                companyImgId = #{companyImgId}
+            </if>
+            <if test="companyImgId == null">
+                companyImgId = -1
+            </if>
+        </where>
     </select>
 
     <!--根据companyDetailId查找对象-->
     <select id="getCompanyImgByCompanyDetailId" parameterType="java.lang.Integer" resultMap="companyImgMap">
-
+        select * from companyimg
+        <where>
+            <if test="companyDetailId != null">
+                companyDetailId = #{companyDetailId}
+            </if>
+            <if test="companyDetailId == null">
+                companyDetailId = -1
+            </if>
+        </where>
     </select>
 
     <!--保存一个对象-->
     <insert id="insertCompanyImg" parameterType="CompanyImg" useGeneratedKeys="true" keyProperty="companyImgId" keyColumn="companyImgId">
-
+        insert into companyimg(companyDetailId,ossId)
+        values (#{companyImg.companyDetailId},#{companyImg.ossId})
     </insert>
 
     <!--更新一个对象-->
     <update id="updateCompanyImg" parameterType="CompanyImg">
-
+        update companyimg set
+        companyDetailId = #{companyImg.companyDetailId},
+        ossId = #{companyImg.ossId}
+        <where>
+            <if test="companyImg.companyImgId != null">
+                companyImgId = #{companyImg.companyImgId}
+            </if>
+            <if test="companyImg.companyImgId == null">
+                companyImgId = -1
+            </if>
+        </where>
     </update>
 </mapper>

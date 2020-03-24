@@ -20,18 +20,58 @@
 
     <!--根据companyDetailId获取单个对象-->
     <select id="getCompantDetailByCompanyDetailId" parameterType="java.lang.Integer" resultMap="companyDetailMap">
+        <![CDATA[select * from companydetail]]>
+        <where>
+            <if test="companyDetailId != null">
+                companyDetailId = #{companyDetailId}
+            </if>
+            <if test="companyDetailId == null">
+                companyDetailId = -1
+            </if>
+        </where>
     </select>
 
     <!--根据companyId获取单个对象-->
     <select id="getCompantDetailBycompanyId" parameterType="java.lang.Integer" resultMap="companyDetailMap">
+        <![CDATA[select * from companydetail]]>
+        <where>
+            <if test="companyId != null">
+                companyId = #{companyId}
+            </if>
+            <if test="companyId == null">
+                companyId = -1
+            </if>
+        </where>
     </select>
 
     <!--保存一个对象-->
     <insert id="insertCompanyDetail" parameterType="CompanyDetail" useGeneratedKeys="true" keyProperty="companyDetailId" keyColumn="companyDetailId">
-
+        <![CDATA[insert into companydetail]]>
+        <![CDATA[(companyId, fullName, shortName, feature, city, field, scale, comurl)]]>
+        values
+        (#{companyDetail.companyId},#{companyDetail.fullname},#{companyDetail.shortname},#{companyDetail.feature},
+        #{companyDetail.city},#{companyDetail.field},#{companyDetail.scale},#{companyDetail.comurl})
     </insert>
 
     <!--更新一个对象-->
     <update id="updateCompanyDetail" parameterType="CompanyDetail">
+        <![CDATA[update companydetail]]>
+        set
+        companyId = #{companyDetail.companyId},
+        fullName = #{companyDetail.fullname},
+        shortName = #{companyDetail.shortname},
+        feature = #{companyDetail.feature},
+        city = #{companyDetail.city},
+        field = #{companyDetail.field},
+        <![CDATA[scale = #{companyDetail.scale},]]>
+        comurl = #{companyDetail.comurl}
+        <where>
+            <if test="companyDetail.companyDetailId != null">
+                companyDetailId = #{companyDetail.companyDetailId}
+            </if>
+            <if test="companyDetail.companyDetailId == null">
+                companyDetailId = -1
+            </if>
+        </where>
     </update>
 </mapper>

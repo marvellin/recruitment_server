@@ -15,25 +15,54 @@
 
     <!--根据companyDetailId获取多个对象-->
     <select id="getLabelListByCompanyDetailId" parameterType="java.lang.Integer" resultMap="companyLabelMap">
-
+        select * from  companylabel
+        <where>
+            <if test="companyDetailId !=null">
+                companyDetailId  = #{companyDetailId}
+            </if>
+            <if test="companyDetailId == null">
+                companyDetailId  = -1
+            </if>
+        </where>
     </select>
 
     <!--根据companyLabelId获取单个对象-->
     <select id="getLabelByCompanyLabelId" parameterType="java.lang.Integer" resultMap="companyLabelMap">
-
+        select * from companylabel
+        <where>
+            <if test="companyLabelId !=null">
+                companyLabelId = #{companyLabelId}
+            </if>
+            <if test="companyLabelId == null">
+                companyLabelId = -1
+            </if>
+        </where>
     </select>
 
     <!--根据companyLabelId删除一个对象-->
     <delete id="deleteByCompanyLabelId" parameterType="java.lang.Integer">
-
+        delete from companylabel
+        <where>
+            <if test="companyLabelId != null">
+                companyLabelId  = #{companyLabelId}
+            </if>
+            <if test="companyLabelId == null">
+                companyLabelId  = -1
+            </if>
+        </where>
     </delete>
 
     <!--保存一个对象-->
     <insert id="insertCompanyLabel" parameterType="CompanyLabel" useGeneratedKeys="true" keyProperty="companyLabelId" keyColumn="companyLabelId">
-
+        insert into companylabel (companyDetailId, label)
+        values (#{companyLabel.companyLabelId},#{companyLabel.label});
     </insert>
 
     <!--保存多个对象-->
-
-
+    <insert id="insertCompanyLabelList" useGeneratedKeys="true" keyProperty="companyLabelId" keyColumn="companyLabelId">
+        insert into companylabel(companyDetailId,label) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.companyLabelId},#{item.label})
+        </foreach>
+    </insert>
 </mapper>
