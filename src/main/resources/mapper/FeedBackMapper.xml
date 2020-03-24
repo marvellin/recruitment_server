@@ -19,6 +19,9 @@
     <!--根据deliveryId查找-->
 
     <!--新增对象-->
+    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+
+    </insert>
 
     <!--更新对象-->
 

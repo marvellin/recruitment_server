@@ -26,6 +26,9 @@
     <!--根据resumeId查找对象-->
 
     <!--新增对象-->
+    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+
+    </insert>
 
     <!--更新对象s-->
 </mapper>

@@ -19,6 +19,9 @@
     <!--根据feedBackId获得对象-->
 
     <!--新增对象-->
+    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+
+    </insert>
 
     <!--新增多个对象-->
 </mapper>

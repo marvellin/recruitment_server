@@ -18,6 +18,9 @@
     <!--根据ossId获得对象-->
 
     <!--新增对象-->
+    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+
+    </insert>
 
     <!--根据ossId删除对象-->
 </mapper>

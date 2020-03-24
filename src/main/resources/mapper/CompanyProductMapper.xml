@@ -18,6 +18,9 @@
     <!--根据companyId获得对个对象-->
 
     <!--新增对象-->
+    <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+
+    </insert>
 
     <!--更新对象-->
 
