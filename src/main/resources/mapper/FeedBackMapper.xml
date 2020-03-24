@@ -24,8 +24,14 @@
     </insert>
 
     <!--更新对象-->
+    <update id="" parameterType="">
+
+    </update>
 
     <!--根据feedBackIdList更新多个对象-->
+    <update id="" parameterType="">
+
+    </update>
 
     <!--新增多个对象-->
 </mapper>

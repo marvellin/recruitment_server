@@ -23,6 +23,9 @@
     <!--根据userId获得单个对象-->
 
     <!--更新对象-->
+    <update id="" parameterType="">
+
+    </update>
 
     <!--新增对象-->
     <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">

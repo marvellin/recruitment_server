@@ -36,4 +36,7 @@
     <!--根据positionId删除对象-->
 
     <!--更新对象-->
+    <update id="" parameterType="">
+
+    </update>
 </mapper>

@@ -19,8 +19,11 @@
     </insert>
 
     <!--更新对象（主要为更新密码）-->
+    <update id="" parameterType="">
+
+    </update>
 
     <!--根据userId查找对象-->
 
-    <!--根据email查找对象s-->
+    <!--根据email查找对象-->
 </mapper>

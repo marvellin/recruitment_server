@@ -25,6 +25,9 @@
     </insert>
 
     <!--更新对象-->
+    <update id="" parameterType="">
+
+    </update>
 
     <!--根据workExperienceId删除对象-->
 </mapper>

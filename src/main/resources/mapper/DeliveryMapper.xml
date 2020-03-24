@@ -29,12 +29,24 @@
     </insert>
 
     <!--更新对象-->
+    <update id="" parameterType="">
+
+    </update>
 
     <!--个人用户根据deliveryId更新对象（实则是设置personId为-1，对自身不可见）-->
+    <update id="" parameterType="">
+
+    </update>
 
     <!--公司用户根据deliveryId更新对象（实则是设置positionId为-1，对自身不可见）-->
+    <update id="" parameterType="">
+
+    </update>
 
     <!--公司用户根据deliveryIdList更新对象（实则是设置positionId为-1，对自身不可见）-->
+    <update id="" parameterType="">
+
+    </update>
 
     <!--根据positionIdList查找多个对象-->
 

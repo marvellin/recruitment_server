@@ -29,4 +29,7 @@
     <!--根据educationId删除对象-->
 
     <!--更新对象-->
+    <update id="" parameterType="">
+
+    </update>
 </mapper>

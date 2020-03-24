@@ -23,4 +23,7 @@
     </insert>
 
     <!--更新一个对象-->
+    <update id="" parameterType="">
+
+    </update>
 </mapper>
