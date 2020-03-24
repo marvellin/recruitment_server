@@ -15,8 +15,14 @@
     </resultMap>
 
     <!--根据feedBackId查找-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据deliveryId查找-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--新增对象-->
     <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">

@@ -14,8 +14,14 @@
     </resultMap>
 
     <!--根据companyDetailId获取多个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据companyLabelId获取单个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据companyLabelId删除一个对象-->
     <delete id="" parameterType="java.lang.Integer">

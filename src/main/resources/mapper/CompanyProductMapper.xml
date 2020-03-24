@@ -14,8 +14,14 @@
     </resultMap>
 
     <!--根据companyProductId获得单个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据companyId获得对个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--新增对象-->
     <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">

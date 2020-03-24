@@ -24,6 +24,12 @@
     </update>
 
     <!--根据userId查找对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据email查找对象-->
+    <select id="" parameterType="java.lang.String" resultMap="">
+
+    </select>
 </mapper>

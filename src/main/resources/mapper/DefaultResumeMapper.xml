@@ -15,8 +15,14 @@
     </resultMap>
 
     <!--根据defaultResumeId查找对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据personId查找对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--更新对象-->
     <update id="" parameterType="">

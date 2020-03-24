@@ -19,8 +19,14 @@
     </resultMap>
 
     <!--根据companyId获得单个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据userId获得单个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--更新对象-->
     <update id="" parameterType="">

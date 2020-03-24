@@ -13,9 +13,15 @@
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
-    <!--根据memberImgId-->
+    <!--根据memberImgId查找-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
 
-    <!--根据companyMemberId-->
+    </select>
+
+    <!--根据companyMemberId查找-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--更新对象-->
     <update id="" parameterType="">

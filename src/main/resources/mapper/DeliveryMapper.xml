@@ -18,10 +18,19 @@
     </resultMap>
 
     <!--根据deliveryId获得单个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据positionId获得多个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据personId获得多个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>s
 
     <!--新增对象-->
     <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
@@ -49,6 +58,9 @@
     </update>
 
     <!--根据positionIdList查找多个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
 
     <!--根据deliveryId删除对象-->
     <delete id="" parameterType="java.lang.Integer">
