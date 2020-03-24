@@ -17,4 +17,12 @@
         <collection property="reportList" column="companyId" select=""></collection>
         <collection property="productList" column="companyId" select=""></collection>
     </resultMap>
+
+    <!--根据companyId获得单个对象-->
+
+    <!--根据userId获得单个对象-->
+
+    <!--更新对象-->
+
+    <!--新增对象-->
 </mapper>

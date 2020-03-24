@@ -12,4 +12,12 @@
         <!--<association property="" column="" select=""></association>
         <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--新增对象-->
+
+    <!--更新对象（主要为更新密码）-->
+
+    <!--根据userId查找对象-->
+
+    <!--根据email查找对象s-->
 </mapper>

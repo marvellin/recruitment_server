@@ -8,6 +8,7 @@ import java.util.List;
 public class Position {
     private int positionId;
     private int companyId;
+
     private int salarymin;
     private int salarymax;
     private String department;

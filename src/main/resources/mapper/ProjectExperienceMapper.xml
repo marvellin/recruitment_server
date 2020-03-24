@@ -15,4 +15,14 @@
         <!--<association property="" column="" select=""></association>
         <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据projectExperienceId获得单个对象-->
+
+    <!--根据resumeId获得多个对象-->
+
+    <!--新增对象-->
+
+    <!--更新对象-->
+
+    <!--根据projectExperienceId删除对象-->
 </mapper>

@@ -12,10 +12,34 @@
         <association property="ossFile" column="ossId" select=""></association>
     </resultMap>
 
-    <insert id="insertAttachMentResume" parameterType="AttachMentResume">
+    <!--<insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">
+
+    </insert>-->
+
+    <!--update id="" parameterType="">
+
+    </update>-->
+
+    <!--保存一个对象-->
+    <insert id="insertAttachMentResume" parameterType="AttachMentResume" useGeneratedKeys="true" keyProperty="attachMentResumeId">
         insert into attachmentresume
         (personId, ossId, name)
         values
         (#{attachMentResume.personId},#{attachMentResume.ossId},#{attachMentResume.name})
     </insert>
+
+    <!--根据attachmentResumeId获取单个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
+
+    <!--根据personId获取多个对象-->
+    <select id="" parameterType="java.lang.Integer" resultMap="">
+
+    </select>
+
+    <!--根据attachmentResumeId删除一个对象-->
+    <delete id="" parameterType="java.lang.Integer">
+
+    </delete>
 </mapper>

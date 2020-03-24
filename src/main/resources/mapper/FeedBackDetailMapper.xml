@@ -13,4 +13,12 @@
         <!--<association property="" column="" select=""></association>
         <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据feedBackDetailId获得对象-->
+
+    <!--根据feedBackId获得对象-->
+
+    <!--新增对象-->
+
+    <!--新增多个对象-->
 </mapper>

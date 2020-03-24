@@ -18,4 +18,14 @@
         <association property="personImg" column="personDetailId" select=""></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据personDetailId查找对象-->
+
+    <!--根据personId查找对象-->
+
+    <!--根据resumeId查找对象-->
+
+    <!--新增对象-->
+
+    <!--更新对象s-->
 </mapper>

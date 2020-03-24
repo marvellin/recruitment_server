@@ -8,6 +8,7 @@ import java.util.List;
 public class Resume {
     private int resumeId;
     private int personId;
+
     private String resumename;
     private String selfdescription;
     private List<Education> educationList;

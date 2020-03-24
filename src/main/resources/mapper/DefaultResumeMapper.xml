@@ -13,4 +13,12 @@
         <association property="attachMentResume" column="attachmentResumeId" select=""></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据defaultResumeId查找对象-->
+
+    <!--根据personId查找对象-->
+
+    <!--更新对象-->
+
+    <!--新增对象-->
 </mapper>

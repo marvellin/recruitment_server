@@ -12,4 +12,14 @@
         <!--<association property="" column="" select=""></association>
         <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据companyReportId获取单个对象-->
+
+    <!--根据companyId获取多个对象-->
+
+    <!--新增对象-->
+
+    <!--根据companyReportId删除对象-->
+
+    <!--更新对象-->
 </mapper>

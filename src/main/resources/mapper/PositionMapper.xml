@@ -23,4 +23,14 @@
 <!--        <collection property="personList" column="" select=""></collection>-->
 <!--        <collection property="resumeList" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据positionId获得单个对象-->
+
+    <!--根据companyId获得多个对象-->
+
+    <!--新增对象-->
+
+    <!--根据positionId删除对象-->
+
+    <!--更新对象-->
 </mapper>

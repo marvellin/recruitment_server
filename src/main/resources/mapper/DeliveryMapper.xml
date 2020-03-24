@@ -16,4 +16,24 @@
         <association property="feedBack" column="deliveryId" select=""></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据deliveryId获得单个对象-->
+
+    <!--根据positionId获得多个对象-->
+
+    <!--根据personId获得多个对象-->
+
+    <!--新增对象-->
+
+    <!--更新对象-->
+
+    <!--个人用户根据deliveryId更新对象（实则是设置personId为-1，对自身不可见）-->
+
+    <!--公司用户根据deliveryId更新对象（实则是设置positionId为-1，对自身不可见）-->
+
+    <!--公司用户根据deliveryIdList更新对象（实则是设置positionId为-1，对自身不可见）-->
+
+    <!--根据positionIdList查找多个对象-->
+
+    <!--根据deliveryId删除对象-->
 </mapper>

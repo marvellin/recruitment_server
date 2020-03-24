@@ -14,4 +14,10 @@
         <collection property="attachMentResumeList" column="personId" select=""></collection>
         <collection property="deliveryList" column="personId" select=""></collection>
     </resultMap>
+
+    <!--根据personId查找对象-->
+
+    <!--根据userId查找对象-->
+
+    <!--新增对象-->
 </mapper>

@@ -6,6 +6,7 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 public class ProjectExperience {
     private int projectExperienceId;
     private int resumeId;
+
     private String proname;
     private String post;
     private String startym;

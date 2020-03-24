@@ -15,4 +15,12 @@
         <collection property="projectExperienceList" column="resumeId" select=""></collection>
         <collection property="workExperienceList" column="resumeId" select=""></collection>
     </resultMap>
+
+    <!--根据resumeId获得对象-->
+
+    <!--根据personId获得对象-->
+
+    <!--新增对象-->
+
+    <!--更新对象-->
 </mapper>

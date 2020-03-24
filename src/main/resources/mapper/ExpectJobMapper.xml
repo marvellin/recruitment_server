@@ -14,4 +14,12 @@
         <!--<association property="" column="" select=""></association>
         <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据expectJobId获得对象-->
+
+    <!--根据resumeId获得对象-->
+
+    <!--新增对象-->
+
+    <!--更新对象-->
 </mapper>

@@ -8,6 +8,7 @@ import java.util.List;
 public class Person {
     private int personId;
     private int userId;
+
     private User user;
     private Resume resume;
     private List<AttachMentResume> attachMentResumeList;

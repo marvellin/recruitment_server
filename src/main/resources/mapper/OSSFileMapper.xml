@@ -14,4 +14,10 @@
         <!--<association property="" column="" select=""></association>
         <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据ossId获得对象-->
+
+    <!--新增对象-->
+
+    <!--根据ossId删除对象-->
 </mapper>

@@ -12,4 +12,12 @@
         <association property="ossFile" column="ossId" select=""></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据companyImgId查找对象-->
+
+    <!--根据companyDetailId查找对象-->
+
+    <!--保存一个对象-->
+
+    <!--更新一个对象-->
 </mapper>

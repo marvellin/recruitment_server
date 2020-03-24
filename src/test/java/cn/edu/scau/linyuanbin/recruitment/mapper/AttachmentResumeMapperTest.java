@@ -23,7 +23,8 @@ class AttachmentResumeMapperTest {
 
     @Test
     void insertAttachMentResume() {
-        AttachMentResume attachMentResume = new AttachMentResume(0,1,1,"testInsert.png",null);
+        AttachMentResume attachMentResume = new AttachMentResume(0,1,11,"testInsert.png",null);
         attachmentResumeMapper.insertAttachMentResume(attachMentResume);
+        System.out.println(attachMentResume.toString());
     }
 }

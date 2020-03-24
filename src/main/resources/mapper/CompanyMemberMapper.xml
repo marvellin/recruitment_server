@@ -13,4 +13,14 @@
         <association property="memberImg" column="companyMemberId" select=""></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
+
+    <!--根据companyMemberId获得单个对象-->
+
+    <!--根据companyId获得单个对象-->
+
+    <!--新增对象-->
+
+    <!--更新对象-->
+
+    <!--根据companyMemberId删除对象-->
 </mapper>
