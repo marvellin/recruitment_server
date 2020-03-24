@@ -29,4 +29,7 @@
     </update>
 
     <!--根据companyMemberId删除对象-->
+    <delete id="" parameterType="java.lang.Integer">
+
+    </delete>
 </mapper>

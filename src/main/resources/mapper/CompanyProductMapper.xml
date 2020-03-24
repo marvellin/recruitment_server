@@ -28,4 +28,7 @@
     </update>
 
     <!--根据companyProductId删除对象-->
+    <delete id="" parameterType="java.lang.Integer">
+
+    </delete>
 </mapper>

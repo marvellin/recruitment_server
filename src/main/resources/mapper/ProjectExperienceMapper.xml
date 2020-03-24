@@ -31,4 +31,7 @@
     </update>
 
     <!--根据projectExperienceId删除对象-->
+    <delete id="" parameterType="java.lang.Integer">
+
+    </delete>
 </mapper>

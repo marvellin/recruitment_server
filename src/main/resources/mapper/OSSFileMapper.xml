@@ -23,4 +23,7 @@
     </insert>
 
     <!--根据ossId删除对象-->
+    <delete id="" parameterType="java.lang.Integer">
+
+    </delete>
 </mapper>

@@ -18,6 +18,9 @@
     <!--根据companyLabelId获取单个对象-->
 
     <!--根据companyLabelId删除一个对象-->
+    <delete id="" parameterType="java.lang.Integer">
+
+    </delete>
 
     <!--保存一个对象-->
     <insert id="" parameterType="" useGeneratedKeys="true" keyProperty="" keyColumn="">

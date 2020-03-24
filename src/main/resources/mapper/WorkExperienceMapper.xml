@@ -30,4 +30,7 @@
     </update>
 
     <!--根据workExperienceId删除对象-->
+    <delete id="" parameterType="java.lang.Integer">
+
+    </delete>
 </mapper>

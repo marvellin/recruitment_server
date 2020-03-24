@@ -27,6 +27,9 @@
     </insert>
 
     <!--根据educationId删除对象-->
+    <delete id="" parameterType="java.lang.Integer">
+
+    </delete>
 
     <!--更新对象-->
     <update id="" parameterType="">
