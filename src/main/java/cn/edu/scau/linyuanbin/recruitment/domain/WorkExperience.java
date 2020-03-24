@@ -21,6 +21,9 @@ public class WorkExperience {
         this.endym = endym;
     }
 
+    public WorkExperience() {
+    }
+
     public int getWorkExperienceId() {
         return workExperienceId;
     }
