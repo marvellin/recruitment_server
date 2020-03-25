@@ -1,6 +1,9 @@
 package cn.edu.scau.linyuanbin.recruitment.service.service;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.OSSFile;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.OutputStream;
 
 /**
  * @Author: linyuanbin
@@ -8,6 +11,11 @@ import cn.edu.scau.linyuanbin.recruitment.domain.OSSFile;
  * @Date: Created in 19:22 2020/3/25
  */
 public interface OSSFileService {
+    /*
+    * 测试文件上传方法
+    * */
+    public OSSFile upload(MultipartFile file, OutputStream outputStream);
+
     /*
      * 根据ossId获得对象
      * */
