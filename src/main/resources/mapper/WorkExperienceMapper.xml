@@ -10,33 +10,56 @@
         <result column="post" property="post"></result>
         <result column="startYm" property="startym"></result>
         <result column="endYm" property="endym"></result>
-
-        <!--<association property="" column="" select=""></association>
-        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据workExperienceId获得单个对象-->
     <select id="getWorkExperienceByworkExperienceId" parameterType="java.lang.Integer" resultMap="workExperienceMap">
-
+        select * from workexperience
+        <where>
+            <if test="workExperienceId!=null">workExperienceId = #{workExperienceId}</if>
+            <if test="workExperienceId==null">workExperienceId = -1</if>
+        </where>
     </select>
 
     <!--根据resumeId获得多个对象-->
     <select id="getWorkExperienceListByresumeId" parameterType="java.lang.Integer" resultMap="workExperienceMap">
-
+        select * from workexperience
+        <where>
+            <if test="resumeId!=null">resumeId = #{resumeId}</if>
+            <if test="resumeId==null">resumeId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertWorkExperience" parameterType="WorkExperience" useGeneratedKeys="true" keyProperty="workExperienceId" keyColumn="workExperienceId">
-
+        insert into workexperience (resumeId, comName, post, startYm, endYm)
+        values (#{workExperience.resumeId},
+        #{workExperience.comname},
+        #{workExperience.post},
+        #{workExperience.startym},
+        #{workExperience.endym});
     </insert>
 
     <!--更新对象-->
     <update id="updateWorkExperience" parameterType="WorkExperience">
-
+        update workexperience set
+        resumeId=#{workExperience.resumeId},
+        comName=#{workExperience.comname},
+        post=#{workExperience.post},
+        startYm=#{workExperience.startym},
+        endYm=#{workExperience.endym}
+        <where>
+            <if test="workExperience!=null and workExperience.workExperienceId!=null">workExperienceId = #{workExperience.workExperienceId}</if>
+            <if test="workExperience==null or workExperience.workExperienceId==null">workExperienceId = -1</if>
+        </where>
     </update>
 
     <!--根据workExperienceId删除对象-->
     <delete id="deleteByworkExperienceId" parameterType="java.lang.Integer">
-
+        delete from workexperience
+        <where>
+            <if test="workExperienceId!=null">workExperienceId = #{workExperienceId}</if>
+            <if test="workExperienceId==null">workExperienceId = -1</if>
+        </where>
     </delete>
 </mapper>

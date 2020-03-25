@@ -14,8 +14,8 @@
         <result column="scale" property="scale"></result>
         <result column="comurl" property="comurl"></result>
 
-        <association property="companyImg" column="companyDetailId" select=""></association>
-        <collection property="labelList" column="companyDetailId" select=""></collection>
+        <association property="companyImg" column="companyDetailId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyImgMapper.getCompanyImgByCompanyDetailId"></association>
+        <collection property="labelList" column="companyDetailId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyLabelMapper.getLabelListByCompanyDetailId"></collection>
     </resultMap>
 
     <!--根据companyDetailId获取单个对象-->
@@ -66,10 +66,10 @@
         <![CDATA[scale = #{companyDetail.scale},]]>
         comurl = #{companyDetail.comurl}
         <where>
-            <if test="companyDetail.companyDetailId != null">
+            <if test="companyDetail!=null and companyDetail.companyDetailId != null">
                 companyDetailId = #{companyDetail.companyDetailId}
             </if>
-            <if test="companyDetail.companyDetailId == null">
+            <if test="companyDetail==null or companyDetail.companyDetailId == null">
                 companyDetailId = -1
             </if>
         </where>

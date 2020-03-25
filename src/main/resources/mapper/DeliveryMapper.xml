@@ -10,60 +10,120 @@
         <result column="deliveryTime" property="deliverytime"></result>
         <result column="status" property="status"></result>
 
-        <association property="position" column="positionId" select=""></association>
-        <association property="resume" column="personId" select=""></association>
-        <association property="person" column="personId" select=""></association>
-        <association property="feedBack" column="deliveryId" select=""></association>
-<!--        <collection property="" column="" select=""></collection>-->
+        <association property="position" column="positionId" select="cn.edu.scau.linyuanbin.recruitment.mapper.PositionMapper.getPositionBypositionId"></association>
+        <association property="resume" column="personId" select="cn.edu.scau.linyuanbin.recruitment.mapper.ResumeMapper.getResumeBypersonId"></association>
+        <association property="person" column="personId" select="cn.edu.scau.linyuanbin.recruitment.mapper.PersonMapper.getPersonBypersonId"></association>
+        <association property="feedBack" column="deliveryId" select="cn.edu.scau.linyuanbin.recruitment.mapper.FeedBackMapper.getFeedBackBydeliveryId"></association>
     </resultMap>
 
     <!--根据deliveryId获得单个对象-->
     <select id="getDeliveryBydeliveryId" parameterType="java.lang.Integer" resultMap="deliveryMap">
-
+        select * from delivery
+        <where>
+            <if test="deliveryId != null">deliveryId = #{deliveryId}</if>
+            <if test="deliveryId == null">deliveryId = -1</if>
+        </where>
     </select>
 
     <!--根据positionId获得多个对象-->
     <select id="getDeliveryListBypositionId" parameterType="java.lang.Integer" resultMap="deliveryMap">
-
+        select * from delivery
+        <where>
+            <if test="positionId != null">positionId = #{positionId}</if>
+            <if test="positionId == null">positionId = -1</if>
+        </where>
     </select>
 
     <!--根据personId获得多个对象-->
     <select id="getDeliveryListBypersonId" parameterType="java.lang.Integer" resultMap="deliveryMap">
-
+        select * from delivery
+        <where>
+            <if test="personId != null">personId = #{personId}</if>
+            <if test="personId == null">personId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertDelivery" parameterType="Delivery" useGeneratedKeys="true" keyProperty="deliveryId" keyColumn="deliveryId">
-
+        insert into delivery (positionId, personId, deliveryTime, status)
+        values (#{delivery.positionId},
+        #{delivery.personId},
+        #{delivery.deliverytime},
+        #{delivery.status});
     </insert>
 
     <!--更新对象-->
     <update id="updateDelivary" parameterType="Delivery">
-
+        update delivery set
+        positionId = #{delivery.positionId},
+        personId = #{delivery.personId},
+        deliveryTime = #{delivery.deliverytime},
+        status = #{delivery.status}
+        <where>
+            <if test="delivery!=null and delivery.deliveryId != null">deliveryId = #{delivery.deliveryId}</if>
+            <if test="delivery==null or delivery.deliveryId == null">deliveryId = -1</if>
+        </where>
     </update>
 
-    <!--个人用户根据deliveryId更新对象（实则是设置personId为-1，对自身不可见）-->
+    <!--个人用户根据deliveryId更新对象（实则是设置personId为0，对自身不可见）-->
     <update id="updatePersonIdBydeliveryId" parameterType="java.lang.Integer">
-
+        update delivery set
+        personId = null
+        <where>
+            <if test="deliveryId != null">deliveryId = #{deliveryId}</if>
+            <if test="deliveryId == null">deliveryId = -1</if>
+        </where>
     </update>
 
-    <!--公司用户根据deliveryId更新对象（实则是设置positionId为-1，对自身不可见）-->
+    <!--公司用户根据deliveryId更新对象（实则是设置positionId为0，对自身不可见）-->
     <update id="updatePositionIdBydeliveryId" parameterType="java.lang.Integer">
-
+        update delivery set
+        positionId = null
+        <where>
+            <if test="deliveryId != null">deliveryId = #{deliveryId}</if>
+            <if test="deliveryId == null">deliveryId = -1</if>
+        </where>
     </update>
 
-    <!--公司用户根据deliveryIdList更新对象（实则是设置positionId为-1，对自身不可见）-->
-    <update id="updatePositionIdBydeliveryIdList" parameterType="java.util.List">
-
+    <!--公司用户根据deliveryIdList更新对象（实则是设置positionId为0，对自身不可见）-->
+    <update id="updatePositionIdBydeliveryIdList">
+        update delivery set
+        positionId = null
+        <where>
+            <if test="deliveryIdList != null and deliveryIdList.size > 0">
+                deliveryId in
+                <foreach collection="deliveryIdList" open="(" close=")" index="index" item="item" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="deliveryIdList==null or deliveryIdList.size == 0">
+                deliveryId = -1
+            </if>
+        </where>
     </update>
 
     <!--根据positionIdList查找多个对象-->
-    <select id="getDeliveryBypositionIdList" parameterType="java.lang.Integer" resultMap="deliveryMap">
-
+    <select id="getDeliveryBypositionIdList" resultMap="deliveryMap">
+        select * from delivery
+        <where>
+            <if test="positionIdList != null and positionIdList.size > 0">
+                positionId in
+                <foreach collection="positionIdList" open="(" close=")" index="index" item="item1" separator=",">
+                    #{item1}
+                </foreach>
+            </if>
+            <if test="positionIdList == null or positionIdList.size == 0">
+                positionId = -1
+            </if>
+        </where>
     </select>
 
     <!--根据deliveryId删除对象-->
     <delete id="deleteBydeliveryId" parameterType="java.lang.Integer">
-
+        delete from delivery
+        <where>
+            <if test="deliveryId != null">deliveryId = #{deliveryId}</if>
+            <if test="deliveryId == null">deliveryId = -1</if>
+        </where>
     </delete>
 </mapper>

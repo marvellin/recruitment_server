@@ -11,6 +11,7 @@ public class Resume {
 
     private String resumename;
     private String selfdescription;
+
     private List<Education> educationList;
     private List<ProjectExperience> projectExperienceList;
     private List<WorkExperience> workExperienceList;

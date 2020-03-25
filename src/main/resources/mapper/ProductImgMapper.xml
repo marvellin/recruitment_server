@@ -9,27 +9,43 @@
         <result column="ossId" property="ossId"></result>
 <!--        <result column="" property=""></result>-->
 
-        <association property="ossFile" column="ossId" select=""></association>
+        <association property="ossFile" column="ossId" select="cn.edu.scau.linyuanbin.recruitment.mapper.OSSFileMapper.getOSSFileByossId"></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据productImgId查找对象-->
     <select id="getProductImgByproductImgId" parameterType="java.lang.Integer" resultMap="productImgMap">
-
+        select * from productimg
+        <where>
+            <if test="productImgId != null">productImgId = #{productImgId}</if>
+            <if test="productImgId == null">productImgId = -1</if>
+        </where>
     </select>
 
     <!--根据companyProductId查找对象-->
     <select id="getProductImgBycompanyProductId" parameterType="java.lang.Integer" resultMap="productImgMap">
-
+        select * from productimg
+        <where>
+            <if test="companyProductId != null">companyProductId = #{companyProductId}</if>
+            <if test="companyProductId == null">companyProductId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertProductImg" parameterType="ProductImg" useGeneratedKeys="true" keyProperty="productImgId" keyColumn="productImgId">
-
+        insert into productimg (companyProductId, ossId)
+        values (#{productImg.companyProductId},
+        #{productImg.ossId});
     </insert>
 
     <!--更新对象-->
     <update id="updateProductImg" parameterType="ProductImg">
-
+        update productimg set
+        companyProductId = #{productImg.companyProductId},
+        ossId = #{productImg.ossId}
+        <where>
+            <if test="productImg!=null and productImg.productImgId!=null">productImgId = #{productImg.productImgId}</if>
+            <if test="productImg==null or productImg.productImgId==null">productImgId = -1</if>
+        </where>
     </update>
 </mapper>

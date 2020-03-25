@@ -7,6 +7,7 @@ public class MemberImg {
     private int memberImgId;
     private int companyMemberId;
     private int ossId;
+
     OSSFile ossFile;
 
     public MemberImg(int memberImgId, int companyMemberId, int ossId, OSSFile ossFile) {

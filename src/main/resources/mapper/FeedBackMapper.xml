@@ -10,36 +10,71 @@
 <!--        保存‘邀请面试’或‘不合适’-->
         <result column="feedback" property="feedback"></result>
 
-        <association property="feedBackDetail" column="feedBackId" select=""></association>
+        <association property="feedBackDetail" column="feedBackId" select="cn.edu.scau.linyuanbin.recruitment.mapper.FeedBackDetailMapper.getFeedBackDetailByfeedBackId"></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据feedBackId查找-->
     <select id="getFeedBackByfeedBackId" parameterType="java.lang.Integer" resultMap="feedBackMap">
-
+        select * from feedback
+        <where>
+            <if test="feedBackId != null">feedBackId = #{feedBackId}</if>
+            <if test="feedBackId == null">feedBackId = -1</if>
+        </where>
     </select>
 
     <!--根据deliveryId查找-->
     <select id="getFeedBackBydeliveryId" parameterType="java.lang.Integer" resultMap="feedBackMap">
-
+        select * from feedback
+        <where>
+            <if test="deliveryId != null">deliveryId = #{deliveryId}</if>
+            <if test="deliveryId == null">deliveryId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertFeedBack" parameterType="FeedBack" useGeneratedKeys="true" keyProperty="feedBackId" keyColumn="feedBackId">
-
+        insert into feedback (deliveryId, feedBackTime, feedback)
+        values (#{feedBack.deliveryId},
+        #{feedBack.feedbacktime},
+        #{feedBack.feedback});
     </insert>
 
     <!--更新对象-->
     <update id="updateFeedBack" parameterType="FeedBack">
-
+        update feedback set
+        deliveryId = #{feedBack.deliveryId},
+        feedBackTime = #{feedBack.feedbacktime},
+        feedback = #{feedBack.feedback}
+        <where>
+            <if test="feedBack != null and feedBack.feedBackId != null">feedBackId = #{feedBack.feedBackId}</if>
+            <if test="feedBack == null or feedBack.feedBackId == null">feedBackId = -1</if>
+        </where>
     </update>
 
     <!--根据feedBackIdList更新多个对象(或为‘邀请面试’或为‘不合适’),测试是否可以！！！-->
     <update id="updateFeedBackList">
-
+        update feedback set
+        feedback = #{feedBack}
+        <where>
+            <if test="feedBackIdList != null and feedBackIdList.size > 0">
+                feedBackId in
+                <foreach collection="feedBackIdList" index="index" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="feedBackIdList == null or feedBackIdList.size == 0">
+                feedBackId = -1
+            </if>
+        </where>
     </update>
 
     <!--新增多个对象-->
-
+        <insert id="insertFeedBackList" useGeneratedKeys="true" keyProperty="feedBackId" keyColumn="feedBackId">
+            insert into feedback (deliveryId, feedBackTime, feedback) values
+            <foreach collection="feedBackList" item="item" index="index" separator=",">
+                (#{item.deliveryId},#{item.feedbacktime},#{item.feedback})
+            </foreach>
+        </insert>
 
 </mapper>

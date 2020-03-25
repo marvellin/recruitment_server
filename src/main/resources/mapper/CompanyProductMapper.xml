@@ -9,32 +9,70 @@
         <result column="name" property="name"></result>
         <result column="info" property="info"></result>
 
-        <association property="productImg" column="companyProductId" select=""></association>
+        <association property="productImg" column="companyProductId" select="cn.edu.scau.linyuanbin.recruitment.mapper.ProductImgMapper.getProductImgBycompanyProductId"></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据companyProductId获得单个对象-->
     <select id="getCompanyProductBycompanyProductId" parameterType="java.lang.Integer" resultMap="companyProductMap">
-
+        select * from companyproduct
+        <where>
+            <if test="companyProductId != null">
+                companyProductId = #{companyProductId}
+            </if>
+            <if test="companyProductId == null">
+                companyProductId = -1
+            </if>
+        </where>
     </select>
 
     <!--根据companyId获得对个对象-->
     <select id="getCompanyProductListBycompanyId" parameterType="java.lang.Integer" resultMap="companyProductMap">
-
+        select * from companyproduct
+        <where>
+            <if test="companyId != null">
+                companyId = #{companyId}
+            </if>
+            <if test="companyId == null">
+                companyId = -1
+            </if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertCompanyProduct" parameterType="CompanyProduct" useGeneratedKeys="true" keyProperty="companyProductId" keyColumn="companyProductId">
-
+        insert into companyproduct (companyId, name, info)
+        values (#{companyProduct.companyId},
+        #{companyProduct.name},
+        #{companyProduct.info});
     </insert>
 
     <!--更新对象-->
     <update id="updateCompanyProduct" parameterType="CompanyProduct">
-
+        update companyproduct set
+        companyId = #{companyProduct.companyId},
+        name = #{companyProduct.name},
+        info = #{companyProduct.info}
+        <where>
+            <if test="companyProduct!=null and companyProduct.companyProductId != null">
+                companyProductId = #{companyProduct.companyProductId}
+            </if>
+            <if test="companyProduct==null or companyProduct.companyProductId == null">
+                companyProductId = -1
+            </if>
+        </where>
     </update>
 
     <!--根据companyProductId删除对象-->
     <delete id="deleteBycompanyProductId" parameterType="java.lang.Integer">
-
+        delete from companyproduct
+        <where>
+            <if test="companyProductId != null">
+                companyProductId = #{companyProductId}
+            </if>
+            <if test="companyProductId == null">
+                companyProductId = -1
+            </if>
+        </where>
     </delete>
 </mapper>

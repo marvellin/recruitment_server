@@ -15,32 +15,66 @@
         <result column="workYear" property="workyear"></result>
         <result column="currentState" property="currentstate"></result>
 
-        <association property="personImg" column="personDetailId" select=""></association>
+        <association property="personImg" column="personDetailId" select="cn.edu.scau.linyuanbin.recruitment.mapper.PersonImgMapper.getPersonImgBypersonDetailId"></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据personDetailId查找对象-->
     <select id="getPersonDetailBypersonDetailId" parameterType="java.lang.Integer" resultMap="personDetailMap">
-
+        select * from persondetail
+        <where>
+            <if test="personDetailId != null">personDetailId = #{personDetailId}</if>
+            <if test="personDetailId == null">personDetailId = -1</if>
+        </where>
     </select>
 
     <!--根据personId查找对象-->
     <select id="getPersonDetailBypersonId" parameterType="java.lang.Integer" resultMap="personDetailMap">
-
+        select * from persondetail
+        <where>
+            <if test="personId != null">personId = #{personId}</if>
+            <if test="personId == null">personId = -1</if>
+        </where>
     </select>
 
     <!--根据resumeId查找对象-->
     <select id="getPersonDetailByresumeId" parameterType="java.lang.Integer" resultMap="personDetailMap">
-
+        select * from persondetail
+        <where>
+            <if test="resumeId != null">resumeId = #{resumeId}</if>
+            <if test="resumeId == null">resumeId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertPersonDetail" parameterType="PersonDetail" useGeneratedKeys="true" keyProperty="personDetailId" keyColumn="personDetailId">
-
+        insert into persondetail (personId, resumeId, userName, tel, email, gender, degree, workYear, currentState)
+        values (#{personDetail.personId},
+        #{personDetail.resumeId},
+        #{personDetail.username},
+        #{personDetail.tel},
+        #{personDetail.email},
+        #{personDetail.gender},
+        #{personDetail.degree},
+        #{personDetail.workyear},
+        #{personDetail.currentstate});
     </insert>
 
     <!--更新对象-->
     <update id="updatePersonDetail" parameterType="PersonDetail">
-
+        update persondetail set
+        personId = #{personDetail.personId},
+        resumeId = #{personDetail.resumeId},
+        userName = #{personDetail.username},
+        tel = #{personDetail.tel},
+        email = #{personDetail.email},
+        gender = #{personDetail.gender},
+        degree = #{personDetail.degree},
+        workYear = #{personDetail.workyear},
+        currentState = #{personDetail.currentstate}
+        <where>
+            <if test="personDetail != null and personDetail.personDetailId != null">personDetailId = #{personDetail.personDetailId}</if>
+            <if test="personDetail == null or personDetail.personDetailId == null">personDetailId = -1</if>
+        </where>
     </update>
 </mapper>

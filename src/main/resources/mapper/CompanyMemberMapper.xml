@@ -10,32 +10,72 @@
         <result column="post" property="post"></result>
         <result column="intro" property="intro"></result>
 
-        <association property="memberImg" column="companyMemberId" select=""></association>
+        <association property="memberImg" column="companyMemberId" select="cn.edu.scau.linyuanbin.recruitment.mapper.MemberImgMapper.getMemberImgBycompanyMemberId"></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据companyMemberId获得单个对象-->
     <select id="getCompanyMemberBycompanyMemberId" parameterType="java.lang.Integer" resultMap="companyMemberMap">
-
+        select * from companymember
+        <where>
+            <if test="companyMemberId != null">
+                companyMemberId = #{companyMemberId}
+            </if>
+            <if test="companyMemberId == null">
+                companyMemberId = -1
+            </if>
+        </where>
     </select>
 
     <!--根据companyId获得单个对象-->
     <select id="getCompanyMemberBycompanyId" parameterType="java.lang.Integer" resultMap="companyMemberMap">
-
+        select * from companymember
+        <where>
+            <if test="companyId != null">
+                companyId = #{companyId}
+            </if>
+            <if test="companyId == null">
+                companyId = -1
+            </if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertCompanyMember" parameterType="CompanyMember" useGeneratedKeys="true" keyProperty="companyMemberId" keyColumn="companyMemberId">
-
+        insert into companymember (companyId, name, post, intro)
+        values (#{companyMember.companyId},
+        #{companyMember.name},
+        #{companyMember.post},
+        #{companyMember.intro});
     </insert>
 
     <!--更新对象-->
     <update id="updateCompanyMember" parameterType="CompanyMember">
-
+        update companymember set
+        companyId = #{companyMember.companyId},
+        name = #{companyMember.name},
+        post = #{companyMember.post},
+        intro = #{companyMember.intro}
+        <where>
+            <if test="companyMember!=null and companyMember.companyMemberId != null">
+                companyMemberId = #{companyMember.companyMemberId}
+            </if>
+            <if test="companyMember==null or companyMember.companyMemberId == null">
+                companyMemberId = -1
+            </if>
+        </where>
     </update>
 
     <!--根据companyMemberId删除对象-->
     <delete id="deleteBycompanyMemberId" parameterType="java.lang.Integer">
-
+        delete from companymember
+        <where>
+            <if test="companyMemberId != null">
+                companyMemberId = #{companyMemberId}
+            </if>
+            <if test="companyMemberId == null">
+                companyMemberId = -1
+            </if>
+        </where>
     </delete>
 </mapper>

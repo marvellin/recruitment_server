@@ -8,28 +8,41 @@
         <result column="email" property="email"></result>
         <result column="password" property="password"></result>
         <result column="role" property="role"></result>
-
-        <!--<association property="" column="" select=""></association>
-        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--新增对象-->
     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId" keyColumn="userId">
-
+        insert into user (email, password, role)
+        values (#{user.email},
+        #{user.password},
+        #{user.role});
     </insert>
 
     <!--更新对象（主要为更新密码）-->
     <update id="updateUser" parameterType="User">
-
+        update user set
+        password = #{user.password}
+        <where>
+            <if test="user!=null and user.userId!=null">userId = #{user.userId}</if>
+            <if test="user==null or user.userId==null">userId = -1</if>
+        </where>
     </update>
 
     <!--根据userId查找对象-->
     <select id="getUserByuserId" parameterType="java.lang.Integer" resultMap="userMap">
-
+        select * from user
+        <where>
+            <if test="userId!=null">userId = #{userId}</if>
+            <if test="userId==null">userId = -1</if>
+        </where>
     </select>
 
     <!--根据email查找对象-->
     <select id="getUserByemail" parameterType="java.lang.String" resultMap="userMap">
-
+        select * from user
+        <where>
+            <if test="email!=null">email = #{email}</if>
+            <if test="email==null">email = '-1'</if>
+        </where>
     </select>
 </mapper>

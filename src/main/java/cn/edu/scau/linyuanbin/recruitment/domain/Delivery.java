@@ -9,6 +9,7 @@ public class Delivery {
     private int personId;
     private String deliverytime;
     private int status;
+
     private Resume resume;
     private Position position;
     private Person person;

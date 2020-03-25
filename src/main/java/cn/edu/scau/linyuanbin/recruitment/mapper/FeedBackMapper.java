@@ -48,5 +48,5 @@ public interface FeedBackMapper {
     /*
      *新增多个对象
      * */
-    public int insertFeedBackList(List<FeedBack> feedBackList);
+    public int insertFeedBackList(@Param("feedBackList") List<FeedBack> feedBackList);
 }

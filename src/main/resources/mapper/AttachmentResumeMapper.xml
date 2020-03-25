@@ -50,10 +50,10 @@
     <delete id="deleteAttachMentResumeByAttachmentResumeId" parameterType="java.lang.Integer">
         <![CDATA[delete from attachmentresume]]>
         <where>
-            <if test="attachMentResumeId != null">
+            <if test="attachmentResumeId != null">
                 attachmentResumeId = #{attachmentResumeId}
             </if>
-            <if test="attachMentResumeId == null">
+            <if test="attachmentResumeId == null">
                 attachmentResumeId = -1
             </if>
         </where>

@@ -9,27 +9,43 @@
         <result column="ossId" property="ossId"></result>
 <!--        <result column="" property=""></result>-->
 
-        <association property="ossFile" column="ossId" select=""></association>
+        <association property="ossFile" column="ossId" select="cn.edu.scau.linyuanbin.recruitment.mapper.OSSFileMapper.getOSSFileByossId"></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据memberImgId查找-->
     <select id="getMemberImgBymemberImgId" parameterType="java.lang.Integer" resultMap="memberImgMap">
-
+        select * from memberimg
+        <where>
+            <if test="memberImgId != null">memberImgId = #{memberImgId}</if>
+            <if test="memberImgId == null">memberImgId = -1</if>
+        </where>
     </select>
 
     <!--根据companyMemberId查找-->
     <select id="getMemberImgBycompanyMemberId" parameterType="java.lang.Integer" resultMap="memberImgMap">
-
+        select * from memberimg
+        <where>
+            <if test="companyMemberId != null">companyMemberId = #{companyMemberId}</if>
+            <if test="companyMemberId == null">companyMemberId = -1</if>
+        </where>
     </select>
 
     <!--更新对象-->
     <update id="updateMemberImg" parameterType="MemberImg">
-
+        update memberimg set
+        companyMemberId = #{memberImg.companyMemberId},
+        ossId = #{memberImg.ossId}
+        <where>
+            <if test="memberImg != null and memberImg.memberImgId != null">memberImgId = #{memberImg.memberImgId}</if>
+            <if test="memberImg == null or memberImg.memberImgId == null">memberImgId = -1</if>
+        </where>
     </update>
 
     <!--新增对象-->
     <insert id="insertMemberImg" parameterType="MemberImg" useGeneratedKeys="true" keyProperty="memberImgId" keyColumn="memberImgId">
-
+        insert into memberimg (companyMemberId, ossId)
+        values (#{memberImg.companyMemberId},
+        #{memberImg.ossId});
     </insert>
 </mapper>

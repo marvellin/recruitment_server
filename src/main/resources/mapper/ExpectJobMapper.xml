@@ -10,28 +10,47 @@
         <result column="type" property="type"></result>
         <result column="post" property="post"></result>
         <result column="salary" property="salary"></result>
-
-        <!--<association property="" column="" select=""></association>
-        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据expectJobId获得对象-->
     <select id="getExpectJobByexpectJobId" parameterType="java.lang.Integer" resultMap="expectJobMap">
-
+        select * from expectjob
+        <where>
+            <if test="expectJobId != null">expectJobId = #{expectJobId}</if>
+            <if test="expectJobId == null">expectJobId = -1</if>
+        </where>
     </select>
 
     <!--根据resumeId获得对象-->
     <select id="getExpectJobByresumeId" parameterType="java.lang.Integer" resultMap="expectJobMap">
-
+        select * from expectjob
+        <where>
+            <if test="resumeId != null">resumeId = #{resumeId}</if>
+            <if test="resumeId == null">resumeId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertExpectJob" parameterType="ExpectJob" useGeneratedKeys="true" keyProperty="expectJobId" keyColumn="expectJobId">
-
+        insert into expectjob (resumeId, city, type, post, salary)
+        values (#{expectJob.resumeId},
+        #{expectJob.city},
+        #{expectJob.type},
+        #{expectJob.post},
+        #{expectJob.salary})
     </insert>
 
     <!--更新对象-->
     <update id="updateExpectJob" parameterType="ExpectJob">
-
+        update expectjob set
+        resumeId = #{expectJob.resumeId},
+        city = #{expectJob.city},
+        type = #{expectJob.type},
+        post = #{expectJob.post},
+        salary = #{expectJob.salary}
+        <where>
+            <if test="expectJob != null and expectJob.expectJobId != null">expectJobId = #{expectJob.expectJobId}</if>
+            <if test="expectJob == null or expectJob.expectJobId == null">expectJobId = -1</if>
+        </where>
     </update>
 </mapper>

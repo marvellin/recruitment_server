@@ -9,27 +9,43 @@
         <result column="ossId" property="ossId"></result>
 <!--        <result column="" property=""></result>-->
 
-        <association property="ossFile" column="ossId" select=""></association>
+        <association property="ossFile" column="ossId" select="cn.edu.scau.linyuanbin.recruitment.mapper.OSSFileMapper.getOSSFileByossId"></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据personImgId查找对象-->
     <select id="getPersonImgBypersonImgId" parameterType="java.lang.Integer" resultMap="personImgMap">
-
+        select * from personimg
+        <where>
+            <if test="personImgId != null">personImgId = #{personImgId}</if>
+            <if test="personImgId == null">personImgId = -1</if>
+        </where>
     </select>
 
     <!--根据personDetailId查找对象-->
     <select id="getPersonImgBypersonDetailId" parameterType="java.lang.Integer" resultMap="personImgMap">
-
+        select * from personimg
+        <where>
+            <if test="personDetailId != null">personDetailId = #{personDetailId}</if>
+            <if test="personDetailId == null">personDetailId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertPersonImg" parameterType="PersonImg" useGeneratedKeys="true" keyProperty="personImgId" keyColumn="personImgId">
-
+        insert into personimg (personDetailId, ossId)
+        values (#{personImg.personDetailId},
+        #{personImg.ossId});
     </insert>
 
     <!--更新对象-->
     <update id="updatePersonImg" parameterType="PersonImg">
-
+        update personimg set
+        personDetailId = #{personImg.personDetailId},
+        ossId = #{personImg.ossId}
+        <where>
+            <if test="personImg != null and personImg.personImgId != null">personImgId = #{personImg.personImgId}</if>
+            <if test="personImg == null or personImg.personImgId == null">personImgId = -1</if>
+        </where>
     </update>
 </mapper>

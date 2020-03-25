@@ -12,33 +12,60 @@
         <result column="startYear" property="startyear"></result>
         <result column="endYear" property="endyear"></result>
         <result column="rank" property="rank"></result>
-
-        <!--<association property="" column="" select=""></association>
-        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据educationId获得单个对象-->
     <select id="getEducationByeducationId" parameterType="java.lang.Integer" resultMap="educationMap">
-
+        select * from education
+        <where>
+            <if test="educationId != null">educationId = #{educationId}</if>
+            <if test="educationId == null">educationId = -1</if>
+        </where>
     </select>
 
     <!--根据resumeId获得多个对象-->
     <select id="getEducationListByresumeId" parameterType="java.lang.Integer" resultMap="educationMap">
-
+        select * from education
+        <where>
+            <if test="resumeId != null">resumeId = #{resumeId}</if>
+            <if test="resumeId == null">resumeId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertEducation" parameterType="Education" useGeneratedKeys="true" keyProperty="educationId" keyColumn="educationId">
-
+        insert into education (resumeId, schoole, degree, profession, startYear, endYear, rank)
+        values (#{education.resumeId},
+        #{education.school},
+        #{education.degree},
+        #{education.profession},
+        #{education.startyear},
+        #{education.endyear},
+        #{education.rank});
     </insert>
 
     <!--根据educationId删除对象-->
     <delete id="deleteEducationByeducationId" parameterType="java.lang.Integer">
-
+        delete from education
+        <where>
+            <if test="educationId != null">educationId = #{educationId}</if>
+            <if test="educationId == null">educationId = -1</if>
+        </where>
     </delete>
 
     <!--更新对象-->
     <update id="updateEducation" parameterType="Education">
-
+        update education set
+        resumeId = #{education.resumeId},
+        schoole = #{education.school},
+        degree = #{education.degree},
+        profession = #{education.profession},
+        startYear = #{education.startyear},
+        endYear = #{education.endyear},
+        rank = #{education.rank}
+        <where>
+            <if test="education != null and education.educationId != null">educationId = #{education.educationId}</if>
+            <if test="education == null or education.educationId == null">educationId = -1</if>
+        </where>
     </update>
 </mapper>

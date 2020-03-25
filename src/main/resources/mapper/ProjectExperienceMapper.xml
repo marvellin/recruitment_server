@@ -11,33 +11,58 @@
         <result column="startYm" property="startym"></result>
         <result column="endYm" property="endym"></result>
         <result column="intro" property="intro"></result>
-
-        <!--<association property="" column="" select=""></association>
-        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据projectExperienceId获得单个对象-->
     <select id="getProjectExperienceByprojectExperienceId" parameterType="java.lang.Integer" resultMap="projectExperienceMap">
-
+        select * from projectexperience
+        <where>
+            <if test="projectExperienceId!=null">projectExperienceId = #{projectExperienceId}</if>
+            <if test="projectExperienceId==null">projectExperienceId = -1</if>
+        </where>
     </select>
 
     <!--根据resumeId获得多个对象-->
     <select id="getProjectExperienceListByresumeId" parameterType="java.lang.Integer" resultMap="projectExperienceMap">
-
+        select * from projectexperience
+        <where>
+            <if test="resumeId!=null">resumeId = #{resumeId}</if>
+            <if test="resumeId==null">resumeId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertProjectExperience" parameterType="ProjectExperience" useGeneratedKeys="true" keyProperty="projectExperienceId" keyColumn="projectExperienceId">
-
+        insert into projectexperience (resumeId, proName, post, startYm, endYm, intro)
+        values (#{projectExperience.resumeId},
+        #{projectExperience.proname},
+        #{projectExperience.post},
+        #{projectExperience.startym},
+        #{projectExperience.endym},
+        #{projectExperience.intro});
     </insert>
 
     <!--更新对象-->
     <update id="updateProjectExperience" parameterType="ProjectExperience">
-
+        update projectexperience set
+        resumeId = #{projectExperience.resumeId},
+        proName = #{projectExperience.proname},
+        post = #{projectExperience.post},
+        startYm = #{projectExperience.startym},
+        endYm = #{projectExperience.endym},
+        intro = #{projectExperience.intro}
+        <where>
+            <if test="projectExperience!=null and projectExperience.projectExperienceId!=null">projectExperienceId = #{projectExperience.projectExperienceId}</if>
+            <if test="projectExperience==null or projectExperience.projectExperienceId==null">projectExperienceId = -1</if>
+        </where>
     </update>
 
     <!--根据projectExperienceId删除对象-->
     <delete id="deleteByprojectExperienceId" parameterType="java.lang.Integer">
-
+        delete from projectexperience
+        <where>
+            <if test="projectExperienceId!=null">projectExperienceId = #{projectExperienceId}</if>
+            <if test="projectExperienceId==null">projectExperienceId = -1</if>
+        </where>
     </delete>
 </mapper>

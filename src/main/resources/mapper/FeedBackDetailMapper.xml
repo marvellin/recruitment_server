@@ -9,27 +9,41 @@
         <result column="address" property="address"></result>
         <result column="time" property="time"></result>
         <result column="tel" property="tel"></result>
-
-        <!--<association property="" column="" select=""></association>
-        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据feedBackDetailId获得对象-->
     <select id="getFeedBackDetailByfeedBackDetailId" parameterType="java.lang.Integer" resultMap="feedBackDetailMap">
-
+        select * from feedbackdetail
+        <where>
+            <if test="feedBackDetailId != null">feedBackDetailId = #{feedBackDetailId}</if>
+            <if test="feedBackDetailId == null">feedBackDetailId = -1</if>
+        </where>
     </select>
 
     <!--根据feedBackId获得对象-->
     <select id="getFeedBackDetailByfeedBackId" parameterType="java.lang.Integer" resultMap="feedBackDetailMap">
-
+        select * from feedbackdetail
+        <where>
+            <if test="feedBackId != null">feedBackId = #{feedBackId}</if>
+            <if test="feedBackId == null">feedBackId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertFeedBackDetail" parameterType="FeedBackDetail" useGeneratedKeys="true" keyProperty="feedBackDetailId" keyColumn="feedBackDetailId">
-
+        insert into feedbackdetail (feedBackId, address, time, tel)
+        values (#{feedBackDetail.feedBackId},
+        #{feedBackDetail.address},
+        #{feedBackDetail.time},
+        #{feedBackDetail.tel});
     </insert>
 
     <!--新增多个对象-->
-
+    <insert id="insertFeedBackDetailList" useGeneratedKeys="true" keyProperty="feedBackDetailId" keyColumn="feedBackDetailId">
+        insert into feedbackdetail (feedBackId, address, time, tel) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.feedBackId},#{item.address},#{item.time},#{item.tel})
+        </foreach>
+    </insert>
 
 </mapper>

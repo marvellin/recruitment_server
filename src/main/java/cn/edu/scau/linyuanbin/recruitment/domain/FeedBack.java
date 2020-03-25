@@ -8,6 +8,7 @@ public class FeedBack {
     private int deliveryId;
     private String feedbacktime;
     private String feedback;
+
     private FeedBackDetail feedBackDetail;
 
     public FeedBack(int feedBackId, int deliveryId, String feedbacktime, String feedback, FeedBackDetail feedBackDetail) {

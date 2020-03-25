@@ -9,7 +9,7 @@
         <result column="ossId" property="ossId"></result>
 <!--        <result column="" property=""></result>-->
 
-        <association property="ossFile" column="ossId" select=""></association>
+        <association property="ossFile" column="ossId" select="cn.edu.scau.linyuanbin.recruitment.mapper.OSSFileMapper.getOSSFileByossId"></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
@@ -51,10 +51,10 @@
         companyDetailId = #{companyImg.companyDetailId},
         ossId = #{companyImg.ossId}
         <where>
-            <if test="companyImg.companyImgId != null">
+            <if test="companyImg!=null and companyImg.companyImgId != null">
                 companyImgId = #{companyImg.companyImgId}
             </if>
-            <if test="companyImg.companyImgId == null">
+            <if test="companyImg==null or companyImg.companyImgId == null">
                 companyImgId = -1
             </if>
         </where>

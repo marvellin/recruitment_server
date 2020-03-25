@@ -19,45 +19,116 @@
         <result column="detail" property="detail"></result>
         <result column="address" property="address"></result>
         <result column="status" property="status"></result>
-
-<!--        <association property="" column="" select=""></association>-->
-<!--        <collection property="personList" column="" select=""></collection>-->
-<!--        <collection property="resumeList" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据positionId获得单个对象-->
     <select id="getPositionBypositionId" parameterType="java.lang.Integer" resultMap="positionMap">
-
+        select * from position
+        <where>
+            <if test="positionId != null">positionId = #{positionId}</if>
+            <if test="positionId == null">positionId = -1</if>
+        </where>
     </select>
 
     <!--根据companyId获得多个对象-->
     <select id="getPositionListBycompanyId" parameterType="java.lang.Integer" resultMap="positionMap">
-
+        select * from position
+        <where>
+            <if test="companyId != null">companyId = #{companyId}</if>
+            <if test="companyId == null">companyId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertPosition" parameterType="Position" useGeneratedKeys="true" keyProperty="positionId" keyColumn="positionId">
-
+        insert into position (companyId, post, name, type,
+        department, salaryMin, salaryMax, city,
+        experience, degree, advantage, detail, address, status)
+        values (#{position.companyId},
+        #{position.post},
+        #{position.name},
+        #{position.type},
+        #{position.department},
+        #{position.salarymin},
+        #{position.salarymax},
+        #{position.city},
+        #{position.experience},
+        #{position.degree},
+        #{position.advantage},
+        #{position.detail},
+        #{position.address},
+        #{position.status});
     </insert>
 
     <!--根据positionId删除对象-->
     <delete id="deleteBypositionId" parameterType="java.lang.Integer">
-
+        delete from position
+        <where>
+            <if test="positionId != null">positionId = #{positionId}</if>
+            <if test="positionId == null">positionId = -1</if>
+        </where>
     </delete>
 
     <!--更新对象-->
     <update id="updatePosition" parameterType="Position">
-
+        update position set
+        companyId = #{position.companyId},
+        post = #{position.post},
+        name = #{position.name},
+        type = #{position.type},
+        department = #{position.department},
+        salaryMin = #{position.salarymin},
+        salaryMax = #{position.salarymax},
+        city = #{position.city},
+        experience = #{position.experience},
+        degree = #{position.degree},
+        advantage = #{position.advantage},
+        detail = #{position.detail},
+        address = #{position.address},
+        status = #{position.status}
+        <where>
+            <if test="position!=null and position.positionId!=null">positionId = #{position.positionId}</if>
+            <if test="position==null or position.positionId==null">positionId = -1</if>
+        </where>
     </update>
 
     <!--根据companyId查找上线职位list-->
     <select id="getOnlinePositionListByCompanyId" parameterType="java.lang.Integer" resultMap="positionMap">
-
+        select * from position
+        <where>
+            status = '1'
+            <if test="companyId != null">and companyId = #{companyId}</if>
+            <if test="companyId == null">and companyId = -1</if>
+        </where>
     </select>
 
     <!--根据companyId查找下线职位list-->
     <select id="getOfflinePositionListByCompanyId" parameterType="java.lang.Integer" resultMap="positionMap">
-
+        select * from position
+        <where>
+            status = '0'
+            <if test="companyId != null">and companyId = #{companyId}</if>
+            <if test="companyId == null">and companyId = -1</if>
+        </where>
     </select>
 
+    <!--根据positionId上线职位-->
+    <update id="updatePositionStatusTo1BypositionId">
+        update position set
+        status = '1'
+        <where>
+            <if test="positionId != null">positionId = #{positionId}</if>
+            <if test="positionId == null">positionId = -1</if>
+        </where>
+    </update>
+
+    <!--根据positionId下线职位-->
+    <update id="updatePositionStatusTo0BypositionId">
+        update position set
+        status = '0'
+        <where>
+            <if test="positionId != null">positionId = #{positionId}</if>
+            <if test="positionId == null">positionId = -1</if>
+        </where>
+    </update>
 </mapper>

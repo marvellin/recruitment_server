@@ -7,26 +7,34 @@
         <id column="personId" property="personId"></id>
         <result column="userId" property="userId"></result>
 
-        <association property="user" column="userId" select=""></association>
-        <association property="resume" column="personId" select=""></association>
-        <association property="defaultResume" column="personId" select=""></association>
-        <association property="basicinfo" column="personId" select=""></association>
-        <collection property="attachMentResumeList" column="personId" select=""></collection>
-        <collection property="deliveryList" column="personId" select=""></collection>
+        <association property="user" column="userId" select="cn.edu.scau.linyuanbin.recruitment.mapper.UserMapper.getUserByuserId"></association>
+        <association property="resume" column="personId" select="cn.edu.scau.linyuanbin.recruitment.mapper.ResumeMapper.getResumeBypersonId"></association>
+        <association property="defaultResume" column="personId" select="cn.edu.scau.linyuanbin.recruitment.mapper.DefaultResumeMapper.getDefaultResumeBypersonId"></association>
+        <association property="basicinfo" column="personId" select="cn.edu.scau.linyuanbin.recruitment.mapper.PersonDetailMapper.getPersonDetailBypersonId"></association>
+        <collection property="attachMentResumeList" column="personId" select="cn.edu.scau.linyuanbin.recruitment.mapper.AttachmentResumeMapper.getAttachMentResumeListByPersonId"></collection>
+<!--        <collection property="deliveryList" column="personId" select="cn.edu.scau.linyuanbin.recruitment.mapper.DeliveryMapper.getDeliveryListBypersonId"></collection>-->
     </resultMap>
 
     <!--根据personId查找对象-->
     <select id="getPersonBypersonId" parameterType="java.lang.Integer" resultMap="personMap">
-
+        select * from person
+        <where>
+            <if test="personId != null">personId = #{personId}</if>
+            <if test="personId == null">personId = -1</if>
+        </where>
     </select>
 
     <!--根据userId查找对象-->
     <select id="getPersonByuserId" parameterType="java.lang.Integer" resultMap="personMap">
-
+        select * from person
+        <where>
+            <if test="userId != null">userId = #{userId}</if>
+            <if test="userId == null">userId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertPerson" parameterType="Person" useGeneratedKeys="true" keyProperty="personId" keyColumn="personId">
-
+        insert into person (userId) values (#{person.userId});
     </insert>
 </mapper>

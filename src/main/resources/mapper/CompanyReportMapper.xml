@@ -8,33 +8,68 @@
         <result column="companyId" property="companyId"></result>
         <result column="repotitle" property="repotitle"></result>
         <result column="repolink" property="repolink"></result>
-
-        <!--<association property="" column="" select=""></association>
-        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据companyReportId获取单个对象-->
     <select id="getCompanyReportBycompanyReportId" parameterType="java.lang.Integer" resultMap="companyReportMap">
-
+        select * from companyreport
+        <where>
+            <if test="companyReportId != null">
+                companyReportId = #{companyReportId}
+            </if>
+            <if test="companyReportId == null">
+                companyReportId = -1
+            </if>
+        </where>
     </select>
 
     <!--根据companyId获取多个对象-->
     <select id="getCompanyReportListBycompanyId" parameterType="java.lang.Integer" resultMap="companyReportMap">
-
+        select * from companyreport
+        <where>
+            <if test="companyId != null">
+                companyId = #{companyId}
+            </if>
+            <if test="companyId == null">
+                companyId = -1
+            </if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertCompanyReport" parameterType="CompanyReport" useGeneratedKeys="true" keyProperty="companyReportId" keyColumn="companyReportId">
-
+        insert into companyreport (companyId, repotitle, repolink)
+        values (#{companyReport.companyId},
+        #{companyReport.repotitle},
+        #{companyReport.repolink});
     </insert>
 
     <!--根据companyReportId删除对象-->
     <delete id="deleteBycompanyReportId" parameterType="java.lang.Integer">
-
+        delete from companyreport
+        <where>
+            <if test="companyReportId != null">
+                companyReportId = #{companyReportId}
+            </if>
+            <if test="companyReportId == null">
+                companyReportId = -1
+            </if>
+        </where>
     </delete>
 
     <!--更新对象-->
     <update id="updateCompanyReport" parameterType="CompanyReport">
-
+        update companyreport set
+        companyId = #{companyReport.companyId},
+        repotitle = #{companyReport.repotitle},
+        repolink = #{companyReport.repolink}
+        <where>
+            <if test="companyReport!=null and companyReport.companyReportId != null">
+                companyReportId = #{companyReport.companyReportId}
+            </if>
+            <if test="companyReport==null or companyReport.companyReportId == null">
+                companyReportId = -1
+            </if>
+        </where>
     </update>
 </mapper>

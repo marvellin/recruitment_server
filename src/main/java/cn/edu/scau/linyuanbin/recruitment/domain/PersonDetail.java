@@ -14,6 +14,7 @@ public class PersonDetail {
     private String degree;
     private String workyear;
     private String currentstate;
+
     private PersonImg personImg;
 
     public PersonDetail(int personDetailId, int personId, int resumeId, String username, String tel, String email, String gender, String degree, String workyear, String currentstate, PersonImg personImg) {

@@ -9,32 +9,60 @@
         <result column="intro" property="intro"></result>
 <!--        <result column="" property=""></result>-->
 
-        <association property="user" column="userId" select=""></association>
-        <association property="companyStage" column="companyId" select=""></association>
-        <association property="companyMember" column="companyId" select=""></association>
-        <association property="companyDetail" column="companyId" select=""></association>
-        <collection property="positionList" column="companyId" select=""></collection>
-        <collection property="reportList" column="companyId" select=""></collection>
-        <collection property="productList" column="companyId" select=""></collection>
+        <association property="user" column="userId" select="cn.edu.scau.linyuanbin.recruitment.mapper.UserMapper.getUserByuserId"></association>
+        <association property="companyStage" column="companyId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyStageMapper.getCompanyStageBycompanyId"></association>
+        <association property="companyMember" column="companyId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyMemberMapper.getCompanyMemberBycompanyId"></association>
+        <association property="companyDetail" column="companyId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyDetailMapper.getCompantDetailBycompanyId"></association>
+        <collection property="positionList" column="companyId" select="cn.edu.scau.linyuanbin.recruitment.mapper.PositionMapper.getPositionListBycompanyId"></collection>
+        <collection property="reportList" column="companyId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyReportMapper.getCompanyReportListBycompanyId"></collection>
+        <collection property="productList" column="companyId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyProductMapper.getCompanyProductListBycompanyId"></collection>
     </resultMap>
 
     <!--根据companyId获得单个对象-->
     <select id="getCompanyByCompanyId" parameterType="java.lang.Integer" resultMap="companyMap">
-
+        select * from company
+        <where>
+            <if test="companyId != null">
+                companyId = #{companyId}
+            </if>
+            <if test="companyId == null">
+                companyId = -1
+            </if>
+        </where>
     </select>
 
     <!--根据userId获得单个对象-->
     <select id="getCompanyByUserId" parameterType="java.lang.Integer" resultMap="companyMap">
-
+        select * from company
+        <where>
+            <if test="userId != null">
+                userId = #{userId}
+            </if>
+            <if test="userId == null">
+                userId = -1
+            </if>
+        </where>
     </select>
 
     <!--更新对象-->
     <update id="updateCompany" parameterType="Company">
-
+        update company set
+        userId = #{company.userId},
+        intro = #{company.intro}
+        <where>
+            <if test="company!=null and company.companyId != null">
+                companyId = #{company.companyId}
+            </if>
+            <if test="company==null or company.companyId == null">
+                companyId = -1
+            </if>
+        </where>
     </update>
 
     <!--新增对象-->
     <insert id="insertCompany" parameterType="Company" useGeneratedKeys="true" keyProperty="companyId" keyColumn="companyId">
-
+        insert into
+        company (userId, intro)
+        values (#{company.userId},#{company.intro})
     </insert>
 </mapper>

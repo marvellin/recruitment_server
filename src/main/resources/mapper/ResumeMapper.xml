@@ -9,30 +9,48 @@
         <result column="resumeName" property="resumename"></result>
         <result column="selfDescription" property="selfdescription"></result>
 
-        <association property="expectJob" column="resumeId" select=""></association>
-        <association property="basicinfo" column="personId" select=""></association>
-        <collection property="educationList" column="resumeId" select=""></collection>
-        <collection property="projectExperienceList" column="resumeId" select=""></collection>
-        <collection property="workExperienceList" column="resumeId" select=""></collection>
+        <association property="expectJob" column="resumeId" select="cn.edu.scau.linyuanbin.recruitment.mapper.ExpectJobMapper.getExpectJobByresumeId"></association>
+        <association property="basicinfo" column="personId" select="cn.edu.scau.linyuanbin.recruitment.mapper.PersonDetailMapper.getPersonDetailBypersonId"></association>
+        <collection property="educationList" column="resumeId" select="cn.edu.scau.linyuanbin.recruitment.mapper.EducationMapper.getEducationListByresumeId"></collection>
+        <collection property="projectExperienceList" column="resumeId" select="cn.edu.scau.linyuanbin.recruitment.mapper.ProjectExperienceMapper.getProjectExperienceListByresumeId"></collection>
+        <collection property="workExperienceList" column="resumeId" select="cn.edu.scau.linyuanbin.recruitment.mapper.WorkExperienceMapper.getWorkExperienceListByresumeId"></collection>
     </resultMap>
 
     <!--根据resumeId获得对象-->
     <select id="getResumeByresumeId" parameterType="java.lang.Integer" resultMap="resumeMap">
-
+        select * from resume
+        <where>
+            <if test="resumeId!=null">resumeId = #{resumeId}</if>
+            <if test="resumeId==null">resumeId = -1</if>
+        </where>
     </select>
 
     <!--根据personId获得对象-->
     <select id="getResumeBypersonId" parameterType="java.lang.Integer" resultMap="resumeMap">
-
+        select * from resume
+        <where>
+            <if test="personId!=null">personId = #{personId}</if>
+            <if test="personId==null">personId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertResume" parameterType="Resume" useGeneratedKeys="true" keyProperty="resumeId" keyColumn="resumeId">
-
+        insert into resume (personId, resumeName, selfDescription)
+        values (#{resume.personId},
+        #{resume.resumename},
+        #{resume.selfdescription});
     </insert>
 
     <!--更新对象-->
     <update id="updateResume" parameterType="Resume">
-
+        update resume set
+        personId = #{resume.personId},
+        resumeName = #{resume.resumename},
+        selfDescription = #{resume.selfdescription}
+        <where>
+            <if test="resume!=null and resume.resumeId!=null">resumeId = #{resume.resumeId}</if>
+            <if test="resume==null or resume.resumeId==null">resumeId = -1</if>
+        </where>
     </update>
 </mapper>

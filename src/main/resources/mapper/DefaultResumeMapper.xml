@@ -9,28 +9,46 @@
         <result column="resumeId" property="resumeId"></result>
         <result column="attachmentResumeId" property="attachmentResumeId"></result>
 
-        <association property="resume" column="resumeId" select=""></association>
-        <association property="attachMentResume" column="attachmentResumeId" select=""></association>
+        <association property="resume" column="resumeId" select="cn.edu.scau.linyuanbin.recruitment.mapper.ResumeMapper.getResumeByresumeId"></association>
+        <association property="attachMentResume" column="attachmentResumeId" select="cn.edu.scau.linyuanbin.recruitment.mapper.AttachmentResumeMapper.getAttachMentResumeByAttachmentResumeId"></association>
 <!--        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据defaultResumeId查找对象-->
     <select id="getDefaultResumeBydefaultResumeId" parameterType="java.lang.Integer" resultMap="defaultResumeMap">
-
+        select * from defaultresume
+        <where>
+            <if test="defaultResumeId != null">defaultResumeId = #{defaultResumeId}</if>
+            <if test="defaultResumeId == null">defaultResumeId = -1</if>
+        </where>
     </select>
 
     <!--根据personId查找对象-->
     <select id="getDefaultResumeBypersonId" parameterType="java.lang.Integer" resultMap="defaultResumeMap">
-
+        select * from defaultresume
+        <where>
+            <if test="personId != null">personId = #{personId}</if>
+            <if test="personId == null">personId = -1</if>
+        </where>
     </select>
 
     <!--更新对象-->
     <update id="updateDefaultResume" parameterType="DefaultResume">
-
+        update defaultresume set
+        personId = #{defaultResume.personId},
+        resumeId = #{defaultResume.resumeId},
+        attachmentResumeId = #{defaultResume.attachmentResumeId}
+        <where>
+            <if test="defaultResume!=null and defaultResume.defaultResumeId != null">defaultResumeId = #{defaultResume.defaultResumeId}</if>
+            <if test="defaultResume==null or defaultResume.defaultResumeId == null">defaultResumeId = -1</if>
+        </where>
     </update>
 
     <!--新增对象-->
     <insert id="insertDefaultResume" parameterType="DefaultResume" useGeneratedKeys="true" keyProperty="defaultResumeId" keyColumn="defaultResumeId">
-
+        insert into defaultresume (personId, resumeId, attachmentResumeId)
+        values (#{defaultResume.personId},
+        #{defaultResume.resumeId},
+        #{defaultResume.attachmentResumeId});
     </insert>
 </mapper>

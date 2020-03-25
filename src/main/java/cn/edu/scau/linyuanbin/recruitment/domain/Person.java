@@ -14,9 +14,9 @@ public class Person {
     private List<AttachMentResume> attachMentResumeList;
     private DefaultResume defaultResume;
     private PersonDetail basicinfo;
-    private List<Delivery> deliveryList;
+//    private List<Delivery> deliveryList;
 
-    public Person(int personId, int userId, User user, Resume resume, List<AttachMentResume> attachMentResumeList, DefaultResume defaultResume, PersonDetail basicinfo, List<Delivery> deliveryList) {
+    public Person(int personId, int userId, User user, Resume resume, List<AttachMentResume> attachMentResumeList, DefaultResume defaultResume, PersonDetail basicinfo) {
         this.personId = personId;
         this.userId = userId;
         this.user = user;
@@ -24,7 +24,7 @@ public class Person {
         this.attachMentResumeList = attachMentResumeList;
         this.defaultResume = defaultResume;
         this.basicinfo = basicinfo;
-        this.deliveryList = deliveryList;
+//        this.deliveryList = deliveryList;
     }
 
     public Person() {
@@ -70,13 +70,13 @@ public class Person {
         this.basicinfo = basicinfo;
     }
 
-    public List<Delivery> getDeliveryList() {
+    /*public List<Delivery> getDeliveryList() {
         return deliveryList;
     }
 
     public void setDeliveryList(List<Delivery> deliveryList) {
         this.deliveryList = deliveryList;
-    }
+    }*/
 
     public int getPersonId() {
         return personId;
@@ -104,7 +104,7 @@ public class Person {
                 ", attachMentResumeList=" + attachMentResumeList +
                 ", defaultResume=" + defaultResume +
                 ", basicinfo=" + basicinfo +
-                ", deliveryList=" + deliveryList +
+                /*", deliveryList=" + deliveryList +*/
                 '}';
     }
 }

@@ -7,10 +7,6 @@
         <id column="companyLabelId" property="companyLabelId"></id>
         <result column="companyDetailId" property="companyDetailId"></result>
         <result column="label" property="label"></result>
-        <!--<result column="" property=""></result>
-
-        <association property="" column="" select=""></association>
-        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据companyDetailId获取多个对象-->
@@ -55,14 +51,14 @@
     <!--保存一个对象-->
     <insert id="insertCompanyLabel" parameterType="CompanyLabel" useGeneratedKeys="true" keyProperty="companyLabelId" keyColumn="companyLabelId">
         insert into companylabel (companyDetailId, label)
-        values (#{companyLabel.companyLabelId},#{companyLabel.label});
+        values (#{companyLabel.companyDetailId},#{companyLabel.label});
     </insert>
 
     <!--保存多个对象-->
     <insert id="insertCompanyLabelList" useGeneratedKeys="true" keyProperty="companyLabelId" keyColumn="companyLabelId">
         insert into companylabel(companyDetailId,label) values
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.companyLabelId},#{item.label})
+            (#{item.companyDetailId},#{item.label})
         </foreach>
     </insert>
 </mapper>

@@ -56,4 +56,14 @@ public interface PositionMapper {
     * 根据companyId查找下线职位list
     * */
     public List<Position> getOfflinePositionListByCompanyId(@Param("companyId")Integer companyId);
+
+    /*
+    * 根据positionId上线职位
+    * */
+    public void updatePositionStatusTo1BypositionId(@Param("positionId")Integer positionId);
+
+    /*
+    *根据positionId下线职位
+    * */
+    public void updatePositionStatusTo0BypositionId(@Param("positionId")Integer positionId);
 }

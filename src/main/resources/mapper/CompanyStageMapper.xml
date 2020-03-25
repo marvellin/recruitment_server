@@ -8,28 +8,43 @@
         <result column="companyId" property="companyId"></result>
         <result column="currentStage" property="currentstage"></result>
         <result column="org" property="org"></result>
-
-        <!--<association property="" column="" select=""></association>
-        <collection property="" column="" select=""></collection>-->
     </resultMap>
 
     <!--根据companyStageId获取对象-->
     <select id="getCompanyStageBycompanyStageId" parameterType="java.lang.Integer" resultMap="companyStageMap">
-
+        select * from  companystage
+        <where>
+            <if test="companyStageId != null">companyStageId = #{companyStageId}</if>
+            <if test="companyStageId == null">companyStageId = -1</if>
+        </where>
     </select>
 
     <!--根据companyId获取对象-->
     <select id="getCompanyStageBycompanyId" parameterType="java.lang.Integer" resultMap="companyStageMap">
-
+        select * from  companystage
+        <where>
+            <if test="companyId != null">companyId = #{companyId}</if>
+            <if test="companyId == null">companyId = -1</if>
+        </where>
     </select>
 
     <!--新增对象-->
     <insert id="insertCompanyStage" parameterType="CompanyStage" useGeneratedKeys="true" keyProperty="companyStageId" keyColumn="companyStageId">
-
+        insert into companystage (companyId, currentStage, org)
+        values (#{companyStage.companyId},
+        #{companyStage.currentstage},
+        #{companyStage.org});
     </insert>
 
     <!--更新对象-->
     <update id="updateCompanyStage" parameterType="CompanyStage">
-
+        update companystage set
+        companyId = #{companyStage.companyId},
+        currentStage = #{companyStage.currentstage},
+        org = #{companyStage.org}
+        <where>
+            <if test="companyStage!=null and companyStage.companyStageId != null">companyStageId = #{companyStage.companyStageId}</if>
+            <if test="companyStage==null or companyStage.companyStageId == null">companyStageId = -1</if>
+        </where>
     </update>
 </mapper>

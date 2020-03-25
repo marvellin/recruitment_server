@@ -49,24 +49,24 @@ public interface DeliveryMapper {
     public void updateDelivary(@Param("delivery")Delivery delivery);
 
     /*
-    *个人用户根据deliveryId更新对象（实则是设置personId为-1，对自身不可见）
+    *个人用户根据deliveryId更新对象（实则是设置personId为0，对自身不可见）
     * */
     public void updatePersonIdBydeliveryId(@Param("deliveryId")Integer deliveryId);
 
     /*
-     *公司用户根据deliveryId更新对象（实则是设置positionId为-1，对自身不可见）
+     *公司用户根据deliveryId更新对象（实则是设置positionId为0，对自身不可见）
      * */
     public void updatePositionIdBydeliveryId(@Param("deliveryId")Integer deliveryId);
 
     /*
-     *公司用户根据deliveryIdList更新对象（实则是设置positionId为-1，对自身不可见）
+     *公司用户根据deliveryIdList更新对象（实则是设置positionId为0，对自身不可见）
      * */
-    public void updatePositionIdBydeliveryIdList(List<Integer> eliveryIdList);
+    public void updatePositionIdBydeliveryIdList(@Param("deliveryIdList") List<Integer> deliveryIdList);
 
     /*
      *根据positionIdList查找多个对象
      * */
-    public List<Delivery> getDeliveryBypositionIdList(List<Integer> positionIdList);
+    public List<Delivery> getDeliveryBypositionIdList(@Param("positionIdList") List<Integer> positionIdList);
 
     /*
      *根据deliveryId删除对象
