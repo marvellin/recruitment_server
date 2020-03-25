@@ -5,13 +5,13 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class OSSFile {
     private int ossId;
-    private int fileSize;
+    private long fileSize;
     private String fileUrl;
     private String suffix;
     private String bucket;
     private String filename;//文件原名
 
-    public OSSFile(int ossId, int fileSize, String fileUrl, String suffix, String bucket, String filename) {
+    public OSSFile(int ossId, long fileSize, String fileUrl, String suffix, String bucket, String filename) {
         this.ossId = ossId;
         this.fileSize = fileSize;
         this.fileUrl = fileUrl;
@@ -30,11 +30,11 @@ public class OSSFile {
         this.ossId = ossId;
     }
 
-    public int getFileSize() {
+    public long getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(int fileSize) {
+    public void setFileSize(long fileSize) {
         this.fileSize = fileSize;
     }
 

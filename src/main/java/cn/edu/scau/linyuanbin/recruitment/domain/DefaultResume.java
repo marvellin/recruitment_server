@@ -6,12 +6,12 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 public class DefaultResume {
     private int defaultResumeId;
     private int personId;
-    private int resumeId;
-    private int attachmentResumeId;
+    private Integer resumeId;
+    private Integer attachmentResumeId;
     private Resume resume;
     private AttachMentResume attachMentResume;
 
-    public DefaultResume(int defaultResumeId, int personId, int resumeId, int attachmentResumeId, Resume resume, AttachMentResume attachMentResume) {
+    public DefaultResume(int defaultResumeId, int personId, Integer resumeId, Integer attachmentResumeId, Resume resume, AttachMentResume attachMentResume) {
         this.defaultResumeId = defaultResumeId;
         this.personId = personId;
         this.resumeId = resumeId;
@@ -55,19 +55,19 @@ public class DefaultResume {
         this.personId = personId;
     }
 
-    public int getResumeId() {
+    public Integer getResumeId() {
         return resumeId;
     }
 
-    public void setResumeId(int resumeId) {
+    public void setResumeId(Integer resumeId) {
         this.resumeId = resumeId;
     }
 
-    public int getAttachmentResumeId() {
+    public Integer getAttachmentResumeId() {
         return attachmentResumeId;
     }
 
-    public void setAttachmentResumeId(int attachmentResumeId) {
+    public void setAttachmentResumeId(Integer attachmentResumeId) {
         this.attachmentResumeId = attachmentResumeId;
     }
 
