@@ -23,6 +23,23 @@ public class OSSUtil {
     OSSConfig ossConfig;
 
     /*
+    * 删除文件
+    * @Param String path(文件保存路径)
+    * */
+    public void delete(String path) {
+        String endpoint=ossConfig.getEndpoint();
+        String accessKeyId=ossConfig.getAccessKeyId();
+        String accessKeySecret=ossConfig.getAccessKeySecret();
+        String bucketName=ossConfig.getBucketName();
+        String fileHost=ossConfig.getFolder();
+
+        OSS client = new OSSClientBuilder().build(endpoint,accessKeyId,accessKeySecret);
+
+        // 根据BucketName,objectName删除文件
+        client.deleteObject(bucketName, path);
+    }
+
+    /*
     * 上传文件，上传成功返回文件流给response.outputstream,
     * @Return OSSFile ossFile(ossFile对象)
     * @param MultipartFile file(文件)
