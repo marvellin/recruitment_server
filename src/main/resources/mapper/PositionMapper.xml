@@ -18,6 +18,7 @@
         <result column="advantage" property="advantage"></result>
         <result column="detail" property="detail"></result>
         <result column="address" property="address"></result>
+        <result column="status" property="status"></result>
 
 <!--        <association property="" column="" select=""></association>-->
 <!--        <collection property="personList" column="" select=""></collection>-->
@@ -48,4 +49,15 @@
     <update id="updatePosition" parameterType="Position">
 
     </update>
+
+    <!--根据companyId查找上线职位list-->
+    <select id="getOnlinePositionListByCompanyId" parameterType="java.lang.Integer" resultMap="positionMap">
+
+    </select>
+
+    <!--根据companyId查找下线职位list-->
+    <select id="getOfflinePositionListByCompanyId" parameterType="java.lang.Integer" resultMap="positionMap">
+
+    </select>
+
 </mapper>

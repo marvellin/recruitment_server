@@ -21,10 +21,12 @@ public class Position {
     private String advantage;
     private String detail;
     private String address;
+    private String status;
 //    private List<Person> personList;
 //    private List<Resume> resumeList;
 
-    public Position(int positionId, int companyId, int salarymin, int salarymax, String department, String post, String name, String type, String city, String experience, String degree, String advantage, String detail, String address) {
+
+    public Position(int positionId, int companyId, int salarymin, int salarymax, String department, String post, String name, String type, String city, String experience, String degree, String advantage, String detail, String address, String status) {
         this.positionId = positionId;
         this.companyId = companyId;
         this.salarymin = salarymin;
@@ -39,6 +41,7 @@ public class Position {
         this.advantage = advantage;
         this.detail = detail;
         this.address = address;
+        this.status = status;
     }
 
     public Position() {
@@ -172,6 +175,14 @@ public class Position {
         this.address = address;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Position{" +
@@ -189,6 +200,7 @@ public class Position {
                 ", advantage='" + advantage + '\'' +
                 ", detail='" + detail + '\'' +
                 ", address='" + address + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

@@ -15,6 +15,8 @@ import java.util.List;
  * 3.新增对象
  * 4.根据positionId删除对象
  * 5.更新对象
+ * 6.根据companyId查找上线职位list
+ * 7.根据companyId查找下线职位list
  * @Date: Created in 23:35 2020/3/22
  */
 @Mapper
@@ -44,4 +46,14 @@ public interface PositionMapper {
      *更新对象
      * */
     public void updatePosition(@Param("position")Position position);
+
+    /*
+    * 根据companyId查找上线职位list
+    * */
+    public List<Position> getOnlinePositionListByCompanyId(@Param("companyId")Integer companyId);
+
+    /*
+    * 根据companyId查找下线职位list
+    * */
+    public List<Position> getOfflinePositionListByCompanyId(@Param("companyId")Integer companyId);
 }
