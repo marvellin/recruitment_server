@@ -21,6 +21,19 @@
         <result column="status" property="status"></result>
     </resultMap>
 
+    <!--根据职位名称模糊查询获得多个对象-->
+    <select id="getPositionListByFuzzyQuery" parameterType="java.lang.String" resultMap="positionMap">
+        select * from position
+        <where>
+            <if test="positionName!=null and positionName!=''">
+                name like "%"#{positionName}"%"
+            </if>
+            <if test="positionName==null or positionName==''">
+                positionId = -1
+            </if>
+        </where>
+    </select>
+
     <!--根据positionId获得单个对象-->
     <select id="getPositionBypositionId" parameterType="java.lang.Integer" resultMap="positionMap">
         select * from position

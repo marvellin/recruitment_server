@@ -17,10 +17,16 @@ import java.util.List;
  * 5.更新对象
  * 6.根据companyId查找上线职位list
  * 7.根据companyId查找下线职位list
+ * 8.根据职位名称模糊查询获得多个对象
  * @Date: Created in 23:35 2020/3/22
  */
 @Mapper
 public interface PositionMapper {
+    /*
+    * 根据职位名称模糊查询获得多个对象
+    * */
+    public List<Position> getPositionListByFuzzyQuery(@Param("positionName")String positionName);
+
     /*
     * 根据positionId获得单个对象
     * */

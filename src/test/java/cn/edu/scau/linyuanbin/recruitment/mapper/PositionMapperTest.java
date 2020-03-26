@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -66,5 +68,13 @@ class PositionMapperTest {
     @Test
     void updatePositionStatusTo0BypositionId() {
         mapper.updatePositionStatusTo0BypositionId(7);
+    }
+
+    @Test
+    void getPositionListByFuzzyQuery() {
+        List<Position> list = mapper.getPositionListByFuzzyQuery("test");
+        for (Position tmp:list){
+            System.out.println(tmp.toString());
+        }
     }
 }
