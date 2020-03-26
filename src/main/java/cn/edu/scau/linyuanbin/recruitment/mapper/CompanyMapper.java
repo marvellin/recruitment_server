@@ -4,6 +4,8 @@ import cn.edu.scau.linyuanbin.recruitment.domain.Company;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @Author: linyuanbin
  * @Description:
@@ -12,10 +14,16 @@ import org.apache.ibatis.annotations.Param;
  *  2.根据userId获得单个对象
  *  3.更新对象
  *  4.新增对象
+ *  5.根据companyIdList查找公司list
  * @Date: Created in 23:26 2020/3/22
  */
 @Mapper
 public interface CompanyMapper {
+    /*
+    * 根据companyIdList查找公司list
+    * */
+    public List<Company> getCompanyListBycompanyIdList(@Param("companyIdList")List<Integer> companyIdList);
+
     /*
     *根据companyId获得单个对象
     * */

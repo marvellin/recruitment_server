@@ -4,6 +4,8 @@ import cn.edu.scau.linyuanbin.recruitment.domain.CompanyDetail;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @Author: linyuanbin
  * @Description:
@@ -12,10 +14,16 @@ import org.apache.ibatis.annotations.Param;
  *  2.根据companyId获取单个对象
  *  3.保存一个对象
  *  4.更新一个对象
+ *  5.根据关键字模糊查询公司名匹配的公司idList
  * @Date: Created in 23:34 2020/3/22
  */
 @Mapper
 public interface CompanyDetailMapper {
+
+    /*
+    *根据关键字模糊查询公司名匹配的公司idList
+    * */
+    public List<Integer> getCompanyIdByFuzzyQuery(@Param("companyName")String companyName);
 
     /*
     * 根据companyDetailId获取单个对象

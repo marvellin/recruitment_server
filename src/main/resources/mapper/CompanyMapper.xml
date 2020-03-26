@@ -18,6 +18,22 @@
         <collection property="productList" column="companyId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyProductMapper.getCompanyProductListBycompanyId"></collection>
     </resultMap>
 
+    <!--根据companyIdList查找公司list-->
+    <select id="getCompanyListBycompanyIdList" resultMap="companyMap">
+        select * from company
+        <where>
+            <if test="companyIdList!=null and companyIdList.size>0">
+                companyId in
+                <foreach collection="companyIdList" item="item" index="index" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="companyIdList==null or companyIdList.size=0">
+                companyId = -1
+            </if>
+        </where>
+    </select>
+
     <!--根据companyId获得单个对象-->
     <select id="getCompanyByCompanyId" parameterType="java.lang.Integer" resultMap="companyMap">
         select * from company

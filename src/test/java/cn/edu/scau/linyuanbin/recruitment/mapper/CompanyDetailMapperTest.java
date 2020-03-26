@@ -47,4 +47,9 @@ class CompanyDetailMapperTest {
         tmp.setShortname("简称更新测试");*/
         mapper.updateCompanyDetail(tmp);
     }
+
+    @Test
+    void getCompanyIdByFuzzyQuery() {
+        System.out.println(mapper.getCompanyIdByFuzzyQuery("6厂"));
+    }
 }

@@ -17,6 +17,21 @@
         <association property="companyImg" column="companyDetailId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyImgMapper.getCompanyImgByCompanyDetailId"></association>
         <collection property="labelList" column="companyDetailId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyLabelMapper.getLabelListByCompanyDetailId"></collection>
     </resultMap>
+    
+    <!--根据关键字模糊查询公司名匹配的公司idList-->
+    <select id="getCompanyIdByFuzzyQuery" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select companyId from companydetail
+        <where>
+            <if test="companyName!=null and companyName!=''">
+                fullName like "%"#{companyName}"%"
+                or
+                shortName like "%"#{companyName}"%"
+            </if>
+            <if test="companyName==null or companyName==''">
+                companyDetailId = -1
+            </if>
+        </where>
+    </select>
 
     <!--根据companyDetailId获取单个对象-->
     <select id="getCompantDetailByCompanyDetailId" parameterType="java.lang.Integer" resultMap="companyDetailMap">

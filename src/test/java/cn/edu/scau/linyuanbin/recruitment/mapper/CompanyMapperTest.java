@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -19,6 +21,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class CompanyMapperTest {
     @Autowired
     CompanyMapper mapper;
+
+    @Autowired
+    CompanyDetailMapper mapper2;
 
     @Test
     void getCompanyByCompanyId() {
@@ -44,5 +49,13 @@ class CompanyMapperTest {
         tmp.setUserId(24);
         tmp.setIntro("test520");
         mapper.insertCompany(tmp);
+    }
+
+    @Test
+    void getCompanyListBycompanyIdList() {
+        List<Company> list = mapper.getCompanyListBycompanyIdList(mapper2.getCompanyIdByFuzzyQuery("厂"));
+        for (Company tmp:list){
+            System.out.println(tmp.toString());
+        }
     }
 }

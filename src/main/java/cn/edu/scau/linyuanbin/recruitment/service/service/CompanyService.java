@@ -2,12 +2,19 @@ package cn.edu.scau.linyuanbin.recruitment.service.service;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.Company;
 
+import java.util.List;
+
 /**
  * @Author: linyuanbin
  * @Description:
  * @Date: Created in 19:16 2020/3/25
  */
 public interface CompanyService {
+    /*
+     * 根据companyIdList查找公司list
+     * */
+    public List<Company> getCompanyListBycompanyIdList(List<Integer> companyIdList);
+
     /*
      *根据companyId获得单个对象
      * */

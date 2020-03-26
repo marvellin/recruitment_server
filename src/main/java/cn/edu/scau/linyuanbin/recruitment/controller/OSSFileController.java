@@ -23,7 +23,8 @@ public class OSSFileController {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public OSSFile upload(@RequestParam("file")MultipartFile file, HttpServletResponse response) throws IOException {
+    public OSSFile upload(@RequestParam("file")MultipartFile file,@RequestParam("id")int id, HttpServletResponse response) throws IOException {
+        System.out.println(id);
         return ossFileService.upload(file, response.getOutputStream());
     }
 }
