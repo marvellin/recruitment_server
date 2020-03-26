@@ -21,10 +21,17 @@ public class OSSFileController {
     @Autowired
     OSSFileService ossFileService;
 
+    /*upload测试*/
     @RequestMapping("/upload")
-    @ResponseBody
     public OSSFile upload(@RequestParam("file")MultipartFile file,@RequestParam("id")int id, HttpServletResponse response) throws IOException {
         System.out.println(id);
         return ossFileService.upload(file, response.getOutputStream());
+    }
+
+    /*download测试*/
+    @RequestMapping("/download")
+    public void download(HttpServletResponse response) throws IOException {
+        String path = ossFileService.getOSSFileByossId(13).getFileUrl();
+        ossFileService.down(path,response.getOutputStream());
     }
 }

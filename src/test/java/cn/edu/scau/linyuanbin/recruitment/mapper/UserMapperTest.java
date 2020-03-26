@@ -40,6 +40,7 @@ class UserMapperTest {
 
     @Test
     void getUserByemail() {
+        System.out.println(mapper.getUserByemail(null));
         System.out.println(mapper.getUserByemail("1021478620@qq.com"));
     }
 }

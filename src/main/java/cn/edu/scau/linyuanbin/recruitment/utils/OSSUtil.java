@@ -22,6 +22,11 @@ public class OSSUtil {
     @Autowired
     OSSConfig ossConfig;
 
+    public String getFilePath(int userId, String desc,String fileName){
+        String dateTime = MyUtil.getFormatTime();
+        return ossConfig.getFolder()  + "/" +  userId + "/" + desc + "-" + dateTime + "-" + fileName;
+    }
+
     /*
     * 删除文件
     * @Param String path(文件保存路径)
@@ -93,6 +98,7 @@ public class OSSUtil {
     * @Param OutputStream outputStream(文件输出流)
     * */
     public void download(String path, OutputStream outputStream) throws IOException {
+//        System.out.println("enter download util");
         if(path == null || path .equals("")){
             return;
         }
@@ -106,6 +112,12 @@ public class OSSUtil {
 
         //下载文件得到oss对象
         OSSObject ossObject = client.getObject(bucketName,path);
+
+        /*System.out.println(ossObject);
+
+        ossObject = client.getObject(bucketName,path);
+
+        System.out.println(ossObject.getKey());*/
 
         BufferedInputStream inputStream = new BufferedInputStream(ossObject.getObjectContent());
         BufferedOutputStream os = new BufferedOutputStream(outputStream);
@@ -121,5 +133,6 @@ public class OSSUtil {
         if (inputStream != null){
             inputStream.close();
         }
+//        System.out.println("exit download uit");
     }
 }
