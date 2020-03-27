@@ -6,8 +6,8 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 import java.util.List;
 
 public class Resume {
-    private int resumeId;
-    private int personId;
+    private Integer resumeId;
+    private Integer personId;
 
     private String resumename;
     private String selfdescription;
@@ -18,7 +18,7 @@ public class Resume {
     private ExpectJob expectJob;
     private PersonDetail basicinfo;
 
-    public Resume(int resumeId, int personId, String resumename, String selfdescription, List<Education> educationList, List<ProjectExperience> projectExperienceList, List<WorkExperience> workExperienceList, ExpectJob expectJob, PersonDetail basicinfo) {
+    public Resume(Integer resumeId, Integer personId, String resumename, String selfdescription, List<Education> educationList, List<ProjectExperience> projectExperienceList, List<WorkExperience> workExperienceList, ExpectJob expectJob, PersonDetail basicinfo) {
         this.resumeId = resumeId;
         this.personId = personId;
         this.resumename = resumename;
@@ -73,19 +73,19 @@ public class Resume {
         this.basicinfo = basicinfo;
     }
 
-    public int getResumeId() {
+    public Integer getResumeId() {
         return resumeId;
     }
 
-    public void setResumeId(int resumeId) {
+    public void setResumeId(Integer resumeId) {
         this.resumeId = resumeId;
     }
 
-    public int getPersonId() {
+    public Integer getPersonId() {
         return personId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(Integer personId) {
         this.personId = personId;
     }
 

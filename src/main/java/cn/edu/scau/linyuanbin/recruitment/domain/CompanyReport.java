@@ -4,12 +4,12 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class CompanyReport {
-    private int companyReportId;
-    private int companyId;
+    private Integer companyReportId;
+    private Integer companyId;
     private String repotitle;
     private String repolink;
 
-    public CompanyReport(int companyReportId, int companyId, String repotitle, String repolink) {
+    public CompanyReport(Integer companyReportId, Integer companyId, String repotitle, String repolink) {
         this.companyReportId = companyReportId;
         this.companyId = companyId;
         this.repotitle = repotitle;
@@ -19,19 +19,19 @@ public class CompanyReport {
     public CompanyReport() {
     }
 
-    public int getCompanyReportId() {
+    public Integer getCompanyReportId() {
         return companyReportId;
     }
 
-    public void setCompanyReportId(int companyReportId) {
+    public void setCompanyReportId(Integer companyReportId) {
         this.companyReportId = companyReportId;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 

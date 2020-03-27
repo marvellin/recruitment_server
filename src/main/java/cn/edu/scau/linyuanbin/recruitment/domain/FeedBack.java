@@ -4,14 +4,14 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class FeedBack {
-    private int feedBackId;
-    private int deliveryId;
+    private Integer feedBackId;
+    private Integer deliveryId;
     private String feedbacktime;
     private String feedback;
 
     private FeedBackDetail feedBackDetail;
 
-    public FeedBack(int feedBackId, int deliveryId, String feedbacktime, String feedback, FeedBackDetail feedBackDetail) {
+    public FeedBack(Integer feedBackId, Integer deliveryId, String feedbacktime, String feedback, FeedBackDetail feedBackDetail) {
         this.feedBackId = feedBackId;
         this.deliveryId = deliveryId;
         this.feedbacktime = feedbacktime;
@@ -38,19 +38,19 @@ public class FeedBack {
         this.feedBackDetail = feedBackDetail;
     }
 
-    public int getFeedBackId() {
+    public Integer getFeedBackId() {
         return feedBackId;
     }
 
-    public void setFeedBackId(int feedBackId) {
+    public void setFeedBackId(Integer feedBackId) {
         this.feedBackId = feedBackId;
     }
 
-    public int getDeliveryId() {
+    public Integer getDeliveryId() {
         return deliveryId;
     }
 
-    public void setDeliveryId(int deliveryId) {
+    public void setDeliveryId(Integer deliveryId) {
         this.deliveryId = deliveryId;
     }
 

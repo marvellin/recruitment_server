@@ -4,13 +4,13 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class MemberImg {
-    private int memberImgId;
-    private int companyMemberId;
-    private int ossId;
+    private Integer memberImgId;
+    private Integer companyMemberId;
+    private Integer ossId;
 
     OSSFile ossFile;
 
-    public MemberImg(int memberImgId, int companyMemberId, int ossId, OSSFile ossFile) {
+    public MemberImg(Integer memberImgId, Integer companyMemberId, Integer ossId, OSSFile ossFile) {
         this.memberImgId = memberImgId;
         this.companyMemberId = companyMemberId;
         this.ossId = ossId;
@@ -28,27 +28,27 @@ public class MemberImg {
         this.ossFile = ossFile;
     }
 
-    public int getMemberImgId() {
+    public Integer getMemberImgId() {
         return memberImgId;
     }
 
-    public void setMemberImgId(int memberImgId) {
+    public void setMemberImgId(Integer memberImgId) {
         this.memberImgId = memberImgId;
     }
 
-    public int getCompanyMemberId() {
+    public Integer getCompanyMemberId() {
         return companyMemberId;
     }
 
-    public void setCompanyMemberId(int companyMemberId) {
+    public void setCompanyMemberId(Integer companyMemberId) {
         this.companyMemberId = companyMemberId;
     }
 
-    public int getOssId() {
+    public Integer getOssId() {
         return ossId;
     }
 
-    public void setOssId(int ossId) {
+    public void setOssId(Integer ossId) {
         this.ossId = ossId;
     }
 

@@ -6,8 +6,8 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 import java.util.List;
 
 public class Person {
-    private int personId;
-    private int userId;
+    private Integer personId;
+    private Integer userId;
 
     private User user;
     private Resume resume;
@@ -16,7 +16,7 @@ public class Person {
     private PersonDetail basicinfo;
 //    private List<Delivery> deliveryList;
 
-    public Person(int personId, int userId, User user, Resume resume, List<AttachMentResume> attachMentResumeList, DefaultResume defaultResume, PersonDetail basicinfo) {
+    public Person(Integer personId, Integer userId, User user, Resume resume, List<AttachMentResume> attachMentResumeList, DefaultResume defaultResume, PersonDetail basicinfo) {
         this.personId = personId;
         this.userId = userId;
         this.user = user;
@@ -78,19 +78,19 @@ public class Person {
         this.deliveryList = deliveryList;
     }*/
 
-    public int getPersonId() {
+    public Integer getPersonId() {
         return personId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(Integer personId) {
         this.personId = personId;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

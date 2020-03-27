@@ -4,12 +4,13 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class ProductImg {
-    private int productImgId;
-    private int companyProductId;
-    private int ossId;
+    private Integer productImgId;
+    private Integer companyProductId;
+    private Integer ossId;
+
     private OSSFile ossFile;
 
-    public ProductImg(int productImgId, int companyProductId, int ossId, OSSFile ossFile) {
+    public ProductImg(Integer productImgId, Integer companyProductId, Integer ossId, OSSFile ossFile) {
         this.productImgId = productImgId;
         this.companyProductId = companyProductId;
         this.ossId = ossId;
@@ -27,27 +28,27 @@ public class ProductImg {
         this.ossFile = ossFile;
     }
 
-    public int getProductImgId() {
+    public Integer getProductImgId() {
         return productImgId;
     }
 
-    public void setProductImgId(int productImgId) {
+    public void setProductImgId(Integer productImgId) {
         this.productImgId = productImgId;
     }
 
-    public int getCompanyProductId() {
+    public Integer getCompanyProductId() {
         return companyProductId;
     }
 
-    public void setCompanyProductId(int companyProductId) {
+    public void setCompanyProductId(Integer companyProductId) {
         this.companyProductId = companyProductId;
     }
 
-    public int getOssId() {
+    public Integer getOssId() {
         return ossId;
     }
 
-    public void setOssId(int ossId) {
+    public void setOssId(Integer ossId) {
         this.ossId = ossId;
     }
 

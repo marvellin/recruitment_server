@@ -4,14 +4,14 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class OSSFile {
-    private int ossId;
-    private long fileSize;
+    private Integer ossId;
+    private Long fileSize;
     private String fileUrl;
     private String suffix;
     private String bucket;
     private String filename;//文件原名
 
-    public OSSFile(int ossId, long fileSize, String fileUrl, String suffix, String bucket, String filename) {
+    public OSSFile(Integer ossId, Long fileSize, String fileUrl, String suffix, String bucket, String filename) {
         this.ossId = ossId;
         this.fileSize = fileSize;
         this.fileUrl = fileUrl;
@@ -22,19 +22,19 @@ public class OSSFile {
 
     public OSSFile() {}
 
-    public int getOssId() {
+    public Integer getOssId() {
         return ossId;
     }
 
-    public void setOssId(int ossId) {
+    public void setOssId(Integer ossId) {
         this.ossId = ossId;
     }
 
-    public long getFileSize() {
+    public Long getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(long fileSize) {
+    public void setFileSize(Long fileSize) {
         this.fileSize = fileSize;
     }
 

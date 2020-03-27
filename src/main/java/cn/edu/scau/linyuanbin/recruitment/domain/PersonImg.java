@@ -4,12 +4,12 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class PersonImg {
-    private int personImgId;
-    private int personDetailId;
-    private int ossId;
+    private Integer personImgId;
+    private Integer personDetailId;
+    private Integer ossId;
     private OSSFile ossFile;
 
-    public PersonImg(int personImgId, int personDetailId, int ossId, OSSFile ossFile) {
+    public PersonImg(Integer personImgId, Integer personDetailId, Integer ossId, OSSFile ossFile) {
         this.personImgId = personImgId;
         this.personDetailId = personDetailId;
         this.ossId = ossId;
@@ -27,27 +27,27 @@ public class PersonImg {
         this.ossFile = ossFile;
     }
 
-    public int getPersonImgId() {
+    public Integer getPersonImgId() {
         return personImgId;
     }
 
-    public void setPersonImgId(int personImgId) {
+    public void setPersonImgId(Integer personImgId) {
         this.personImgId = personImgId;
     }
 
-    public int getPersonDetailId() {
+    public Integer getPersonDetailId() {
         return personDetailId;
     }
 
-    public void setPersonDetailId(int personDetailId) {
+    public void setPersonDetailId(Integer personDetailId) {
         this.personDetailId = personDetailId;
     }
 
-    public int getOssId() {
+    public Integer getOssId() {
         return ossId;
     }
 
-    public void setOssId(int ossId) {
+    public void setOssId(Integer ossId) {
         this.ossId = ossId;
     }
 

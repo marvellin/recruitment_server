@@ -4,12 +4,12 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class CompanyStage {
-    private int companyStageId;
-    private int companyId;
+    private Integer companyStageId;
+    private Integer companyId;
     private String currentstage;
     private String org;
 
-    public CompanyStage(int companyStageId, int companyId, String currentstage, String org) {
+    public CompanyStage(Integer companyStageId, Integer companyId, String currentstage, String org) {
         this.companyStageId = companyStageId;
         this.companyId = companyId;
         this.currentstage = currentstage;
@@ -19,19 +19,19 @@ public class CompanyStage {
     public CompanyStage() {
     }
 
-    public int getCompanyStageId() {
+    public Integer getCompanyStageId() {
         return companyStageId;
     }
 
-    public void setCompanyStageId(int companyStageId) {
+    public void setCompanyStageId(Integer companyStageId) {
         this.companyStageId = companyStageId;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 

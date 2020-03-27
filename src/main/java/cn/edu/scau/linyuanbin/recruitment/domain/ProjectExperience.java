@@ -4,8 +4,8 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class ProjectExperience {
-    private int projectExperienceId;
-    private int resumeId;
+    private Integer projectExperienceId;
+    private Integer resumeId;
 
     private String proname;
     private String post;
@@ -13,7 +13,7 @@ public class ProjectExperience {
     private String endym;
     private String intro;
 
-    public ProjectExperience(int projectExperienceId, int resumeId, String proname, String post, String startym, String endym, String intro) {
+    public ProjectExperience(Integer projectExperienceId, Integer resumeId, String proname, String post, String startym, String endym, String intro) {
         this.projectExperienceId = projectExperienceId;
         this.resumeId = resumeId;
         this.proname = proname;
@@ -26,19 +26,19 @@ public class ProjectExperience {
     public ProjectExperience() {
     }
 
-    public int getProjectExperienceId() {
+    public Integer getProjectExperienceId() {
         return projectExperienceId;
     }
 
-    public void setProjectExperienceId(int projectExperienceId) {
+    public void setProjectExperienceId(Integer projectExperienceId) {
         this.projectExperienceId = projectExperienceId;
     }
 
-    public int getResumeId() {
+    public Integer getResumeId() {
         return resumeId;
     }
 
-    public void setResumeId(int resumeId) {
+    public void setResumeId(Integer resumeId) {
         this.resumeId = resumeId;
     }
 

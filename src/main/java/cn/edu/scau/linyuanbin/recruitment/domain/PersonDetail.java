@@ -4,9 +4,9 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class PersonDetail {
-    private int personDetailId;
-    private int personId;
-    private int resumeId;
+    private Integer personDetailId;
+    private Integer personId;
+    private Integer resumeId;
     private String username;
     private String tel;
     private String email;
@@ -17,7 +17,7 @@ public class PersonDetail {
 
     private PersonImg personImg;
 
-    public PersonDetail(int personDetailId, int personId, int resumeId, String username, String tel, String email, String gender, String degree, String workyear, String currentstate, PersonImg personImg) {
+    public PersonDetail(Integer personDetailId, Integer personId, Integer resumeId, String username, String tel, String email, String gender, String degree, String workyear, String currentstate, PersonImg personImg) {
         this.personDetailId = personDetailId;
         this.personId = personId;
         this.resumeId = resumeId;
@@ -50,27 +50,27 @@ public class PersonDetail {
         this.personImg = personImg;
     }
 
-    public int getPersonDetailId() {
+    public Integer getPersonDetailId() {
         return personDetailId;
     }
 
-    public void setPersonDetailId(int personDetailId) {
+    public void setPersonDetailId(Integer personDetailId) {
         this.personDetailId = personDetailId;
     }
 
-    public int getPersonId() {
+    public Integer getPersonId() {
         return personId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(Integer personId) {
         this.personId = personId;
     }
 
-    public int getResumeId() {
+    public Integer getResumeId() {
         return resumeId;
     }
 
-    public void setResumeId(int resumeId) {
+    public void setResumeId(Integer resumeId) {
         this.resumeId = resumeId;
     }
 

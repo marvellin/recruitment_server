@@ -6,8 +6,8 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 import java.util.List;
 
 public class Company {
-    private int companyId;
-    private int userId;
+    private Integer companyId;
+    private Integer userId;
     private String intro;//公司介绍
 
     private User user;
@@ -90,19 +90,19 @@ public class Company {
         this.companyDetail = companyDetail;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -114,7 +114,7 @@ public class Company {
         this.intro = intro;
     }
 
-    public Company(int companyId, int userId, String intro, User user, List<Position> positionList, List<CompanyReport> reportList, List<CompanyProduct> productList, CompanyStage companyStage, CompanyMember companyMember, CompanyDetail companyDetail) {
+    public Company(Integer companyId, Integer userId, String intro, User user, List<Position> positionList, List<CompanyReport> reportList, List<CompanyProduct> productList, CompanyStage companyStage, CompanyMember companyMember, CompanyDetail companyDetail) {
         this.companyId = companyId;
         this.userId = userId;
         this.intro = intro;

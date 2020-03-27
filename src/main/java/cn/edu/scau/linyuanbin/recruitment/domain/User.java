@@ -7,12 +7,12 @@ public class User {
     public static final String Person = "person";
     public static final String Company = "company";
 
-    private int userId;
+    private Integer userId;
     private String email;
     private String password;
     private String role;
 
-    public User(int userId, String email, String password, String role) {
+    public User(Integer userId, String email, String password, String role) {
         this.userId = userId;
         this.email = email;
         this.password = password;
@@ -22,11 +22,11 @@ public class User {
     public User() {
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

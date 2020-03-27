@@ -4,14 +4,14 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class AttachMentResume {
-    private int attachMentResumeId;
-    private int personId;
-    private int ossId;
+    private Integer attachMentResumeId;
+    private Integer personId;
+    private Integer ossId;
     private String name;//文件原名
 
     private OSSFile ossFile;
 
-    public AttachMentResume(int attachMentResumeId, int personId, int ossId, String name, OSSFile ossFile) {
+    public AttachMentResume(Integer attachMentResumeId, Integer personId, Integer ossId, String name, OSSFile ossFile) {
         this.attachMentResumeId = attachMentResumeId;
         this.personId = personId;
         this.ossId = ossId;
@@ -22,11 +22,11 @@ public class AttachMentResume {
     public AttachMentResume() {
     }
 
-    public int getAttachMentResumeId() {
+    public Integer getAttachMentResumeId() {
         return attachMentResumeId;
     }
 
-    public void setAttachMentResumeId(int attachMentResumeId) {
+    public void setAttachMentResumeId(Integer attachMentResumeId) {
         this.attachMentResumeId = attachMentResumeId;
     }
 
@@ -38,27 +38,19 @@ public class AttachMentResume {
         this.ossFile = ossFile;
     }
 
-    /*public int getAttachMentId() {
-        return attachMentResumeId;
-    }
-
-    public void setAttachMentId(int attachMentId) {
-        this.attachMentResumeId = attachMentId;
-    }*/
-
-    public int getPersonId() {
+    public Integer getPersonId() {
         return personId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(Integer personId) {
         this.personId = personId;
     }
 
-    public int getOssId() {
+    public Integer getOssId() {
         return ossId;
     }
 
-    public void setOssId(int ossId) {
+    public void setOssId(Integer ossId) {
         this.ossId = ossId;
     }
 

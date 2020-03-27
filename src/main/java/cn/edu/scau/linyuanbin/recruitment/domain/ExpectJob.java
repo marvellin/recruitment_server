@@ -4,14 +4,14 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class ExpectJob {
-    private int expectJobId;
-    private int resumeId;
+    private Integer expectJobId;
+    private Integer resumeId;
     private String city;
     private String type;
     private String post;
     private String salary;
 
-    public ExpectJob(int expectJobId, int resumeId, String city, String type, String post, String salary) {
+    public ExpectJob(Integer expectJobId, Integer resumeId, String city, String type, String post, String salary) {
         this.expectJobId = expectJobId;
         this.resumeId = resumeId;
         this.city = city;
@@ -23,19 +23,19 @@ public class ExpectJob {
     public ExpectJob() {
     }
 
-    public int getExpectJobId() {
+    public Integer getExpectJobId() {
         return expectJobId;
     }
 
-    public void setExpectJobId(int expectJobId) {
+    public void setExpectJobId(Integer expectJobId) {
         this.expectJobId = expectJobId;
     }
 
-    public int getResumeId() {
+    public Integer getResumeId() {
         return resumeId;
     }
 
-    public void setResumeId(int resumeId) {
+    public void setResumeId(Integer resumeId) {
         this.resumeId = resumeId;
     }
 

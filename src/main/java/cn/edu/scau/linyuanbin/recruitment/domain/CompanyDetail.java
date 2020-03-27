@@ -6,8 +6,8 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 import java.util.List;
 
 public class CompanyDetail {
-    private int companyDetailId;
-    private int companyId;
+    private Integer companyDetailId;
+    private Integer companyId;
     private String fullname;
     private String shortname;
     private String feature;
@@ -67,19 +67,19 @@ public class CompanyDetail {
         this.labelList = labelList;
     }
 
-    public int getCompanyDetailId() {
+    public Integer getCompanyDetailId() {
         return companyDetailId;
     }
 
-    public void setCompanyDetailId(int companyDetailId) {
+    public void setCompanyDetailId(Integer companyDetailId) {
         this.companyDetailId = companyDetailId;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 
@@ -139,7 +139,7 @@ public class CompanyDetail {
         this.comurl = comurl;
     }
 
-    public CompanyDetail(int companyDetailId, int companyId, String fullname, String shortname, String feature, String city, String field, String scale, String comurl, CompanyImg companyImg, List<CompanyLabel> labelList) {
+    public CompanyDetail(Integer companyDetailId, Integer companyId, String fullname, String shortname, String feature, String city, String field, String scale, String comurl, CompanyImg companyImg, List<CompanyLabel> labelList) {
         this.companyDetailId = companyDetailId;
         this.companyId = companyId;
         this.fullname = fullname;

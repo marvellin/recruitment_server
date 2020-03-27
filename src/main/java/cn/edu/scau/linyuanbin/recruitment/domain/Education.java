@@ -4,8 +4,8 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class Education {
-    private int educationId;
-    private int resumeId;
+    private Integer educationId;
+    private Integer resumeId;
     private String school;
     private String degree;
     private String profession;
@@ -13,7 +13,7 @@ public class Education {
     private String endyear;
     private String rank;
 
-    public Education(int educationId, int resumeId, String schoole, String degree, String profession, String startyear, String endyear, String rank) {
+    public Education(Integer educationId, Integer resumeId, String schoole, String degree, String profession, String startyear, String endyear, String rank) {
         this.educationId = educationId;
         this.resumeId = resumeId;
         this.school = schoole;
@@ -27,19 +27,19 @@ public class Education {
     public Education() {
     }
 
-    public int getEducationId() {
+    public Integer getEducationId() {
         return educationId;
     }
 
-    public void setEducationId(int educationId) {
+    public void setEducationId(Integer educationId) {
         this.educationId = educationId;
     }
 
-    public int getResumeId() {
+    public Integer getResumeId() {
         return resumeId;
     }
 
-    public void setResumeId(int resumeId) {
+    public void setResumeId(Integer resumeId) {
         this.resumeId = resumeId;
     }
 

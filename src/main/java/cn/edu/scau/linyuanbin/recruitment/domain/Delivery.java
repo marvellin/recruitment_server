@@ -4,18 +4,18 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class Delivery {
-    private int deliveryId;
-    private int positionId;
-    private int personId;
+    private Integer deliveryId;
+    private Integer positionId;
+    private Integer personId;
     private String deliverytime;
-    private int status;
+    private Integer status;
 
     private Resume resume;
     private Position position;
     private Person person;
     private FeedBack feedBack;
 
-    public Delivery(int deliveryId, int positionId, int personId, String deliverytime, int status, Resume resume, Position position, Person person, FeedBack feedBack) {
+    public Delivery(Integer deliveryId, Integer positionId, Integer personId, String deliverytime, Integer status, Resume resume, Position position, Person person, FeedBack feedBack) {
         this.deliveryId = deliveryId;
         this.positionId = positionId;
         this.personId = personId;
@@ -62,27 +62,27 @@ public class Delivery {
         this.feedBack = feedBack;
     }
 
-    public int getDeliveryId() {
+    public Integer getDeliveryId() {
         return deliveryId;
     }
 
-    public void setDeliveryId(int deliveryId) {
+    public void setDeliveryId(Integer deliveryId) {
         this.deliveryId = deliveryId;
     }
 
-    public int getPositionId() {
+    public Integer getPositionId() {
         return positionId;
     }
 
-    public void setPositionId(int positionId) {
+    public void setPositionId(Integer positionId) {
         this.positionId = positionId;
     }
 
-    public int getPersonId() {
+    public Integer getPersonId() {
         return personId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(Integer personId) {
         this.personId = personId;
     }
 
@@ -94,11 +94,11 @@ public class Delivery {
         this.deliverytime = deliverytime;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

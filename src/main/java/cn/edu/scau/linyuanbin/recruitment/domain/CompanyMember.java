@@ -4,14 +4,14 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class CompanyMember {
-    private int companyMemberId;
-    private int companyId;
+    private Integer companyMemberId;
+    private Integer companyId;
     private String name;
     private String post;
     private String intro;
     private MemberImg memberImg;
 
-    public CompanyMember(int companyMemberId, int companyId, String name, String post, String intro, MemberImg memberImg) {
+    public CompanyMember(Integer companyMemberId, Integer companyId, String name, String post, String intro, MemberImg memberImg) {
         this.companyMemberId = companyMemberId;
         this.companyId = companyId;
         this.name = name;
@@ -31,19 +31,19 @@ public class CompanyMember {
         this.memberImg = memberImg;
     }
 
-    public int getCompanyMemberId() {
+    public Integer getCompanyMemberId() {
         return companyMemberId;
     }
 
-    public void setCompanyMemberId(int companyMemberId) {
+    public void setCompanyMemberId(Integer companyMemberId) {
         this.companyMemberId = companyMemberId;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 

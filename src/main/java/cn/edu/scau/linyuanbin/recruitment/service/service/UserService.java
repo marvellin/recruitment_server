@@ -11,7 +11,7 @@ public interface UserService {
     /*
      * 新增对象
      * */
-    public int insertUser(User user);
+    public int insertUser(User user,String role);
 
     /*
      *更新对象（主要为更新密码）

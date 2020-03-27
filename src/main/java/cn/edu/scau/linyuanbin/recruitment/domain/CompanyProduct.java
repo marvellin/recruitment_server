@@ -4,13 +4,13 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class CompanyProduct {
-    private int companyProductId;
-    private int companyId;
+    private Integer companyProductId;
+    private Integer companyId;
     private String name;
     private String info;
     private ProductImg productImg;
 
-    public CompanyProduct(int companyProductId, int companyId, String name, String info, ProductImg productImg) {
+    public CompanyProduct(Integer companyProductId, Integer companyId, String name, String info, ProductImg productImg) {
         this.companyProductId = companyProductId;
         this.companyId = companyId;
         this.name = name;
@@ -29,19 +29,19 @@ public class CompanyProduct {
         this.productImg = productImg;
     }
 
-    public int getCompanyProductId() {
+    public Integer getCompanyProductId() {
         return companyProductId;
     }
 
-    public void setCompanyProductId(int companyProductId) {
+    public void setCompanyProductId(Integer companyProductId) {
         this.companyProductId = companyProductId;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 

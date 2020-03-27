@@ -4,15 +4,15 @@
 package cn.edu.scau.linyuanbin.recruitment.domain;
 
 public class WorkExperience {
-    private int workExperienceId;
-    private int resumeId;
+    private Integer workExperienceId;
+    private Integer resumeId;
 
     private String comname;
     private String post;
     private String startym;
     private String endym;
 
-    public WorkExperience(int workExperienceId, int resumeId, String comname, String post, String startym, String endym) {
+    public WorkExperience(Integer workExperienceId, Integer resumeId, String comname, String post, String startym, String endym) {
         this.workExperienceId = workExperienceId;
         this.resumeId = resumeId;
         this.comname = comname;
@@ -24,19 +24,19 @@ public class WorkExperience {
     public WorkExperience() {
     }
 
-    public int getWorkExperienceId() {
+    public Integer getWorkExperienceId() {
         return workExperienceId;
     }
 
-    public void setWorkExperienceId(int workExperienceId) {
+    public void setWorkExperienceId(Integer workExperienceId) {
         this.workExperienceId = workExperienceId;
     }
 
-    public int getResumeId() {
+    public Integer getResumeId() {
         return resumeId;
     }
 
-    public void setResumeId(int resumeId) {
+    public void setResumeId(Integer resumeId) {
         this.resumeId = resumeId;
     }
 

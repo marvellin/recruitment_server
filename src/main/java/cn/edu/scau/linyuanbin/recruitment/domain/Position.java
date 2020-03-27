@@ -6,11 +6,11 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 import java.util.List;
 
 public class Position {
-    private int positionId;
-    private int companyId;
+    private Integer positionId;
+    private Integer companyId;
 
-    private int salarymin;
-    private int salarymax;
+    private Integer salarymin;
+    private Integer salarymax;
     private String department;
     private String post;
     private String name;
@@ -26,7 +26,7 @@ public class Position {
 //    private List<Resume> resumeList;
 
 
-    public Position(int positionId, int companyId, int salarymin, int salarymax, String department, String post, String name, String type, String city, String experience, String degree, String advantage, String detail, String address, String status) {
+    public Position(Integer positionId, Integer companyId, Integer salarymin, Integer salarymax, String department, String post, String name, String type, String city, String experience, String degree, String advantage, String detail, String address, String status) {
         this.positionId = positionId;
         this.companyId = companyId;
         this.salarymin = salarymin;
@@ -63,35 +63,35 @@ public class Position {
         this.personList = personList;
     }*/
 
-    public int getPositionId() {
+    public Integer getPositionId() {
         return positionId;
     }
 
-    public void setPositionId(int positionId) {
+    public void setPositionId(Integer positionId) {
         this.positionId = positionId;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 
-    public int getSalarymin() {
+    public Integer getSalarymin() {
         return salarymin;
     }
 
-    public void setSalarymin(int salarymin) {
+    public void setSalarymin(Integer salarymin) {
         this.salarymin = salarymin;
     }
 
-    public int getSalarymax() {
+    public Integer getSalarymax() {
         return salarymax;
     }
 
-    public void setSalarymax(int salarymax) {
+    public void setSalarymax(Integer salarymax) {
         this.salarymax = salarymax;
     }
 

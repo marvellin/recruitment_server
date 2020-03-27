@@ -1,13 +1,19 @@
 package cn.edu.scau.linyuanbin.recruitment.controller;
 
+import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
+import cn.edu.scau.linyuanbin.recruitment.domain.Resume;
 import cn.edu.scau.linyuanbin.recruitment.service.service.ResumeService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Author: linyuanbin
  * @Description:
+ * done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -15,4 +21,31 @@ import org.springframework.web.bind.annotation.RestController;
 public class ResumeController {
     @Autowired
     ResumeService service;
+
+    /*
+    * 获取一个resume
+    * @Param int personId
+    * */
+    @RequestMapping("/get")
+    @ResponseBody
+    public ResponseObject get(@RequestParam("personId")int personId){
+        Resume resume = service.getResumeBypersonId(personId);
+        if(resume == null){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",resume);
+        }
+        else {
+            return new ResponseObject(ResponseObject.OK,"获取成功！",resume);
+        }
+    }
+
+    /*
+    * 更新一个resume（主要为selfdescription和resumename的更新）
+    * @Param Resume resume
+    * */
+    @RequestMapping("/update")
+    @ResponseBody
+    public ResponseObject get(@RequestParam("resume")Resume resume){
+        service.updateResume(resume);
+        return new ResponseObject(ResponseObject.OK,"更新成功！",resume);
+    }
 }
