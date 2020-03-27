@@ -19,17 +19,19 @@
         <result column="detail" property="detail"></result>
         <result column="address" property="address"></result>
         <result column="status" property="status"></result>
+        <result column="releaseTime" property="releaseTime"></result>
     </resultMap>
 
-    <!--根据职位名称模糊查询获得多个对象-->
+    <!--根据职位名称模糊查询获得多个对象(必须为上线职位，下线职位不可见)-->
     <select id="getPositionListByFuzzyQuery" parameterType="java.lang.String" resultMap="positionMap">
         select * from position
         <where>
+            status = '1'
             <if test="positionName!=null and positionName!=''">
-                name like "%"#{positionName}"%"
+                and name like "%"#{positionName}"%"
             </if>
             <if test="positionName==null or positionName==''">
-                positionId = -1
+                and positionId = -1
             </if>
         </where>
     </select>
@@ -56,7 +58,7 @@
     <insert id="insertPosition" parameterType="Position" useGeneratedKeys="true" keyProperty="positionId" keyColumn="positionId">
         insert into position (companyId, post, name, type,
         department, salaryMin, salaryMax, city,
-        experience, degree, advantage, detail, address, status)
+        experience, degree, advantage, detail, address, status, releaseTime)
         values (#{position.companyId},
         #{position.post},
         #{position.name},
@@ -70,7 +72,8 @@
         #{position.advantage},
         #{position.detail},
         #{position.address},
-        #{position.status});
+        #{position.status},
+        #{position.releaseTime});
     </insert>
 
     <!--根据positionId删除对象-->
@@ -98,7 +101,8 @@
         advantage = #{position.advantage},
         detail = #{position.detail},
         address = #{position.address},
-        status = #{position.status}
+        status = #{position.status},
+        releaseTime = #{position.releaseTime}
         <where>
             <if test="position!=null and position.positionId!=null">positionId = #{position.positionId}</if>
             <if test="position==null or position.positionId==null">positionId = -1</if>

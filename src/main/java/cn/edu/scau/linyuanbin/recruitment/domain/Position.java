@@ -22,11 +22,19 @@ public class Position {
     private String detail;
     private String address;
     private String status;
-//    private List<Person> personList;
-//    private List<Resume> resumeList;
+    private String releaseTime;
+    //   private List<Person> personList;
+    //    private List<Resume> resumeList;
 
+    public String getReleaseTime() {
+        return releaseTime;
+    }
 
-    public Position(Integer positionId, Integer companyId, Integer salarymin, Integer salarymax, String department, String post, String name, String type, String city, String experience, String degree, String advantage, String detail, String address, String status) {
+    public void setReleaseTime(String releaseTime) {
+        this.releaseTime = releaseTime;
+    }
+
+    public Position(Integer positionId, Integer companyId, Integer salarymin, Integer salarymax, String department, String post, String name, String type, String city, String experience, String degree, String advantage, String detail, String address, String status, String releaseTime) {
         this.positionId = positionId;
         this.companyId = companyId;
         this.salarymin = salarymin;
@@ -42,26 +50,11 @@ public class Position {
         this.detail = detail;
         this.address = address;
         this.status = status;
+        this.releaseTime = releaseTime;
     }
 
     public Position() {
     }
-
-    /*public List<Resume> getResumeList() {
-        return resumeList;
-    }
-
-    public void setResumeList(List<Resume> resumeList) {
-        this.resumeList = resumeList;
-    }
-
-    public List<Person> getPersonList() {
-        return personList;
-    }
-
-    public void setPersonList(List<Person> personList) {
-        this.personList = personList;
-    }*/
 
     public Integer getPositionId() {
         return positionId;
@@ -201,6 +194,7 @@ public class Position {
                 ", detail='" + detail + '\'' +
                 ", address='" + address + '\'' +
                 ", status='" + status + '\'' +
+                ", releaseTime='" + releaseTime + '\'' +
                 '}';
     }
 }
