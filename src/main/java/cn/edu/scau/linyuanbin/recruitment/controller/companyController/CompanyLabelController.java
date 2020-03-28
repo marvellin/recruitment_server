@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.companyController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.CompanyLabel;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -74,6 +75,7 @@ public class CompanyLabelController {
     @RequestMapping("/insert")
     @ResponseBody
     public ResponseObject insert(@RequestBody CompanyLabel companyLabel, @RequestParam("companyDetailId")Integer companyDetailId){
+        System.out.println(companyLabel.toString());
         if(companyDetailService.getCompantDetailByCompanyDetailId(companyDetailId)==null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
         }

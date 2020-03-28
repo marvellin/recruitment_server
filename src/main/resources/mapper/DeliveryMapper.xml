@@ -45,11 +45,10 @@
 
     <!--新增对象-->
     <insert id="insertDelivery" parameterType="Delivery" useGeneratedKeys="true" keyProperty="deliveryId" keyColumn="deliveryId">
-        insert into delivery (positionId, personId, deliveryTime, status)
+        insert into delivery (positionId, personId, deliveryTime)
         values (#{delivery.positionId},
         #{delivery.personId},
-        #{delivery.deliverytime},
-        #{delivery.status});
+        #{delivery.deliverytime})
     </insert>
 
     <!--更新对象-->

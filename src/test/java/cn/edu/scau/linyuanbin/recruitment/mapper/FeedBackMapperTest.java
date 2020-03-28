@@ -43,7 +43,7 @@ class FeedBackMapperTest {
     @Test
     void updateFeedBack() {
         FeedBack tmp = mapper.getFeedBackByfeedBackId(3);
-        tmp.setFeedBackTime("test");
+        tmp.setFeedbacktime("test");
         mapper.updateFeedBack(tmp);
     }
 
@@ -56,7 +56,7 @@ class FeedBackMapperTest {
         FeedBack tmp2 = mapper.getFeedBackByfeedBackId(6);
         list.add(tmp1);
         list.add(tmp2);*/
-        mapper.updateFeedBackList(list,"邀请面试");
+        mapper.updateFeedBackList(list,"邀请面试","2016-01-01 15:30");
     }
 
     @Test

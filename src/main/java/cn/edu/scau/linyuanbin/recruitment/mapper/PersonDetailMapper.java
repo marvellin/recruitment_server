@@ -41,4 +41,14 @@ public interface PersonDetailMapper {
      *更新对象
      * */
     public void updatePersonDetail(@Param("personDetail")PersonDetail personDetail);
+
+    /*
+    * 根据email查询是否已有用户
+    * */
+    public PersonDetail getPersonDetailByEmail(@Param("email")String email);
+
+    /*
+    * 根据tel查询是否已有用户
+    * */
+    public PersonDetail getPersonDetailByTel(@Param("tel")String tel);
 }

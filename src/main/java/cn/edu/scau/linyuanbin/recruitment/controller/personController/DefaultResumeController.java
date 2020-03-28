@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.personController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.DefaultResume;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController

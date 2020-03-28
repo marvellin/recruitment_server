@@ -55,8 +55,8 @@
     <!--根据feedBackIdList更新多个对象(或为‘邀请面试’或为‘不合适’),测试是否可以！！！-->
     <update id="updateFeedBackList">
         update feedback set
-        feedback = #{feedBack}
-        feedBackTime = #{feedBackTime}
+        feedback = #{feedBack},
+        feedBackTime = #{feedbacktime}
         <where>
             <if test="feedBackIdList != null and feedBackIdList.size > 0">
                 feedBackId in
@@ -72,9 +72,9 @@
 
     <!--新增多个对象-->
         <insert id="insertFeedBackList" useGeneratedKeys="true" keyProperty="feedBackId" keyColumn="feedBackId">
-            insert into feedback (deliveryId, feedBackTime, feedback) values
+            insert into feedback (deliveryId, feedBackTime) values
             <foreach collection="feedBackList" item="item" index="index" separator=",">
-                (#{item.deliveryId},#{item.feedbacktime},#{item.feedback})
+                (#{item.deliveryId},#{item.feedbacktime})
             </foreach>
         </insert>
 

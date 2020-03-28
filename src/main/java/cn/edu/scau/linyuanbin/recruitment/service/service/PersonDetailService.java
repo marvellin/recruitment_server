@@ -32,4 +32,14 @@ public interface PersonDetailService {
      *更新对象
      * */
     public void updatePersonDetail(PersonDetail personDetail);
+
+    /*
+     * 根据email查询是否已有用户
+     * */
+    public PersonDetail getPersonDetailByEmail(String email);
+
+    /*
+     * 根据tel查询是否已有用户
+     * */
+    public PersonDetail getPersonDetailByTel(String tel);
 }

@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.imgController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.OSSFile;
 import cn.edu.scau.linyuanbin.recruitment.domain.PersonImg;
@@ -20,6 +20,7 @@ import java.io.IOException;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController

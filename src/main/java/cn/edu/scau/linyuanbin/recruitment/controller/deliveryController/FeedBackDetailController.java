@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.deliveryController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.FeedBack;
 import cn.edu.scau.linyuanbin.recruitment.domain.FeedBackDetail;
@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done（差insertList）
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -103,7 +104,7 @@ public class FeedBackDetailController {
             tmp.setTime(time);
             tmp.setTel(tel);
             tmp.setFeedBackId(feedBackId);
-            if(feedBackService.getFeedBackByfeedBackId(feedBackId)!=null){
+            if(feedBackService.getFeedBackByfeedBackId(feedBackId)!=null && service.getFeedBackDetailByfeedBackId(feedBackId)==null){
                 feedBackDetailList.add(tmp);
             }
         }

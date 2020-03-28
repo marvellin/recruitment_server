@@ -83,7 +83,7 @@ public class CompanyDetail {
         this.companyId = companyId;
     }
 
-    public String getFullName() {
+    /*public String getFullName() {
         return fullname;
     }
 
@@ -97,7 +97,7 @@ public class CompanyDetail {
 
     public void setShortName(String shortName) {
         this.shortname = shortName;
-    }
+    }*/
 
     public String getFeature() {
         return feature;

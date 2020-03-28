@@ -54,13 +54,13 @@ public class FeedBack {
         this.deliveryId = deliveryId;
     }
 
-    public String getFeedBackTime() {
+    /*public String getFeedBackTime() {
         return feedbacktime;
     }
 
     public void setFeedBackTime(String feedBackTime) {
         this.feedbacktime = feedBackTime;
-    }
+    }*/
 
     public String getFeedback() {
         return feedback;

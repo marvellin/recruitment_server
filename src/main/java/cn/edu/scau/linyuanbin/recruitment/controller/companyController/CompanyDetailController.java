@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.companyController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.Company;
 import cn.edu.scau.linyuanbin.recruitment.domain.CompanyDetail;
@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -92,6 +93,7 @@ public class CompanyDetailController {
     @RequestMapping("/update")
     @ResponseBody
     public ResponseObject update(@RequestBody CompanyDetail companyDetail){
+//        System.out.println(companyDetail.toString());
         service.updateCompanyDetail(companyDetail);
         return new ResponseObject(ResponseObject.OK,"更新成功！",companyDetail);
     }

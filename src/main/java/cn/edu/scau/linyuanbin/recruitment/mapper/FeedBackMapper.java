@@ -44,7 +44,7 @@ public interface FeedBackMapper {
     /*
      *根据feedBackIdList更新多个对象(或为‘邀请面试’或为‘不合适’),测试是否可以！！！
      * */
-    public void updateFeedBackList(@Param("feedBackIdList") List<Integer> feedBackIdList, @Param("feedBack")String feedBack, @Param("feedBackTime")String feedBackTime);
+    public void updateFeedBackList(@Param("feedBackIdList") List<Integer> feedBackIdList, @Param("feedBack")String feedBack, @Param("feedbacktime")String feedBackTime);
 
     /*
      *新增多个对象

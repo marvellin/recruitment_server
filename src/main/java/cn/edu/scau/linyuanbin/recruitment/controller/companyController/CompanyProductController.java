@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.companyController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.CompanyProduct;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController

@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.userController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
 import cn.edu.scau.linyuanbin.recruitment.domain.User;
@@ -15,6 +15,7 @@ import javax.jws.soap.SOAPBinding;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -56,7 +57,7 @@ public class UserController {
         }
         else {
             String myPassword = user.getPassword();
-            if(password.equals(myPassword)){
+            if(!password.equals(myPassword)){
                 return new ResponseObject(ResponseObject.ERROR,"密码错误！",null);
             }
             else {

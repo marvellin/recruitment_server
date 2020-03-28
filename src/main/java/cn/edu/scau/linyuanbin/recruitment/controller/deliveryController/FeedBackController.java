@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.deliveryController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.FeedBack;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done(差insertList)
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -72,7 +73,7 @@ public class FeedBackController {
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
         }
         feedBack.setDeliveryId(deliveryId);
-        feedBack.setFeedBackTime(MyUtil.getFormatTime());
+        feedBack.setFeedbacktime(MyUtil.getFormatTime());
         service.insertFeedBack(feedBack);
         return new ResponseObject(ResponseObject.OK,"新增成功！",feedBack);
     }
@@ -84,7 +85,7 @@ public class FeedBackController {
     @RequestMapping("/update")
     @ResponseBody
     public ResponseObject update(@RequestBody FeedBack feedBack){
-        feedBack.setFeedBackTime(MyUtil.getFormatTime());
+        feedBack.setFeedbacktime(MyUtil.getFormatTime());
         service.updateFeedBack(feedBack);
         return new ResponseObject(ResponseObject.OK,"更新成功！",feedBack);
     }
@@ -109,16 +110,20 @@ public class FeedBackController {
     @RequestMapping("/insertList")
     @ResponseBody
     public ResponseObject insertList(@RequestBody FeedBack feedBack, @RequestParam("deliveryIdList")List<Integer> deliveryIdList){
+//        System.out.println(deliveryIdList);
+//        System.out.println(feedBack);
         List<FeedBack> feedBackList = new ArrayList<>();
         String feedBackTime = MyUtil.getFormatTime();
+//        System.out.println(feedBackTime);
         for (Integer deliveryId:deliveryIdList){
             FeedBack tmp = new FeedBack();
-            feedBack.setFeedBackTime(feedBackTime);
-            feedBack.setDeliveryId(deliveryId);
-            if (deliveryService.getDeliveryBydeliveryId(deliveryId) != null){
+            tmp.setFeedbacktime(feedBackTime);
+            tmp.setDeliveryId(deliveryId);
+            if (deliveryService.getDeliveryBydeliveryId(deliveryId) != null&&service.getFeedBackBydeliveryId(deliveryId)==null){
                 feedBackList.add(tmp);
             }
         }
+//        System.out.println(feedBackList.toString());
         service.insertFeedBackList(feedBackList);
         return new ResponseObject(ResponseObject.OK,"新增成功！",null);
     }

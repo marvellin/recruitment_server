@@ -1,17 +1,16 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.companyController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.CompanyMember;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
 import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyMemberService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -29,7 +28,7 @@ public class CompanyMemberController {
      * */
     @RequestMapping("/get")
     @ResponseBody
-    public ResponseObject getCompanyMemberBycompanyMemberId(Integer companyMemberId){
+    public ResponseObject getCompanyMemberBycompanyMemberId(@RequestParam("companyMemberId") Integer companyMemberId){
         CompanyMember companyMember = service.getCompanyMemberBycompanyMemberId(companyMemberId);
         if (companyMember == null){
             return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
@@ -43,7 +42,7 @@ public class CompanyMemberController {
      * */
     @RequestMapping("/getByCompanyId")
     @ResponseBody
-    public ResponseObject getCompanyMemberBycompanyId(Integer companyId){
+    public ResponseObject getCompanyMemberBycompanyId(@RequestParam("companyId") Integer companyId){
         if (companyService.getCompanyByCompanyId(companyId) == null){
             return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
         }
@@ -61,7 +60,7 @@ public class CompanyMemberController {
      * */
     @RequestMapping("/insert")
     @ResponseBody
-    public ResponseObject insertCompanyMember(CompanyMember companyMember, Integer companyId){
+    public ResponseObject insertCompanyMember(@RequestBody CompanyMember companyMember, @RequestParam("companyId") Integer companyId){
         if (companyService.getCompanyByCompanyId(companyId) == null || service.getCompanyMemberBycompanyId(companyId)!=null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
         }
@@ -76,7 +75,7 @@ public class CompanyMemberController {
      * */
     @RequestMapping("/update")
     @ResponseBody
-    public ResponseObject updateCompanyMember(CompanyMember companyMember){
+    public ResponseObject updateCompanyMember(@RequestBody CompanyMember companyMember){
         service.updateCompanyMember(companyMember);
         return new ResponseObject(ResponseObject.OK,"更新成功！",companyMember);
     }
@@ -87,7 +86,7 @@ public class CompanyMemberController {
      * */
     @RequestMapping("/delete")
     @ResponseBody
-    public ResponseObject deleteBycompanyMemberId(Integer companyMemberId){
+    public ResponseObject deleteBycompanyMemberId(@RequestParam("companyMemberId") Integer companyMemberId){
         service.deleteBycompanyMemberId(companyMemberId);
         return new ResponseObject(ResponseObject.OK,"删除成功！",null);
     }

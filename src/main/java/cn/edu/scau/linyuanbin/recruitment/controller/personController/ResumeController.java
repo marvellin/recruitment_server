@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.personController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.PersonDetail;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
@@ -32,7 +32,7 @@ public class ResumeController {
     * 根据personId获取一个resume，如果没有则新建一个返回，并且将新建的resumeid赋给personDetail
     * @Param int personId
     * */
-    @RequestMapping("/get")
+    @RequestMapping("/getByPersonId")
     @ResponseBody
     public ResponseObject get(@RequestParam("personId")Integer personId){
         if(personService.getPersonBypersonId(personId) == null){

@@ -77,4 +77,30 @@
             <if test="personDetail == null or personDetail.personDetailId == null">personDetailId = -1</if>
         </where>
     </update>
+
+    <!--根据email查询是否已有用户-->
+    <select id="getPersonDetailByEmail" resultMap="personDetailMap">
+        select * from persondetail
+        <where>
+            <if test="email!=null">
+                email = #{email}
+            </if>
+            <if test="email==null">
+                personDetailId = -1
+            </if>
+        </where>
+    </select>
+
+    <!--根据tel查询是否已有用户-->
+    <select id="getPersonDetailByTel" resultMap="personDetailMap">
+        select * from persondetail
+        <where>
+            <if test="tel!=null">
+                tel = #{tel}
+            </if>
+            <if test="tel==null">
+                personDetailId = -1
+            </if>
+        </where>
+    </select>
 </mapper>

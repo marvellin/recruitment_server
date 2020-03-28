@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.companyController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.Position;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @Author: linyuanbin
  * @Description:
- * done
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -59,7 +59,7 @@ public class PositionController {
     @ResponseBody
     public ResponseObject delete(@RequestBody Position position){
         service.deleteBypositionId(position.getPositionId());
-        return new ResponseObject(ResponseObject.OK,"删除成功！",position);
+        return new ResponseObject(ResponseObject.OK,"删除成功！",null);
     }
 
     /*
@@ -68,9 +68,12 @@ public class PositionController {
     * */
     @RequestMapping("/get")
     @ResponseBody
-    public ResponseObject get(@RequestBody Position position){
-        service.deleteBypositionId(position.getPositionId());
-        return new ResponseObject(ResponseObject.OK,"删除成功！",position);
+    public ResponseObject get(@RequestParam("positionId")Integer positionId){
+        Position position = service.getPositionBypositionId(positionId);
+        if(position == null){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+        }
+        return new ResponseObject(ResponseObject.OK,"获取成功！",position);
     }
 
     /*

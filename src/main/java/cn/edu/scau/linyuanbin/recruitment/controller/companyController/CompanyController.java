@@ -1,8 +1,9 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.companyController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.Company;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
 import cn.edu.scau.linyuanbin.recruitment.domain.User;
+import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyDetailService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.UserService;
 import org.apache.ibatis.annotations.Param;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -25,13 +27,21 @@ public class CompanyController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    CompanyDetailService companyDetailService;
+
     /*
-     * 根据companyIdList查找公司list
-     * @Param List<Integer> companyIdList
+     * 根据companyIdList查找公司list，实际为模糊查找，通过模糊查找companydetail的comname获得companyIdLisy，查找出对应公司
+     * @Param List<Integer> companyIdList(非必要，已注销) @RequestParam(value = "companyIdList",required = false)List<Integer> companyIdList
+     * @ParamString companyName
      * */
-    @RequestMapping("/getByCompanyIdList")
+    @RequestMapping("/search")
     @ResponseBody
-    public ResponseObject getCompanyListBycompanyIdList(@RequestParam("companyIdList")List<Integer> companyIdList){
+    public ResponseObject search(@RequestParam("companyName")String companyName){
+        List<Integer> companyIdList = companyDetailService.getCompanyIdByFuzzyQuery(companyName);
+        if (companyIdList == null || companyIdList.size() == 0){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+        }
         List<Company> companyList = service.getCompanyListBycompanyIdList(companyIdList);
         if (companyList == null || companyList.size() == 0){
             return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);

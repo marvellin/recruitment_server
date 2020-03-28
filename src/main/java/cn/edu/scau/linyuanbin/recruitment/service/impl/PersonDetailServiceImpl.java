@@ -40,4 +40,14 @@ public class PersonDetailServiceImpl implements PersonDetailService {
     public void updatePersonDetail(PersonDetail personDetail) {
         mapper.updatePersonDetail(personDetail);
     }
+
+    @Override
+    public PersonDetail getPersonDetailByEmail(String email) {
+        return mapper.getPersonDetailByEmail(email);
+    }
+
+    @Override
+    public PersonDetail getPersonDetailByTel(String tel) {
+        return mapper.getPersonDetailByTel(tel);
+    }
 }

@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.personController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.PersonDetail;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -63,12 +64,12 @@ public class PersonDetailController {
     @ResponseBody
     public ResponseObject getByresumeId(@RequestParam("resumeId")Integer resumeId){
         PersonDetail personDetail = service.getPersonDetailByresumeId(resumeId);
-        return new ResponseObject(ResponseObject.OK,"获取成功！",null);
+        return new ResponseObject(ResponseObject.OK,"获取成功！",personDetail);
     }
 
 
     /*
-     *根据personId新增对象
+     *根据personId新增对象，注意判断email和特里是否唯一，数据库有唯一约束
      * @Param Integer personId
      * @RequestBody PersonDetail personDetail
      * */
@@ -77,6 +78,12 @@ public class PersonDetailController {
     public ResponseObject insert(@RequestBody PersonDetail personDetail,@RequestParam("personId")Integer personId){
         if (personService.getPersonBypersonId(personId) == null || service.getPersonDetailBypersonId(personId) != null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
+        }
+        if (service.getPersonDetailByEmail(personDetail.getEmail())!=null){
+            return new ResponseObject(ResponseObject.ERROR,"该邮箱已被使用！",null);
+        }
+        if(service.getPersonDetailByTel(personDetail.getTel())!=null){
+            return new ResponseObject(ResponseObject.ERROR,"该手机号码已被使用！",null);
         }
         personDetail.setPersonId(personId);
         service.insertPersonDetail(personDetail);
@@ -91,6 +98,12 @@ public class PersonDetailController {
     @RequestMapping("update")
     @ResponseBody
     public ResponseObject update(@RequestBody PersonDetail personDetail){
+        if (service.getPersonDetailByEmail(personDetail.getEmail()).getPersonDetailId()!=personDetail.getPersonDetailId()){
+            return new ResponseObject(ResponseObject.ERROR,"该邮箱已被使用！",null);
+        }
+        if(service.getPersonDetailByTel(personDetail.getTel()).getPersonDetailId()!=personDetail.getPersonDetailId()){
+            return new ResponseObject(ResponseObject.ERROR,"该手机号码已被使用！",null);
+        }
         service.updatePersonDetail(personDetail);
         return new ResponseObject(ResponseObject.OK,"更新成功！",personDetail);
     }

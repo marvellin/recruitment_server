@@ -1,4 +1,4 @@
-package cn.edu.scau.linyuanbin.recruitment.controller;
+package cn.edu.scau.linyuanbin.recruitment.controller.deliveryController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.Delivery;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * @Author: linyuanbin
  * @Description:
+ * test done（差updateListByCompany和getListByPositionIdList）
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -86,7 +87,7 @@ public class DeliveryController {
         delivery.setPositionId(positionId);
         delivery.setDeliverytime(MyUtil.getFormatTime());
         service.insertDelivery(delivery);
-        return new ResponseObject(ResponseObject.OK,"新增成功！",delivery);
+        return new ResponseObject(ResponseObject.OK,"新增成功！",service.getDeliveryBydeliveryId(delivery.getDeliveryId()));
     }
 
     /*
@@ -96,6 +97,7 @@ public class DeliveryController {
     @RequestMapping("/update")
     @ResponseBody
     public ResponseObject update(@RequestBody Delivery delivery){
+//        System.out.println(delivery.getStatus());
         if (service.getDeliveryBydeliveryId(delivery.getDeliveryId())!=null && delivery.getStatus() < 3){
             delivery.setStatus(delivery.getStatus() + 1);
         }

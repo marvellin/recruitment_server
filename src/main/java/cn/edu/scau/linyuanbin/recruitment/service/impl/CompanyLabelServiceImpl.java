@@ -35,11 +35,11 @@ public class CompanyLabelServiceImpl implements CompanyLabelService {
 
     @Override
     public int insertCompanyLabel(CompanyLabel companyLabel) {
-        return insertCompanyLabel(companyLabel);
+        return mapper.insertCompanyLabel(companyLabel);
     }
 
     @Override
     public void insertCompanyLabelList(List<CompanyLabel> companyLabelList) {
-        insertCompanyLabelList(companyLabelList);
+        mapper.insertCompanyLabelList(companyLabelList);
     }
 }
