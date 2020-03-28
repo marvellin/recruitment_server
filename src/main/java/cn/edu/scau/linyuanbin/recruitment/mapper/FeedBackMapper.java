@@ -1,6 +1,7 @@
 package cn.edu.scau.linyuanbin.recruitment.mapper;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.FeedBack;
+import lombok.ToString;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -43,7 +44,7 @@ public interface FeedBackMapper {
     /*
      *根据feedBackIdList更新多个对象(或为‘邀请面试’或为‘不合适’),测试是否可以！！！
      * */
-    public void updateFeedBackList(@Param("feedBackIdList") List<Integer> feedBackIdList,@Param("feedBack")String feedBack);
+    public void updateFeedBackList(@Param("feedBackIdList") List<Integer> feedBackIdList, @Param("feedBack")String feedBack, @Param("feedBackTime")String feedBackTime);
 
     /*
      *新增多个对象

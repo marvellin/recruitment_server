@@ -1,6 +1,7 @@
 package cn.edu.scau.linyuanbin.recruitment.service.service;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.Delivery;
+import org.omg.CORBA.INTERNAL;
 
 import java.util.List;
 
@@ -59,4 +60,9 @@ public interface DeliveryService {
      *根据deliveryId删除对象
      * */
     public void deleteBydeliveryId(Integer deliveryId);
+
+    /*
+    * 根据personId和positionId查找对应投递记录
+    * */
+    public Delivery getByPersonIdWithPositionId(Integer personId, Integer positionId);
 }

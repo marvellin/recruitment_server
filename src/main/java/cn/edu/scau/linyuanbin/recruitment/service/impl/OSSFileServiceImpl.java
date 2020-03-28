@@ -35,13 +35,11 @@ public class OSSFileServiceImpl implements OSSFileService {
         ossUtil.download(path,outputStream);
     }
 
-    public OSSFile upload(MultipartFile file, OutputStream outputStream){
-        //生成文件保存路径
+    public OSSFile upload(MultipartFile file,Integer userId,String desc, OutputStream outputStream){
+        //生成文件内容
         String fileName = file.getOriginalFilename();
-        String date = MyUtil.getFormatDate();
-        String uuid = UUID.randomUUID().toString().replace("-", "");
         String suffix = file.getOriginalFilename().substring(fileName.lastIndexOf(".") + 1);
-        String path = ossConfig.getFolder() + "/" + (date + "/" + uuid) + "-" + fileName;
+        String path = ossUtil.getFilePath(userId,desc,fileName);
 
         OSSFile ossFile = ossUtil.upload(file,path,suffix,outputStream);
         ossFileMapper.insertOSSFile(ossFile);

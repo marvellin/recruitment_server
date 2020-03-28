@@ -20,7 +20,7 @@ public interface OSSFileService {
     /*
     * 测试文件上传方法
     * */
-    public OSSFile upload(MultipartFile file, OutputStream outputStream);
+    public OSSFile upload(MultipartFile file,Integer userId,String desc, OutputStream outputStream);
 
     /*
      * 根据ossId获得对象

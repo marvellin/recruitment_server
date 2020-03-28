@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
         else  if (role.equals(User.Company)){
             Company company = new Company();
             company.setUserId(user.getUserId());
-            company.setIntro("");
+//            company.setIntro("");
             companyMapper.insertCompany(company);
         }
         return result;

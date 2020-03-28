@@ -6,6 +6,7 @@ package cn.edu.scau.linyuanbin.recruitment.domain;
 public class DefaultResume {
     private Integer defaultResumeId;
     private Integer personId;
+
     private Integer resumeId;
     private Integer attachmentResumeId;
     private Resume resume;

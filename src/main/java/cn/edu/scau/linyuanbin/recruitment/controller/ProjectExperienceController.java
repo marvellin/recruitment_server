@@ -4,11 +4,9 @@ import cn.edu.scau.linyuanbin.recruitment.domain.ProjectExperience;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
 import cn.edu.scau.linyuanbin.recruitment.domain.WorkExperience;
 import cn.edu.scau.linyuanbin.recruitment.service.service.ProjectExperienceService;
+import cn.edu.scau.linyuanbin.recruitment.service.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: linyuanbin
@@ -21,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProjectExperienceController {
     @Autowired
     ProjectExperienceService service;
+
+    @Autowired
+    ResumeService resumeService;
 
     /*
      * 修改一个项目经历
@@ -50,7 +51,11 @@ public class ProjectExperienceController {
      * */
     @RequestMapping("/insert")
     @ResponseBody
-    public ResponseObject insert(@RequestBody ProjectExperience projectExperience){
+    public ResponseObject insert(@RequestBody ProjectExperience projectExperience, @RequestParam("resumeId")Integer resumeId){
+        if(resumeService.getResumeByresumeId(resumeId) == null){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+        }
+        projectExperience.setResumeId(resumeId);
         service.insertProjectExperience(projectExperience);
         return new ResponseObject(ResponseObject.OK,"新增成功！",projectExperience);
     }

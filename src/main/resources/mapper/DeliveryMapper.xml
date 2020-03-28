@@ -126,4 +126,20 @@
             <if test="deliveryId == null">deliveryId = -1</if>
         </where>
     </delete>
+    
+    <select id="getByPersonIdWithPositionId" resultMap="deliveryMap">
+        select * from delivery
+        <where>
+            <if test="personId != null and positionId != null">
+                personId = #{personId}
+                and
+                positionId = #{positionId}
+            </if>
+            <if test="personId == null or positionId == null">
+                personId = -1
+                and
+                positionId = -1
+            </if>
+        </where>
+    </select>
 </mapper>

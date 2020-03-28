@@ -25,7 +25,8 @@ public class OSSFileController {
     @RequestMapping("/upload")
     public OSSFile upload(@RequestParam("file")MultipartFile file,@RequestParam("id")int id, HttpServletResponse response) throws IOException {
         System.out.println(id);
-        return ossFileService.upload(file, response.getOutputStream());
+        return null;
+//        return ossFileService.upload(file, response.getOutputStream());
     }
 
     /*download测试*/

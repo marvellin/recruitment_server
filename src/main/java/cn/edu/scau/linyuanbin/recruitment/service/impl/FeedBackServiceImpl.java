@@ -40,8 +40,8 @@ public class FeedBackServiceImpl implements FeedBackService {
     }
 
     @Override
-    public void updateFeedBackList(List<Integer> feedBackIdList, String feedBack) {
-        mapper.updateFeedBackList(feedBackIdList,feedBack);
+    public void updateFeedBackList(List<Integer> feedBackIdList, String feedBack,String feedBackTime) {
+        mapper.updateFeedBackList(feedBackIdList,feedBack,feedBackTime);
     }
 
     @Override

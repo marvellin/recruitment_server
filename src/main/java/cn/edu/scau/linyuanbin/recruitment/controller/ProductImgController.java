@@ -3,6 +3,7 @@ package cn.edu.scau.linyuanbin.recruitment.controller;
 import cn.edu.scau.linyuanbin.recruitment.domain.OSSFile;
 import cn.edu.scau.linyuanbin.recruitment.domain.ProductImg;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
+import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyProductService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.OSSFileService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.ProductImgService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.io.IOException;
 /**
  * @Author: linyuanbin
  * @Description:
+ * done
  * @Date: Created in 19:29 2020/3/25
  */
 @RestController
@@ -29,13 +31,22 @@ public class ProductImgController {
     @Autowired
     OSSFileService ossFileService;
 
+    @Autowired
+    CompanyProductService companyProductService;
+
     /*
-    * 上传产品图片，先判断是否有productImg对象，如果有则更新，没有则插入
+    * 上传产品图片，先判断是否有对应companyProduct，再判断是否有productImg对象，如果有则更新，没有则插入
+    * @Param MultipartFile file文件目标
+    * @Param Integer companyProductId对应产品
+    * @Param Integer userId对应用户（用于文件保存路径的生成）
     * */
     @RequestMapping("/upload")
     @ResponseBody
-    public ResponseObject upload(@RequestParam("file")MultipartFile file, @RequestParam("companyProductId")int companyProductId, HttpServletResponse response) throws IOException {
-        OSSFile ossFile =  ossFileService.upload(file,response.getOutputStream());
+    public ResponseObject upload(@RequestParam("file")MultipartFile file, @RequestParam("companyProductId")Integer companyProductId,@RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
+        if (companyProductService.getCompanyProductBycompanyProductId(companyProductId) == null){
+            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
+        }
+        OSSFile ossFile =  ossFileService.upload(file,userId,"产品图片",response.getOutputStream());
 
         ProductImg productImg = service.getProductImgBycompanyProductId(companyProductId);
         if(productImg != null){

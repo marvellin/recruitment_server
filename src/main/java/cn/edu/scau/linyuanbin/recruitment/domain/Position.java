@@ -34,7 +34,7 @@ public class Position {
         this.releaseTime = releaseTime;
     }
 
-    public Position(Integer positionId, Integer companyId, Integer salarymin, Integer salarymax, String department, String post, String name, String type, String city, String experience, String degree, String advantage, String detail, String address, String status, String releaseTime) {
+    public Position(Integer positionId, Integer companyId, Integer salarymin, Integer salarymax, String department, String post, String name, String type, String city, String experience, String degree, String advantage, String detail, String address, String status) {
         this.positionId = positionId;
         this.companyId = companyId;
         this.salarymin = salarymin;

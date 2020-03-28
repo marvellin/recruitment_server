@@ -3,6 +3,7 @@ package cn.edu.scau.linyuanbin.recruitment.service.impl;
 import cn.edu.scau.linyuanbin.recruitment.domain.Position;
 import cn.edu.scau.linyuanbin.recruitment.mapper.PositionMapper;
 import cn.edu.scau.linyuanbin.recruitment.service.service.PositionService;
+import cn.edu.scau.linyuanbin.recruitment.utils.MyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,8 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public int insertPosition(Position position) {
+        String releaseTime = MyUtil.getFormatTime();
+        position.setReleaseTime(releaseTime);
         return mapper.insertPosition(position);
     }
 

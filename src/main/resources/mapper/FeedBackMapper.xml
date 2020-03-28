@@ -56,6 +56,7 @@
     <update id="updateFeedBackList">
         update feedback set
         feedback = #{feedBack}
+        feedBackTime = #{feedBackTime}
         <where>
             <if test="feedBackIdList != null and feedBackIdList.size > 0">
                 feedBackId in

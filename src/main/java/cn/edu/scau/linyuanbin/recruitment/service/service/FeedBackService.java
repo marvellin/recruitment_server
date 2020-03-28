@@ -33,7 +33,7 @@ public interface FeedBackService {
     /*
      *根据feedBackIdList更新多个对象(或为‘邀请面试’或为‘不合适’),测试是否可以！！！
      * */
-    public void updateFeedBackList(List<Integer> feedBackIdList, String feedBack);
+    public void updateFeedBackList(List<Integer> feedBackList, String feedBack,String feedBackTime);
 
     /*
      *新增多个对象

@@ -68,4 +68,9 @@ public class DeliveryServiceImpl implements DeliveryService {
     public void deleteBydeliveryId(Integer deliveryId) {
         mapper.deleteBydeliveryId(deliveryId);
     }
+
+    @Override
+    public Delivery getByPersonIdWithPositionId(Integer personId, Integer positionId) {
+        return mapper.getByPersonIdWithPositionId(personId,positionId);
+    }
 }

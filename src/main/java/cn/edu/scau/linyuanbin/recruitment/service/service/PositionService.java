@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface PositionService {
     /*
-     * 根据职位名称模糊查询获得多个对象
+     * 根据职位名称模糊查询获得多个对象(必须为上线职位，下线职位不可见)
      * */
     public List<Position> getPositionListByFuzzyQuery(String positionName);
 

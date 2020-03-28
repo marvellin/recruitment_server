@@ -72,4 +72,9 @@ public interface DeliveryMapper {
      *根据deliveryId删除对象
      * */
     public void deleteBydeliveryId(@Param("deliveryId")Integer deliveryId);
+
+    /*
+     * 根据personId和positionId查找对应投递记录
+     * */
+    public Delivery getByPersonIdWithPositionId(@Param("personId") Integer personId, @Param("positionId") Integer positionId);
 }

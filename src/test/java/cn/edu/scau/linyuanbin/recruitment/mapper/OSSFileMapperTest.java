@@ -27,7 +27,7 @@ class OSSFileMapperTest {
 
     @Test
     void insertOSSFile() {
-        OSSFile tmp = new OSSFile(0,0,"/url","pnt","recuirm","test");
+        OSSFile tmp = new OSSFile(0, (long) 0,"/url","pnt","recuirm","test");
         mapper.insertOSSFile(tmp);
     }
 

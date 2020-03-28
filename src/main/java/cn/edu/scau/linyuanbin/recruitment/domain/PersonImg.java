@@ -7,6 +7,7 @@ public class PersonImg {
     private Integer personImgId;
     private Integer personDetailId;
     private Integer ossId;
+
     private OSSFile ossFile;
 
     public PersonImg(Integer personImgId, Integer personDetailId, Integer ossId, OSSFile ossFile) {
