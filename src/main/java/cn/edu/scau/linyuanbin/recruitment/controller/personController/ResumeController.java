@@ -29,12 +29,27 @@ public class ResumeController {
     PersonDetailService personDetailService;
 
     /*
+    * 根据resumeId获取resume
+    * @Param Integer resumeId
+    * */
+    @RequestMapping("/get")
+    @ResponseBody
+    public ResponseObject get(@RequestParam("resumeId")Integer resumeId){
+        System.out.println(resumeId);
+        Resume resume = service.getResumeByresumeId(resumeId);
+        if (resume == null){
+            return new ResponseObject(ResponseObject.ERROR,"找不到目标简历！",resume);
+        }
+        return new ResponseObject(ResponseObject.OK,"获取成功！",resume);
+    }
+
+    /*
     * 根据personId获取一个resume，如果没有则新建一个返回，并且将新建的resumeid赋给personDetail
     * @Param int personId
     * */
     @RequestMapping("/getByPersonId")
     @ResponseBody
-    public ResponseObject get(@RequestParam("personId")Integer personId){
+    public ResponseObject getByPersonId(@RequestParam("personId")Integer personId){
         if(personService.getPersonBypersonId(personId) == null){
             return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
         }

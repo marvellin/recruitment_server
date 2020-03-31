@@ -61,8 +61,12 @@ public class CompanyMemberController {
     @RequestMapping("/insert")
     @ResponseBody
     public ResponseObject insertCompanyMember(@RequestBody CompanyMember companyMember, @RequestParam("companyId") Integer companyId){
-        if (companyService.getCompanyByCompanyId(companyId) == null || service.getCompanyMemberBycompanyId(companyId)!=null){
+        if (companyService.getCompanyByCompanyId(companyId) == null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
+        }
+        else if(service.getCompanyMemberBycompanyId(companyId)!=null){
+            service.updateCompanyMember(companyMember);
+            return new ResponseObject(ResponseObject.OK,"新增成功！",companyMember);
         }
         companyMember.setCompanyId(companyId);
         service.insertCompanyMember(companyMember);

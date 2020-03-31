@@ -24,6 +24,11 @@ import java.util.List;
 @Mapper
 public interface DeliveryMapper {
     /*
+    * 根据personId查找status=3的对象list
+    * */
+    public List<Delivery> getDeliveryListStatus3BypersonId(@Param("personId")Integer personId);
+
+    /*
     *根据deliveryId获得单个对象
     * */
     public Delivery getDeliveryBydeliveryId(@Param("deliveryId")Integer deliveryId);

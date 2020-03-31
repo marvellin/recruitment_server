@@ -54,7 +54,7 @@ public class CompanyDetailController {
     }
 
     /*
-     * 根据companyId获取单个对象
+     * 根据companyId获取单个对象，若果没有则返回一个新建对象
      * @Param Integer companyId
      * */
     @RequestMapping("/getByCompanyId")
@@ -65,7 +65,10 @@ public class CompanyDetailController {
         }
         CompanyDetail companyDetail = service.getCompantDetailBycompanyId(companyId);
         if (companyDetail == null){
-            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+            companyDetail = new CompanyDetail();
+            companyDetail.setCompanyId(companyId);
+            service.insertCompanyDetail(companyDetail);
+//            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
         }
         return new ResponseObject(ResponseObject.OK,"获取成功！",companyDetail);
     }

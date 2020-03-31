@@ -20,6 +20,11 @@ public class PositionServiceImpl implements PositionService {
     PositionMapper mapper;
 
     @Override
+    public List<Position> getPostionByDescending(Integer limitNum) {
+        return mapper.getPostionByDescending(limitNum);
+    }
+
+    @Override
     public List<Position> getPositionListByFuzzyQuery(String positionName) {
         return mapper.getPositionListByFuzzyQuery(positionName);
     }
@@ -38,6 +43,8 @@ public class PositionServiceImpl implements PositionService {
     public int insertPosition(Position position) {
         String releaseTime = MyUtil.getFormatTime();
         position.setReleaseTime(releaseTime);
+        position.setStatus("1");
+        System.out.println(position.toString());
         return mapper.insertPosition(position);
     }
 

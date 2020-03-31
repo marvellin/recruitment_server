@@ -22,18 +22,26 @@
         <result column="releaseTime" property="releaseTime"></result>
     </resultMap>
 
+    <!--降序查找前n个职位-->
+    <select id="getPostionByDescending" resultMap="positionMap">
+        select * from  position
+        order by positionId desc
+        limit #{limitNum}
+    </select>
+
     <!--根据职位名称模糊查询获得多个对象(必须为上线职位，下线职位不可见)-->
     <select id="getPositionListByFuzzyQuery" parameterType="java.lang.String" resultMap="positionMap">
         select * from position
         <where>
             status = '1'
             <if test="positionName!=null and positionName!=''">
-                and name like "%"#{positionName}"%"
+                and (name like "%"#{positionName}"%" or post like "%"#{positionName}"%")
             </if>
             <if test="positionName==null or positionName==''">
-                and positionId = -1
+                and 1=1
             </if>
         </where>
+        limit 50
     </select>
 
     <!--根据positionId获得单个对象-->

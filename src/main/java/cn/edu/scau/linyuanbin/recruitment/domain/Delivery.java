@@ -7,6 +7,7 @@ public class Delivery {
     private Integer deliveryId;
     private Integer positionId;
     private Integer personId;
+
     private String deliverytime;
     private Integer status;
 

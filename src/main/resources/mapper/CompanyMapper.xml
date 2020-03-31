@@ -18,7 +18,7 @@
         <collection property="productList" column="companyId" select="cn.edu.scau.linyuanbin.recruitment.mapper.CompanyProductMapper.getCompanyProductListBycompanyId"></collection>
     </resultMap>
 
-    <!--根据companyIdList查找公司list-->
+    <!--根据companyIdList查找公司list，即模糊查询-->
     <select id="getCompanyListBycompanyIdList" resultMap="companyMap">
         select * from company
         <where>
@@ -32,6 +32,7 @@
                 companyId = -1
             </if>
         </where>
+        limit 50
     </select>
 
     <!--根据companyId获得单个对象-->

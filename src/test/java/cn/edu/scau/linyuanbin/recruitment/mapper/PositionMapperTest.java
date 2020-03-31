@@ -77,4 +77,12 @@ class PositionMapperTest {
             System.out.println(tmp.toString());
         }
     }
+
+    @Test
+    void getPostionByDescending() {
+        List<Position> positionList = mapper.getPostionByDescending(5);
+        for (Position position:positionList){
+            System.out.println(position.toString());
+        }
+    }
 }

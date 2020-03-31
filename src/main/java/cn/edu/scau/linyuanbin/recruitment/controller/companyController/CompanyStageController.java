@@ -64,8 +64,12 @@ public class CompanyStageController {
     @RequestMapping("/insert")
     @ResponseBody
     public ResponseObject insert(@RequestBody CompanyStage companyStage, @RequestParam("companyId")Integer companyId){
-        if (companyService.getCompanyByCompanyId(companyId) == null || service.getCompanyStageBycompanyId(companyId) != null){
+        if (companyService.getCompanyByCompanyId(companyId) == null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
+        }
+        else if (service.getCompanyStageBycompanyId(companyId) != null){
+            service.updateCompanyStage(companyStage);
+            return new ResponseObject(ResponseObject.OK,"新增成功！",companyStage);
         }
         companyStage.setCompanyId(companyId);
         service.insertCompanyStage(companyStage);

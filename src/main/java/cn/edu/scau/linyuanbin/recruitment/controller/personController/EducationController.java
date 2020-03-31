@@ -60,6 +60,7 @@ public class EducationController {
     @RequestMapping("/insert")
     @ResponseBody
     public ResponseObject insert(@RequestParam("resumeId")Integer resumeId, @RequestBody Education education){
+//        System.out.println(education.toString());
         if (resumeService.getResumeByresumeId(resumeId) == null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
         }

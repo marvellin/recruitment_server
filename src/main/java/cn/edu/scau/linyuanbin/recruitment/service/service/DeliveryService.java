@@ -12,6 +12,11 @@ import java.util.List;
  */
 public interface DeliveryService {
     /*
+     * 根据personId查找status=3的对象list
+     * */
+    public List<Delivery> getDeliveryListStatus3BypersonId(Integer personId);
+
+    /*
      *根据deliveryId获得单个对象
      * */
     public Delivery getDeliveryBydeliveryId(Integer deliveryId);

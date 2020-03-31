@@ -92,7 +92,7 @@ public class PersonDetailController {
 
 
     /*
-     *更新对象
+     *更新对象,注意判断email和特里是否唯一，数据库有唯一约束
      * @Param PersonDetail personDetail
      * */
     @RequestMapping("update")

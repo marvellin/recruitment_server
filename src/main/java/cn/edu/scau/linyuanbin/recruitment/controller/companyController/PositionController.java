@@ -4,6 +4,7 @@ import cn.edu.scau.linyuanbin.recruitment.domain.Position;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
 import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.PositionService;
+import com.fasterxml.jackson.datatype.jsr310.ser.YearSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,26 @@ public class PositionController {
 
     @Autowired
     CompanyService companyService;
+
+    /*
+    * 降序查找前n个职位
+    * @Param Integer limitNum
+    * */
+    @RequestMapping("/getByDescending")
+    @ResponseBody
+    public ResponseObject getByDescending(@RequestParam("limitNum")Integer limitNum){
+        if (limitNum < 10){
+            limitNum = 10;
+        }
+        else if (limitNum > 10){
+            limitNum = 10;
+        }
+        List<Position> positionList = service.getPostionByDescending(limitNum);
+        if (positionList == null || positionList.size() == 0){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+        }
+        return new ResponseObject(ResponseObject.OK,"获取成功！",positionList);
+    }
 
     /*
     * 发布职位,先检查对应公司是否存在，需要在后台service层获取发布时间
@@ -57,8 +78,8 @@ public class PositionController {
     * */
     @RequestMapping("/delete")
     @ResponseBody
-    public ResponseObject delete(@RequestBody Position position){
-        service.deleteBypositionId(position.getPositionId());
+    public ResponseObject delete(@RequestParam("positionId")Integer positionId){
+        service.deleteBypositionId(positionId);
         return new ResponseObject(ResponseObject.OK,"删除成功！",null);
     }
 
@@ -83,6 +104,7 @@ public class PositionController {
     @RequestMapping("/search")
     @ResponseBody
     public ResponseObject search(@RequestParam("positionName")String positionName){
+        System.out.println(positionName);
         List<Position> positionList = service.getPositionListByFuzzyQuery(positionName);
         if(positionList == null || positionList.size() == 0){
             return new ResponseObject(ResponseObject.ERROR,"查询失败！",null);
@@ -113,7 +135,7 @@ public class PositionController {
     public ResponseObject getOnlineByCompanyId(@RequestParam("companyId")Integer companyId){
         List<Position> positionList = service.getOnlinePositionListByCompanyId(companyId);
         if(positionList == null || positionList.size() == 0){
-            return new ResponseObject(ResponseObject.ERROR,"查询失败！",null);
+            return new ResponseObject(ResponseObject.ERROR,"查询失败！",positionList);
         }
         return new ResponseObject(ResponseObject.OK,"查询成功！",positionList);
     }
@@ -127,7 +149,7 @@ public class PositionController {
     public ResponseObject getOfflineByCompanyId(@RequestParam("companyId")Integer companyId){
         List<Position> positionList = service.getOfflinePositionListByCompanyId(companyId);
         if(positionList == null || positionList.size() == 0){
-            return new ResponseObject(ResponseObject.ERROR,"查询失败！",null);
+            return new ResponseObject(ResponseObject.ERROR,"查询失败！",positionList);
         }
         return new ResponseObject(ResponseObject.OK,"查询成功！",positionList);
     }

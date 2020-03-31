@@ -23,6 +23,11 @@ import java.util.List;
 @Mapper
 public interface PositionMapper {
     /*
+    * 降序查找前n个职位
+    * */
+    public List<Position> getPostionByDescending(@Param("limitNum")Integer limitNum);
+
+    /*
     * 根据职位名称模糊查询获得多个对象(必须为上线职位，下线职位不可见)
     * */
     public List<Position> getPositionListByFuzzyQuery(@Param("positionName")String positionName);

@@ -58,8 +58,12 @@ public class ExpectJobController {
     @RequestMapping("/insert")
     @ResponseBody
     public ResponseObject insert(@RequestBody ExpectJob expectJob, @RequestParam("resumeId")Integer resumeId){
-        if (resumeService.getResumeByresumeId(resumeId) == null || service.getExpectJobByresumeId(resumeId) != null){
+        if (resumeService.getResumeByresumeId(resumeId) == null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
+        }
+        else if(service.getExpectJobByresumeId(resumeId) != null){
+            service.updateExpectJob(expectJob);
+            return new ResponseObject(ResponseObject.OK,"新增成功！",expectJob);
         }
 
         expectJob.setResumeId(resumeId);

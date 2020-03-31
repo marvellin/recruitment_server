@@ -38,13 +38,14 @@ public class CompanyController {
     @RequestMapping("/search")
     @ResponseBody
     public ResponseObject search(@RequestParam("companyName")String companyName){
+//        System.out.println(companyName);
         List<Integer> companyIdList = companyDetailService.getCompanyIdByFuzzyQuery(companyName);
         if (companyIdList == null || companyIdList.size() == 0){
             return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
         }
         List<Company> companyList = service.getCompanyListBycompanyIdList(companyIdList);
         if (companyList == null || companyList.size() == 0){
-            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",companyList);
         }
         return new ResponseObject(ResponseObject.OK,"获取成功！",companyList);
     }

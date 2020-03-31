@@ -1,11 +1,7 @@
 package cn.edu.scau.linyuanbin.recruitment.service.impl;
 
-import cn.edu.scau.linyuanbin.recruitment.domain.Company;
-import cn.edu.scau.linyuanbin.recruitment.domain.Person;
-import cn.edu.scau.linyuanbin.recruitment.domain.User;
-import cn.edu.scau.linyuanbin.recruitment.mapper.CompanyMapper;
-import cn.edu.scau.linyuanbin.recruitment.mapper.PersonMapper;
-import cn.edu.scau.linyuanbin.recruitment.mapper.UserMapper;
+import cn.edu.scau.linyuanbin.recruitment.domain.*;
+import cn.edu.scau.linyuanbin.recruitment.mapper.*;
 import cn.edu.scau.linyuanbin.recruitment.service.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +25,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     PersonMapper personMapper;
 
+    @Autowired
+    CompanyDetailMapper companyDetailMapper;
+
+    @Autowired
+    PersonDetailMapper personDetailMapper;
+
     @Override
     public int insertUser(User user, String role)
     {
@@ -37,12 +39,19 @@ public class UserServiceImpl implements UserService {
             Person person = new Person();
             person.setUserId(user.getUserId());
             personMapper.insertPerson(person);
+
+            PersonDetail personDetail = new PersonDetail();
+            personDetail.setPersonId(person.getPersonId());
+            personDetailMapper.insertPersonDetail(personDetail);
         }
         else  if (role.equals(User.Company)){
             Company company = new Company();
             company.setUserId(user.getUserId());
-//            company.setIntro("");
             companyMapper.insertCompany(company);
+
+            CompanyDetail companyDetail = new CompanyDetail();
+            companyDetail.setCompanyId(company.getCompanyId());
+            companyDetailMapper.insertCompanyDetail(companyDetail);
         }
         return result;
     }

@@ -20,7 +20,13 @@ public class DeliveryServiceImpl implements DeliveryService {
 
 
     @Override
+    public List<Delivery> getDeliveryListStatus3BypersonId(Integer personId) {
+        return mapper.getDeliveryListStatus3BypersonId(personId);
+    }
+
+    @Override
     public Delivery getDeliveryBydeliveryId(Integer deliveryId) {
+
         return mapper.getDeliveryBydeliveryId(deliveryId);
     }
 

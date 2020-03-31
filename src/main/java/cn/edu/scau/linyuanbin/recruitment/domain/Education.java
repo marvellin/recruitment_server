@@ -43,11 +43,11 @@ public class Education {
         this.resumeId = resumeId;
     }
 
-    public String getSchoole() {
+    public String getSchool() {
         return school;
     }
 
-    public void setSchoole(String schoole) {
+    public void setSchool(String schoole) {
         this.school = schoole;
     }
 

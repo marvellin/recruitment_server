@@ -75,7 +75,7 @@ public class CompanyLabelController {
     @RequestMapping("/insert")
     @ResponseBody
     public ResponseObject insert(@RequestBody CompanyLabel companyLabel, @RequestParam("companyDetailId")Integer companyDetailId){
-        System.out.println(companyLabel.toString());
+//        System.out.println(companyLabel.toString());
         if(companyDetailService.getCompantDetailByCompanyDetailId(companyDetailId)==null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
         }

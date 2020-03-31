@@ -1,14 +1,12 @@
 package cn.edu.scau.linyuanbin.recruitment.controller.deliveryController;
 
-import cn.edu.scau.linyuanbin.recruitment.domain.Delivery;
-import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
-import cn.edu.scau.linyuanbin.recruitment.service.service.DeliveryService;
-import cn.edu.scau.linyuanbin.recruitment.service.service.PersonService;
-import cn.edu.scau.linyuanbin.recruitment.service.service.PositionService;
+import cn.edu.scau.linyuanbin.recruitment.domain.*;
+import cn.edu.scau.linyuanbin.recruitment.service.service.*;
 import cn.edu.scau.linyuanbin.recruitment.utils.MyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +26,129 @@ public class DeliveryController {
 
     @Autowired
     PositionService positionService;
+
+    @Autowired
+    FeedBackService feedBackService;
+
+    @Autowired
+    FeedBackDetailService feedBackDetailService;
+
+    /*
+    * 通知面试
+    * @Param List<Delivery> deliveryList
+    * @Param FeedBackDetail feedBackDetail
+    * */
+    @RequestMapping("/toInterview")
+    @ResponseBody
+    public ResponseObject toInterview(@RequestParam("deliveryIdList") List<Integer> deliveryIdList, @RequestBody FeedBackDetail feedBackDetail ){
+        for (Integer deliveryId:deliveryIdList){
+            Delivery delivery = service.getDeliveryBydeliveryId(deliveryId);
+            if(delivery != null && delivery.getFeedBack() != null && feedBackDetailService.getFeedBackDetailByfeedBackId(delivery.getFeedBack().getFeedBackId())== null){
+                //保存面试信息
+                feedBackDetail.setFeedBackId(delivery.getFeedBack().getFeedBackId());
+                feedBackDetailService.insertFeedBackDetail(feedBackDetail);
+
+                //修改投递反馈信息
+                delivery.getFeedBack().setFeedback("邀请面试");
+                delivery.getFeedBack().setFeedbacktime(MyUtil.getFormatTime());
+                feedBackService.updateFeedBack(delivery.getFeedBack());
+
+                //修改投递状态
+                delivery.setStatus(3);
+                service.updateDelivary(delivery);
+            }
+        }
+        return new ResponseObject(ResponseObject.OK,"通知面试成功！",null);
+    }
+
+    /*
+    * 通知不合适
+    * @Param List<Delivery> deliveryList
+    * @RequestParam("deliveryIdList") List<Integer> deliveryIdList
+    * */
+    @RequestMapping("/toUnsuitable")
+    @ResponseBody
+    public ResponseObject toUnsuitable(@RequestParam("deliveryIdList") List<Integer> deliveryIdList ){
+        for (Integer deliveryId:deliveryIdList){
+            Delivery delivery = service.getDeliveryBydeliveryId(deliveryId);
+            if(delivery != null && delivery.getFeedBack() != null){
+                //修改投递反馈信息
+                delivery.getFeedBack().setFeedback("不合适");
+                delivery.getFeedBack().setFeedbacktime(MyUtil.getFormatTime());
+                feedBackService.updateFeedBack(delivery.getFeedBack());
+
+                //修改投递状态
+                delivery.setStatus(3);
+                service.updateDelivary(delivery);
+            }
+        }
+        return new ResponseObject(ResponseObject.OK,"通知不合适成功！",null);
+    }
+
+    /*
+    * 待定
+    * @Param List<Delivery> deliveryList
+    * @RequestParam("deliveryIdList") List<Integer> deliveryIdList
+    * */
+    @RequestMapping("/toUnDetermin")
+    @ResponseBody
+    public ResponseObject toUnDetermin(@RequestParam("deliveryIdList") List<Integer> deliveryIdList ){
+        for (Integer deliveryId:deliveryIdList){
+            Delivery delivery = service.getDeliveryBydeliveryId(deliveryId);
+            if(delivery != null && delivery.getFeedBack() != null){
+                //修改投递状态
+                delivery.setStatus(2);
+                service.updateDelivary(delivery);
+            }
+        }
+        return new ResponseObject(ResponseObject.OK,"待定成功！",null);
+    }
+
+    /*
+    * 通过personId查找不合适简历
+    * */
+    @RequestMapping("/getUnsuitableDeliveryListBypersonId")
+    @ResponseBody
+    public ResponseObject getUnsuitableDeliveryListBypersonId(@RequestParam("personId")Integer personId){
+        System.out.println(personId);
+        List<Delivery> deliveryList = service.getDeliveryListStatus3BypersonId(personId);
+        if (deliveryList == null || deliveryList.size() <= 0){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败",deliveryList);
+        }
+        List<Delivery> results = new ArrayList<>();
+        for (Delivery delivery:deliveryList){
+            if (delivery.getFeedBack()!=null&&delivery.getFeedBack().getFeedback()!=null&&delivery.getFeedBack().getFeedback().equals("不合适")){
+                results.add(delivery);
+            }
+        }
+        if (results.size()<=0){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败",results);
+        }
+        return new ResponseObject(ResponseObject.OK,"获取成功！",results);
+    }
+
+
+    /*
+    * 通过personId查找邀请面试简历
+    * */
+    @RequestMapping("/getInteviewDeliveryListBypersonId")
+    @ResponseBody
+    public ResponseObject getInteviewDeliveryListBypersonId(@RequestParam("personId")Integer personId){
+        List<Delivery> deliveryList = service.getDeliveryListStatus3BypersonId(personId);
+        if (deliveryList == null || deliveryList.size() <= 0){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败",deliveryList);
+        }
+        List<Delivery> results = new ArrayList<>();
+        for (Delivery delivery:deliveryList){
+            if (delivery.getFeedBack()!=null&&delivery.getFeedBack().getFeedback()!=null&&delivery.getFeedBack().getFeedback().equals("邀请面试")){
+                results.add(delivery);
+            }
+        }
+        if (results.size()<=0){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败",results);
+        }
+        return new ResponseObject(ResponseObject.OK,"获取成功！",results);
+    }
 
     /*
      *根据deliveryId获得单个对象
@@ -52,7 +173,7 @@ public class DeliveryController {
     public ResponseObject getLsitByPositionId(@RequestParam("positionId")Integer positionId){
         List<Delivery> deliveryList = service.getDeliveryListBypositionId(positionId) ;
         if (deliveryList == null || deliveryList.size() == 0){
-            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",deliveryList);
         }
         return new ResponseObject(ResponseObject.OK,"获取成功！",deliveryList);
     }
@@ -72,21 +193,26 @@ public class DeliveryController {
     }
 
     /*
-     *新增对象，注意后台获取deliverytime投递时间，注意先判断duiyingposition和person是否存在，且对应delivery是否存在
-     * @Param Delivery delivery
+     *新增对象，即投递职位，注意后台获取deliverytime投递时间，注意先判断duiyingposition和person是否存在，且对应delivery是否存在
+     * @Param Delivery delivery(不需要)
      * @Param Integer positionId
      * @Param Integer personId
      * */
     @RequestMapping("/insert")
     @ResponseBody
-    public ResponseObject insert(@RequestBody Delivery delivery,@RequestParam("positionId")Integer positionId,@RequestParam("personId")Integer personId){
+    public ResponseObject insert(@RequestParam("positionId")Integer positionId,@RequestParam("personId")Integer personId){
         if (personService.getPersonBypersonId(personId) == null || positionService.getPositionBypositionId(positionId) == null || service.getByPersonIdWithPositionId(personId,positionId)!=null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
         }
+        Delivery delivery = new Delivery();
         delivery.setPersonId(personId);
         delivery.setPositionId(positionId);
         delivery.setDeliverytime(MyUtil.getFormatTime());
         service.insertDelivery(delivery);
+
+        FeedBack feedBack = new FeedBack();
+        feedBack.setDeliveryId(delivery.getDeliveryId());
+        feedBackService.insertFeedBack(feedBack);
         return new ResponseObject(ResponseObject.OK,"新增成功！",service.getDeliveryBydeliveryId(delivery.getDeliveryId()));
     }
 
@@ -139,17 +265,107 @@ public class DeliveryController {
     }
 
     /*
-     *根据positionIdList查找多个对象List，可能需要修改这个接口
+     *根据positionIdList查找多个待处理对象List
      * @Param List<Integer> positionIdList
+     * @Param Integer companyId
      * */
-    @RequestMapping("/getListByPositionIdList")
+    @RequestMapping("/getListByPositionIdListStatus1")
     @ResponseBody
-    public ResponseObject getListByPositionIdList(@RequestParam("positionIdList") List<Integer> positionIdList){
+    public ResponseObject getListByPositionIdList(@RequestParam("companyId")Integer companyId){
+        List<Position> positionList = positionService.getPositionListBycompanyId(companyId);
+        List<Integer> positionIdList = new ArrayList<>();
+        for (Position position:positionList){
+            positionIdList.add(position.getPositionId());
+        }
         List<Delivery> deliveryList = service.getDeliveryBypositionIdList(positionIdList);
         if (deliveryList == null || deliveryList.size() == 0){
             return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
         }
-        return new ResponseObject(ResponseObject.OK,"获取成功！",deliveryList);
+        List<Delivery> results = new ArrayList<>();
+        for (Delivery delivery:deliveryList){
+            if (delivery.getStatus()==1){
+                results.add(delivery);
+            }
+        }
+        return new ResponseObject(ResponseObject.OK,"获取成功！",results);
+    }
+
+    /*
+     *根据positionIdList查找多个待定对象List
+     * @Param List<Integer> positionIdList
+     * @Param Integer companyId
+     * */
+    @RequestMapping("/getListByPositionIdListStatus2")
+    @ResponseBody
+    public ResponseObject getListByPositionIdListStatus2(@RequestParam("companyId")Integer companyId){
+        List<Position> positionList = positionService.getPositionListBycompanyId(companyId);
+        List<Integer> positionIdList = new ArrayList<>();
+        for (Position position:positionList){
+            positionIdList.add(position.getPositionId());
+        }
+        List<Delivery> deliveryList = service.getDeliveryBypositionIdList(positionIdList);
+        if (deliveryList == null || deliveryList.size() == 0){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+        }
+        List<Delivery> results = new ArrayList<>();
+        for (Delivery delivery:deliveryList){
+            if (delivery.getStatus()==2){
+                results.add(delivery);
+            }
+        }
+        return new ResponseObject(ResponseObject.OK,"获取成功！",results);
+    }
+
+    /*
+     *根据positionIdList查找多个邀请面试对象List
+     * @Param List<Integer> positionIdList
+     * @Param Integer companyId
+     * */
+    @RequestMapping("/getListByPositionIdListStatus3&Inteview")
+    @ResponseBody
+    public ResponseObject getListByPositionIdListStatus3Inteview(@RequestParam("companyId")Integer companyId){
+        List<Position> positionList = positionService.getPositionListBycompanyId(companyId);
+        List<Integer> positionIdList = new ArrayList<>();
+        for (Position position:positionList){
+            positionIdList.add(position.getPositionId());
+        }
+        List<Delivery> deliveryList = service.getDeliveryBypositionIdList(positionIdList);
+        if (deliveryList == null || deliveryList.size() == 0){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+        }
+        List<Delivery> results = new ArrayList<>();
+        for (Delivery delivery:deliveryList){
+            if (delivery.getStatus()>=2&&delivery.getFeedBack().getFeedback().equals("邀请面试")){
+                results.add(delivery);
+            }
+        }
+        return new ResponseObject(ResponseObject.OK,"获取成功！",results);
+    }
+
+    /*
+     *根据positionIdList查找多个不合适对象List
+     * @Param List<Integer> positionIdList
+     * @Param Integer companyId
+     * */
+    @RequestMapping("/getListByPositionIdListStatus3&Unsuit")
+    @ResponseBody
+    public ResponseObject getListByPositionIdListStatus3Unsuit(@RequestParam("companyId")Integer companyId){
+        List<Position> positionList = positionService.getPositionListBycompanyId(companyId);
+        List<Integer> positionIdList = new ArrayList<>();
+        for (Position position:positionList){
+            positionIdList.add(position.getPositionId());
+        }
+        List<Delivery> deliveryList = service.getDeliveryBypositionIdList(positionIdList);
+        if (deliveryList == null || deliveryList.size() == 0){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+        }
+        List<Delivery> results = new ArrayList<>();
+        for (Delivery delivery:deliveryList){
+            if (delivery.getStatus()>=2&&delivery.getFeedBack().getFeedback().equals("不合适")){
+                results.add(delivery);
+            }
+        }
+        return new ResponseObject(ResponseObject.OK,"获取成功！",results);
     }
 
     /*

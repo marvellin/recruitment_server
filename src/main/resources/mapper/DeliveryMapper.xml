@@ -16,6 +16,20 @@
         <association property="feedBack" column="deliveryId" select="cn.edu.scau.linyuanbin.recruitment.mapper.FeedBackMapper.getFeedBackBydeliveryId"></association>
     </resultMap>
 
+    <!--根据personId查找status=3的对象list-->
+    <select id="getDeliveryListStatus3BypersonId" resultMap="deliveryMap" parameterType="java.lang.Integer">
+        select * from delivery
+        <where>
+            status = 3
+            <if test="personId!=null">
+                and personId = #{personId}
+            </if>
+            <if test="personId==null">
+                and personId = -1
+            </if>
+        </where>
+    </select>
+
     <!--根据deliveryId获得单个对象-->
     <select id="getDeliveryBydeliveryId" parameterType="java.lang.Integer" resultMap="deliveryMap">
         select * from delivery

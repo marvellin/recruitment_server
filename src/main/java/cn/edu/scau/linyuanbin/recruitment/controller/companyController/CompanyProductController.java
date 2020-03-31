@@ -7,6 +7,7 @@ import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.transform.OutputKeys;
 import java.util.List;
 
 /**
@@ -65,6 +66,10 @@ public class CompanyProductController {
     public ResponseObject insert(@RequestBody CompanyProduct companyProduct, @RequestParam("companyId")Integer companyId){
         if (companyService.getCompanyByCompanyId(companyId)==null){
             return new ResponseObject(ResponseObject.ERROR,"新增失败!",null);
+        }
+        else if (companyProduct.getCompanyProductId()!=null && service.getCompanyProductBycompanyProductId(companyProduct.getCompanyProductId())!=null){
+            service.updateCompanyProduct(companyProduct);
+            return new ResponseObject(ResponseObject.OK,"新增成功！",companyProduct);
         }
         companyProduct.setCompanyId(companyId);
         service.insertCompanyProduct(companyProduct);

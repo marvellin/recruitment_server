@@ -39,7 +39,9 @@ public class UserController {
             String role = type.equals("true")?User.Person:User.Company;
             User user = new User(0,email,password,role);
             service.insertUser(user,role);
-            return new ResponseObject(ResponseObject.OK,"注册成功！",null);
+            //注册成功后应返回这个用户对象
+//            return new ResponseObject(ResponseObject.OK,"注册成功！",null);
+            return new ResponseObject(ResponseObject.OK,"注册成功！",service.getUserByuserId(user.getUserId()));
         }
     }
 

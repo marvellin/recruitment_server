@@ -53,7 +53,7 @@ class CompanyMapperTest {
 
     @Test
     void getCompanyListBycompanyIdList() {
-        List<Company> list = mapper.getCompanyListBycompanyIdList(mapper2.getCompanyIdByFuzzyQuery("厂"));
+        List<Company> list = mapper.getCompanyListBycompanyIdList(mapper2.getCompanyIdByFuzzyQuery(""));
         for (Company tmp:list){
             System.out.println(tmp.toString());
         }

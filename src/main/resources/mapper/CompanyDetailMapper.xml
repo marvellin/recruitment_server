@@ -27,8 +27,11 @@
                 or
                 shortName like "%"#{companyName}"%"
             </if>
-            <if test="companyName==null or companyName==''">
-                companyDetailId = -1
+            <if test="companyName==''">
+                1 = 1
+            </if>
+            <if test="companyName==null">
+                1 = 1
             </if>
         </where>
     </select>

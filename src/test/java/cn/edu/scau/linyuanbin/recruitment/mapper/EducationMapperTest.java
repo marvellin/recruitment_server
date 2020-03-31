@@ -44,7 +44,7 @@ class EducationMapperTest {
     @Test
     void updateEducation() {
         Education tmp = mapper.getEducationByeducationId(4);
-        tmp.setSchoole("test");
+        tmp.setSchool("test");
         mapper.updateEducation(tmp);
     }
 }
