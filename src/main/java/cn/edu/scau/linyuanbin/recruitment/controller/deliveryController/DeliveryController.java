@@ -201,8 +201,15 @@ public class DeliveryController {
     @RequestMapping("/insert")
     @ResponseBody
     public ResponseObject insert(@RequestParam("positionId")Integer positionId,@RequestParam("personId")Integer personId){
-        if (personService.getPersonBypersonId(personId) == null || positionService.getPositionBypositionId(positionId) == null || service.getByPersonIdWithPositionId(personId,positionId)!=null){
-            return new ResponseObject(ResponseObject.ERROR,"新增失败！",null);
+        Person person = personService.getPersonBypersonId(personId);
+        if (person == null || positionService.getPositionBypositionId(positionId) == null){
+            return new ResponseObject(ResponseObject.ERROR,"投递失败！",null);
+        }
+        else if (service.getByPersonIdWithPositionId(personId,positionId)!=null){
+            return new ResponseObject(ResponseObject.ERROR,"您已投递该职位，请勿重复投递！",null);
+        }
+        else if (person.getResume() == null || person.getResume().getWorkExperienceList().size()<=0 || person.getResume().getEducationList().size()<=0){
+            return new ResponseObject(ResponseObject.ERROR,"请先完善您的简历！",null);
         }
         Delivery delivery = new Delivery();
         delivery.setPersonId(personId);

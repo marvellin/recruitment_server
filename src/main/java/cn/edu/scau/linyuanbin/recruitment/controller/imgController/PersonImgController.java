@@ -1,9 +1,6 @@
 package cn.edu.scau.linyuanbin.recruitment.controller.imgController;
 
-import cn.edu.scau.linyuanbin.recruitment.domain.OSSFile;
-import cn.edu.scau.linyuanbin.recruitment.domain.PersonImg;
-import cn.edu.scau.linyuanbin.recruitment.domain.ProductImg;
-import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
+import cn.edu.scau.linyuanbin.recruitment.domain.*;
 import cn.edu.scau.linyuanbin.recruitment.service.service.OSSFileService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.PersonDetailService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.PersonImgService;
@@ -36,6 +33,24 @@ public class PersonImgController {
     OSSFileService ossFileService;
 
     /*
+     * 根据personDetailId获得文件，下载返回给前台
+     * */
+    @RequestMapping("/download")
+    public void download(HttpServletResponse response,@RequestParam("personDetailId")Integer personDetailId) throws IOException {
+        PersonImg personImg = service.getPersonImgBypersonDetailId(personDetailId);
+        if (personImg == null || personImg.getOssFile()==null){
+//            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+            return;
+        }
+        OSSFile ossFile = personImg.getOssFile();
+        if (ossFile.getFileUrl()==null){
+            return;
+        }
+        ossFileService.down(ossFile.getFileUrl(),response.getOutputStream());
+//        return new ResponseObject(ResponseObject.OK,"下载成功!",null);
+    }
+
+    /*
      * 上传个人图片，先判断是否有对应personDetail，再判断是否有personImg对象，如果有则更新，没有则插入
      * @Param MultipartFile file文件目标
      * @Param Integer personDetailId对应个人基本信息
@@ -43,9 +58,10 @@ public class PersonImgController {
      * */
     @RequestMapping("/upload")
     @ResponseBody
-    public ResponseObject upload(@RequestParam("file") MultipartFile file, @RequestParam("personDetailId")Integer personDetailId, @RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
+    public void upload(@RequestParam("file") MultipartFile file, @RequestParam("personDetailId")Integer personDetailId, @RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
         if (personDetailService.getPersonDetailBypersonDetailId(personDetailId) == null){
-            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
+//            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
+            return;
         }
         OSSFile ossFile =  ossFileService.upload(file,userId,"个人照片",response.getOutputStream());
 
@@ -60,6 +76,6 @@ public class PersonImgController {
             personImg.setOssId(ossFile.getOssId());
             service.insertPersonImg(personImg);
         }
-        return new ResponseObject(ResponseObject.OK,"上传成功！",personImg);
+//        return new ResponseObject(ResponseObject.OK,"上传成功！",personImg);
     }
 }

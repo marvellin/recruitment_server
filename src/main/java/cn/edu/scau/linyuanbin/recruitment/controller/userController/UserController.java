@@ -25,6 +25,24 @@ public class UserController {
     UserService service;
 
     /*
+    * 更新密码
+    * */
+    @RequestMapping("/reset")
+    @ResponseBody
+    public ResponseObject reset(@RequestParam("userId")Integer userId,@RequestParam("newPassword")String newPassword,@RequestParam("oldPassword")String oldPassword){
+        User user = service.getUserByuserId(userId);
+        if (user==null){
+            return new ResponseObject(ResponseObject.ERROR,"更新失败！",null);
+        }
+        else if(!user.getPassword().equals(oldPassword)){
+            return new ResponseObject(ResponseObject.ERROR,"请确认原密码正确！",null);
+        }
+        user.setPassword(newPassword);
+        service.updateUser(user);
+        return new ResponseObject(ResponseObject.OK,"更新密码成功！",null);
+    }
+
+    /*
     * 注册,先判断是否已注册了该email，是则返回错误信息，否则新建user
     * @Param String email
     * @Param String password

@@ -1,9 +1,6 @@
 package cn.edu.scau.linyuanbin.recruitment.controller.personController;
 
-import cn.edu.scau.linyuanbin.recruitment.domain.AttachMentResume;
-import cn.edu.scau.linyuanbin.recruitment.domain.DefaultResume;
-import cn.edu.scau.linyuanbin.recruitment.domain.OSSFile;
-import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
+import cn.edu.scau.linyuanbin.recruitment.domain.*;
 import cn.edu.scau.linyuanbin.recruitment.service.service.AttachmentResumeService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.DefaultResumeService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.OSSFileService;
@@ -17,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Author: linyuanbin
@@ -40,6 +38,34 @@ public class AttachmentResumeController {
     DefaultResumeService defaultResumeService;
 
     /*
+     * 根据attachmentId获得单个文件，下载返回给前台
+     * */
+    @RequestMapping("/download")
+    public ResponseObject download(HttpServletResponse response,@RequestParam("attachmentResumeId")Integer attachmentResumeId) throws IOException {
+        AttachMentResume attachMentResume = service.getAttachMentResumeByAttachmentResumeId(attachmentResumeId);
+        if (attachMentResume==null || attachMentResume.getOssFile()==null){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+        }
+        OSSFile ossFile = attachMentResume.getOssFile();
+        ossFileService.down(ossFile.getFileUrl(),response.getOutputStream());
+        return new ResponseObject(ResponseObject.OK,"下载成功!",null);
+    }
+
+    /*
+    * 根据personId获取简历附件list
+    * @Param Integer personId
+    * */
+    @RequestMapping("/getByPersonId")
+    @ResponseBody
+    public ResponseObject getByPersonId(@RequestParam("personId")Integer personId){
+        if (personService.getPersonBypersonId(personId)==null){
+            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+        }
+        List<AttachMentResume> attachMentResumeList = service.getAttachMentResumeListByPersonId(personId);
+        return new ResponseObject(ResponseObject.OK,"获取成功！",attachMentResumeList);
+    }
+
+    /*
     * 上传简历附件，新建attachmentresume对象和ossfile对象，注意先判断对应person是否存在
     * @Param MultipartFile file 简历附件
     * @Param Integer userId用户id
@@ -47,13 +73,14 @@ public class AttachmentResumeController {
     @RequestMapping("/upload")
     @ResponseBody
     public ResponseObject upload(@RequestParam("file")MultipartFile file, @RequestParam("userId")Integer userId,HttpServletResponse response) throws IOException {
-        if (personService.getPersonByuserId(userId) == null){
+        Person person = personService.getPersonByuserId(userId);
+        if (person == null){
             return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
         }
         OSSFile ossFile = ossFileService.upload(file,userId,"个人简历附件",response.getOutputStream());
 
         AttachMentResume attachMentResume = new AttachMentResume();
-        attachMentResume.setPersonId(personService.getPersonByuserId(userId).getPersonId());
+        attachMentResume.setPersonId(person.getPersonId());
         attachMentResume.setOssId(ossFile.getOssId());
         attachMentResume.setName(file.getOriginalFilename());
 
@@ -66,7 +93,7 @@ public class AttachmentResumeController {
     * @Param Integer ossId 目标文件的ossFile对象id
     * @Param HttpServletResponse response 文件流返回对象
     * */
-    @RequestMapping("/download")
+    /*@RequestMapping("/download")
     @ResponseBody
     public ResponseObject download(@RequestParam("ossId")Integer ossId, HttpServletResponse response) throws IOException {
         if (ossFileService.getOSSFileByossId(ossId) == null){
@@ -74,7 +101,7 @@ public class AttachmentResumeController {
         }
         ossFileService.down(ossFileService.getOSSFileByossId(ossId).getFileUrl(),response.getOutputStream());
         return new  ResponseObject(ResponseObject.OK,"下载成功！",null);
-    }
+    }*/
 
     /*
     * 删除简历附件,注意先判断对应person是否存在，删除之前检查是否为默认简历，若是默认简历，则先修改默认简历为在线简历再删除

@@ -35,7 +35,6 @@ public class ResumeController {
     @RequestMapping("/get")
     @ResponseBody
     public ResponseObject get(@RequestParam("resumeId")Integer resumeId){
-        System.out.println(resumeId);
         Resume resume = service.getResumeByresumeId(resumeId);
         if (resume == null){
             return new ResponseObject(ResponseObject.ERROR,"找不到目标简历！",resume);

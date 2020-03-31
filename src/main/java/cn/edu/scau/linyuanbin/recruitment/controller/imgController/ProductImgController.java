@@ -1,6 +1,7 @@
 package cn.edu.scau.linyuanbin.recruitment.controller.imgController;
 
 import cn.edu.scau.linyuanbin.recruitment.domain.OSSFile;
+import cn.edu.scau.linyuanbin.recruitment.domain.PersonImg;
 import cn.edu.scau.linyuanbin.recruitment.domain.ProductImg;
 import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
 import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyProductService;
@@ -35,6 +36,24 @@ public class ProductImgController {
     CompanyProductService companyProductService;
 
     /*
+     * 根据companyProductId获得文件，下载返回给前台
+     * */
+    @RequestMapping("/download")
+    public void download(HttpServletResponse response,@RequestParam("companyProductId")Integer companyProductId) throws IOException {
+       ProductImg productImg = service.getProductImgBycompanyProductId(companyProductId);
+        if (productImg == null || productImg.getOssFile()==null){
+//            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+            return;
+        }
+        OSSFile ossFile = productImg.getOssFile();
+        if (ossFile.getFileUrl()==null){
+            return;
+        }
+        ossFileService.down(ossFile.getFileUrl(),response.getOutputStream());
+//        return new ResponseObject(ResponseObject.OK,"下载成功!",null);
+    }
+
+    /*
     * 上传产品图片，先判断是否有对应companyProduct，再判断是否有productImg对象，如果有则更新，没有则插入
     * @Param MultipartFile file文件目标
     * @Param Integer companyProductId对应产品
@@ -42,9 +61,10 @@ public class ProductImgController {
     * */
     @RequestMapping("/upload")
     @ResponseBody
-    public ResponseObject upload(@RequestParam("file")MultipartFile file, @RequestParam("companyProductId")Integer companyProductId,@RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
+    public void upload(@RequestParam("file")MultipartFile file, @RequestParam("companyProductId")Integer companyProductId,@RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
         if (companyProductService.getCompanyProductBycompanyProductId(companyProductId) == null){
-            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
+//            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
+            return;
         }
         OSSFile ossFile =  ossFileService.upload(file,userId,"产品图片",response.getOutputStream());
 
@@ -59,6 +79,6 @@ public class ProductImgController {
             productImg.setOssId(ossFile.getOssId());
             service.insertProductImg(productImg);
         }
-        return new ResponseObject(ResponseObject.OK,"上传成功！",productImg);
+//        return new ResponseObject(ResponseObject.OK,"上传成功！",productImg);
     }
 }

@@ -36,6 +36,24 @@ public class MemberImgController {
     CompanyMemberService companyMemberService;
 
     /*
+     * 根据companyMemberId获得文件，下载返回给前台
+     * */
+    @RequestMapping("/download")
+    public void download(HttpServletResponse response,@RequestParam("companyMemberId")Integer companyMemberId) throws IOException {
+        MemberImg memberImg = service.getMemberImgBycompanyMemberId(companyMemberId);
+        if (memberImg == null || memberImg.getOssFile() == null){
+//            return new ResponseObject(ResponseObject.ERROR,"获取失败",null);
+            return;
+        }
+        OSSFile ossFile = memberImg.getOssFile();
+        if (ossFile.getFileUrl()==null){
+            return;
+        }
+        ossFileService.down(ossFile.getFileUrl(),response.getOutputStream());
+//        return new ResponseObject(ResponseObject.OK,"下载成功!",null);
+    }
+
+    /*
      * 上传公司负责人图片，先判断是否有对应companyMember，再判断是否有memberImg对象，如果有则更新，没有则插入
      * @Param MultipartFile file文件目标
      * @Param Integer companyMemberId对应公司负责人
@@ -43,9 +61,10 @@ public class MemberImgController {
      * */
     @RequestMapping("/upload")
     @ResponseBody
-    public ResponseObject upload(@RequestParam("file") MultipartFile file, @RequestParam("companyMemberId")Integer companyMemberId, @RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
+    public void upload(@RequestParam("file") MultipartFile file, @RequestParam("companyMemberId")Integer companyMemberId, @RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
         if (companyMemberService.getCompanyMemberBycompanyMemberId(companyMemberId) == null){
-            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
+//            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
+            return;
         }
         OSSFile ossFile =  ossFileService.upload(file,userId,"公司负责人照片",response.getOutputStream());
 
@@ -60,6 +79,6 @@ public class MemberImgController {
             memberImg.setOssId(ossFile.getOssId());
             service.insertMemberImg(memberImg);
         }
-        return new ResponseObject(ResponseObject.OK,"上传成功！",memberImg);
+//        return new ResponseObject(ResponseObject.OK,"上传成功！",memberImg);
     }
 }

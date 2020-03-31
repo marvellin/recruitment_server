@@ -32,6 +32,11 @@ public class OSSFileServiceImpl implements OSSFileService {
 
     @Override
     public void down(String path, OutputStream outputStream) throws IOException {
+        System.out.println("enter ossservice "+path);
+        if (path==null||path.equals("")){
+            return;
+        }
+        System.out.println("begin download");
         ossUtil.download(path,outputStream);
     }
 

@@ -98,10 +98,10 @@ public class PersonDetailController {
     @RequestMapping("update")
     @ResponseBody
     public ResponseObject update(@RequestBody PersonDetail personDetail){
-        if (service.getPersonDetailByEmail(personDetail.getEmail()).getPersonDetailId()!=personDetail.getPersonDetailId()){
+        if (service.getPersonDetailByEmail(personDetail.getEmail())!=null&&service.getPersonDetailByEmail(personDetail.getEmail()).getPersonDetailId()!=personDetail.getPersonDetailId()){
             return new ResponseObject(ResponseObject.ERROR,"该邮箱已被使用！",null);
         }
-        if(service.getPersonDetailByTel(personDetail.getTel()).getPersonDetailId()!=personDetail.getPersonDetailId()){
+        if(service.getPersonDetailByTel(personDetail.getTel())!=null&&service.getPersonDetailByTel(personDetail.getTel()).getPersonDetailId()!=personDetail.getPersonDetailId()){
             return new ResponseObject(ResponseObject.ERROR,"该手机号码已被使用！",null);
         }
         service.updatePersonDetail(personDetail);

@@ -36,6 +36,26 @@ public class CompanyImgController {
     CompanyDetailService companyDetailService;
 
     /*
+    * 根据companyDetailId获得文件，下载返回给前台
+    * */
+    @RequestMapping("/download")
+    public void download(HttpServletResponse response,@RequestParam("companyDetailId")Integer companyDetailId) throws IOException {
+        System.out.println("enter download "+companyDetailId);
+        CompanyImg companyImg = service.getCompanyImgByCompanyDetailId(companyDetailId);
+        if (companyImg == null || companyImg.getOssFile()==null){
+//            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+            return;
+        }
+        OSSFile ossFile = companyImg.getOssFile();
+        if(ossFile.getFileUrl()==null){
+//            return new ResponseObject(ResponseObject.ERROR,"获取失败！",null);
+            return;
+        }
+        ossFileService.down(ossFile.getFileUrl(),response.getOutputStream());
+//        return new ResponseObject(ResponseObject.OK,"下载成功!",null);
+    }
+
+    /*
      * 上传公司图标，先判断是否有对应companyDetail，再判断是否有companyImg对象，如果有则更新，没有则插入
      * @Param MultipartFile file文件目标
      * @Param Integer companyDetailId对应个人基本信息
@@ -43,9 +63,10 @@ public class CompanyImgController {
      * */
     @RequestMapping("/upload")
     @ResponseBody
-    public ResponseObject upload(@RequestParam("file") MultipartFile file, @RequestParam("companyDetailId")Integer companyDetailId, @RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
+    public void upload(@RequestParam("file") MultipartFile file, @RequestParam("companyDetailId")Integer companyDetailId, @RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
         if (companyDetailService.getCompantDetailByCompanyDetailId(companyDetailId) == null){
-            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
+//            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
+            return;
         }
         OSSFile ossFile =  ossFileService.upload(file,userId,"公司图标",response.getOutputStream());
 
@@ -60,6 +81,6 @@ public class CompanyImgController {
             companyImg.setOssId(ossFile.getOssId());
             service.insertCompanyImg(companyImg);
         }
-        return new ResponseObject(ResponseObject.OK,"上传成功！",companyImg);
+//        return new ResponseObject(ResponseObject.OK,"上传成功！",companyImg);
     }
 }
