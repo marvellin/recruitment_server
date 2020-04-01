@@ -1,10 +1,8 @@
 package cn.edu.scau.linyuanbin.recruitment.controller.imgController;
 
-import cn.edu.scau.linyuanbin.recruitment.domain.OSSFile;
-import cn.edu.scau.linyuanbin.recruitment.domain.PersonImg;
-import cn.edu.scau.linyuanbin.recruitment.domain.ProductImg;
-import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
+import cn.edu.scau.linyuanbin.recruitment.domain.*;
 import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyProductService;
+import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.OSSFileService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.ProductImgService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +33,9 @@ public class ProductImgController {
     @Autowired
     CompanyProductService companyProductService;
 
+    @Autowired
+    CompanyService companyService;
+
     /*
      * 根据companyProductId获得文件，下载返回给前台
      * */
@@ -62,13 +63,18 @@ public class ProductImgController {
     @RequestMapping("/upload")
     @ResponseBody
     public void upload(@RequestParam("file")MultipartFile file, @RequestParam("companyProductId")Integer companyProductId,@RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
-        if (companyProductService.getCompanyProductBycompanyProductId(companyProductId) == null){
+        CompanyProduct companyProduct = companyProductService.getCompanyProductBycompanyProductId(companyProductId);
+        if (companyProduct == null){
 //            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
-            return;
+            Company company = companyService.getCompanyByUserId(userId);
+
+            companyProduct = new CompanyProduct();
+            companyProduct.setCompanyId(company.getCompanyId());
+            companyProductService.insertCompanyProduct(companyProduct);
         }
         OSSFile ossFile =  ossFileService.upload(file,userId,"产品图片",response.getOutputStream());
 
-        ProductImg productImg = service.getProductImgBycompanyProductId(companyProductId);
+        ProductImg productImg = service.getProductImgBycompanyProductId(companyProduct.getCompanyProductId());
         if(productImg != null){
             productImg.setOssId(ossFile.getOssId());
             service.updateProductImg(productImg);

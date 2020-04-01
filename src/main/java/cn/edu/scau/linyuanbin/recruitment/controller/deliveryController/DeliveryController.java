@@ -41,9 +41,11 @@ public class DeliveryController {
     @RequestMapping("/toInterview")
     @ResponseBody
     public ResponseObject toInterview(@RequestParam("deliveryIdList") List<Integer> deliveryIdList, @RequestBody FeedBackDetail feedBackDetail ){
+        System.out.println("enter inteview controller");
         for (Integer deliveryId:deliveryIdList){
             Delivery delivery = service.getDeliveryBydeliveryId(deliveryId);
             if(delivery != null && delivery.getFeedBack() != null && feedBackDetailService.getFeedBackDetailByfeedBackId(delivery.getFeedBack().getFeedBackId())== null){
+                System.out.println("enter inteview");
                 //保存面试信息
                 feedBackDetail.setFeedBackId(delivery.getFeedBack().getFeedBackId());
                 feedBackDetailService.insertFeedBackDetail(feedBackDetail);
@@ -342,7 +344,7 @@ public class DeliveryController {
         }
         List<Delivery> results = new ArrayList<>();
         for (Delivery delivery:deliveryList){
-            if (delivery.getStatus()>=2&&delivery.getFeedBack().getFeedback().equals("邀请面试")){
+            if (delivery.getStatus()>2&&delivery.getFeedBack().getFeedback().equals("邀请面试")){
                 results.add(delivery);
             }
         }
@@ -368,7 +370,7 @@ public class DeliveryController {
         }
         List<Delivery> results = new ArrayList<>();
         for (Delivery delivery:deliveryList){
-            if (delivery.getStatus()>=2&&delivery.getFeedBack().getFeedback().equals("不合适")){
+            if (delivery.getStatus()>2&&delivery.getFeedBack().getFeedback().equals("不合适")){
                 results.add(delivery);
             }
         }

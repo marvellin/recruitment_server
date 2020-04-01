@@ -1,10 +1,8 @@
 package cn.edu.scau.linyuanbin.recruitment.controller.imgController;
 
-import cn.edu.scau.linyuanbin.recruitment.domain.MemberImg;
-import cn.edu.scau.linyuanbin.recruitment.domain.OSSFile;
-import cn.edu.scau.linyuanbin.recruitment.domain.ProductImg;
-import cn.edu.scau.linyuanbin.recruitment.domain.ResponseObject;
+import cn.edu.scau.linyuanbin.recruitment.domain.*;
 import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyMemberService;
+import cn.edu.scau.linyuanbin.recruitment.service.service.CompanyService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.MemberImgService;
 import cn.edu.scau.linyuanbin.recruitment.service.service.OSSFileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Member;
 
 /**
  * @Author: linyuanbin
@@ -34,6 +33,9 @@ public class MemberImgController {
 
     @Autowired
     CompanyMemberService companyMemberService;
+
+    @Autowired
+    CompanyService companyService;
 
     /*
      * 根据companyMemberId获得文件，下载返回给前台
@@ -62,13 +64,17 @@ public class MemberImgController {
     @RequestMapping("/upload")
     @ResponseBody
     public void upload(@RequestParam("file") MultipartFile file, @RequestParam("companyMemberId")Integer companyMemberId, @RequestParam("userId")Integer userId, HttpServletResponse response) throws IOException {
-        if (companyMemberService.getCompanyMemberBycompanyMemberId(companyMemberId) == null){
+        CompanyMember companyMember = companyMemberService.getCompanyMemberBycompanyMemberId(companyMemberId);
+        if (companyMember == null){
 //            return new ResponseObject(ResponseObject.ERROR,"上传失败！",null);
-            return;
+            Company company = companyService.getCompanyByUserId(userId);
+            companyMember = new CompanyMember();
+            companyMember.setCompanyId(company.getCompanyId());
+            companyMemberService.insertCompanyMember(companyMember);
         }
         OSSFile ossFile =  ossFileService.upload(file,userId,"公司负责人照片",response.getOutputStream());
 
-        MemberImg memberImg = service.getMemberImgBycompanyMemberId(companyMemberId);
+        MemberImg memberImg = service.getMemberImgBycompanyMemberId(companyMember.getCompanyMemberId());
         if(memberImg != null){
             memberImg.setOssId(ossFile.getOssId());
             service.updateMemberImg(memberImg);
