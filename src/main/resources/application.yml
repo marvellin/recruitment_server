@@ -51,8 +51,6 @@ mybatis:
 aliyun:
   file:
     endpoint: http://oss-cn-beijing.aliyuncs.com
-    accessKeyId: 
-    accessKeySecret: 
     bucketName: marvellin
     folder: recruitment
     webUrl: https://marvellin.oss-cn-beijing.aliyuncs.com
