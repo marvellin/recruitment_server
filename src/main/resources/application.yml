@@ -45,9 +45,6 @@ mybatis:
 #配置阿里云上oss访问资源
 aliyun:
   file:
-    endpoint: http://oss-cn-beijing.aliyuncs.com
-    accessKeyId: LTAI4FuY23ynLHffyzfTVoWh
-    accessKeySecret: RaFFO8hNjk0IHuueleM0GozHgBALdW
     bucketName: marvellin
     folder: recruitment
     webUrl: https://marvellin.oss-cn-beijing.aliyuncs.com
